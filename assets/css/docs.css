@@ -1,11 +1,7 @@
 body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
-  background-image: -webkit-linear-gradient(left, #720e9e 0, #ffb11f 100%);
-  background-image: -o-linear-gradient(left, #720e9e 0, #ffb11f 100%);
-  background-image: linear-gradient(to right, #720e9e 0, #ffb11f 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff720e9e', endColorstr='#ffdd4b39', GradientType=1)
+  background-color: rgb(64, 38, 94);
 }
 
 
