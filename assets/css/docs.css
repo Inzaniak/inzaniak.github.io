@@ -22,9 +22,7 @@ h2 {
   text-align: center;
   border-radius: 0;
   padding-bottom: 80px;
-  background-image: -webkit-linear-gradient(left, #720e9e 0, #ffb11f 100%);
-  background-image: -o-linear-gradient(left, #720e9e 0, #ffb11f 100%);
-  background-image: linear-gradient(to right, #720e9e 0, #ffb11f 100%);
+  background-image: linear-gradient(to bottom, #050038 0%, #40265E 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff720e9e', endColorstr='#ffdd4b39', GradientType=1)
 }
