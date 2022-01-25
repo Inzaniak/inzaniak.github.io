@@ -1519,6 +1519,17 @@ fieldset[disabled] .btn-yahoo.focus {
     background-color: #20acd3;
     border-color: rgba(0, 0, 0, 0.2)
 }
+.btn-youtube {
+    color: #fff;
+    background-color: #bd1c1c;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-youtube:hover {
+    color: #fff;
+    background-color: #d32020;
+    border-color: rgba(0, 0, 0, 0.2)
+}
 
 .btn-spotify {
     color: #fff;
