@@ -1590,3 +1590,25 @@ fieldset[disabled] .btn-yahoo.focus {
     background-color: #3c44af;
     border-color: rgba(0, 0, 0, 0.2)
 }
+.btn-medium {
+    color: #fff;
+    background-color: #000000;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-medium:hover {
+    color: #fff;
+    background-color: #3a3a3a;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+.btn-github {
+    color: #fff;
+    background-color: #000000;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+.btn-github:hover {
+    color: #fff;
+    background-color: #3a3a3a;
+    border-color: rgba(0, 0, 0, 0.2)
+}

@@ -121,9 +121,20 @@ figure figcaption {
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
-  margin-bottom: 2em;
   text-transform: uppercase;
   font-size: 38px;
+  margin-bottom: 0px;
+}
+#fh5co-sublogo {
+  text-align: center;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 350;
+  margin-bottom: 3em;
+  font-style: italic;
+  color: darkmagenta;
+  /* margin-bottom: 2em; */
+  text-transform: uppercase;
+  font-size: 14px;
 }
 @media screen and (max-width: 768px) {
   #fh5co-aside #fh5co-logo {
