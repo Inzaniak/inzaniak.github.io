@@ -1,1 +1,1 @@
-let nodes={paths:["test.html"],nodeCount:1,linkSources:[],linkTargets:[],labels:["Test"],radii:[null],linkCount:0},attractionForce=1,linkLength=10,repulsionForce=150,centralForce=3,edgePruning=100
+let nodes={paths:["the-ranbooru-comprehensive-guide.html"],nodeCount:1,linkSources:[],linkTargets:[],labels:["The Ranbooru Comprehensive Guide"],radii:[null],linkCount:0},attractionForce=1,linkLength=10,repulsionForce=150,centralForce=3,edgePruning=100
