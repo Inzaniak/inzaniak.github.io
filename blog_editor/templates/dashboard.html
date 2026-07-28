@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Articles{% endblock %}
+{% block content %}
+<main class="dashboard shell">
+	<section class="hero">
+		<div>
+			<p class="eyebrow">AUTHORING / LOCAL</p>
+			<h1>Your writing desk</h1>
+			<p>Create, revise, and validate articles before they become part of the site.</p>
+		</div>
+		<a class="button primary" href="{{ url_for('new_article') }}">Write a new article</a>
+	</section>
+
+	{% if drafts %}
+	<section class="panel">
+		<div class="section-heading">
+			<div><p class="eyebrow">IN PROGRESS</p><h2>Drafts</h2></div>
+			<span>{{ drafts | length }}</span>
+		</div>
+		<div class="item-list">
+			{% for draft in drafts %}
+			<article class="list-item">
+				<div class="item-status draft-dot"></div>
+				<div class="item-copy">
+					<h3><a href="{{ url_for('new_article', draft=draft.draft_id) }}">{{ draft.heading }}</a></h3>
+					<p>{% if draft.date %}Planned for {{ draft.date }}{% else %}No publication date{% endif %}</p>
+				</div>
+				<div class="item-actions">
+					<a class="button ghost compact" href="{{ url_for('new_article', draft=draft.draft_id) }}">Continue</a>
+					<button class="button danger compact delete-draft" data-draft-id="{{ draft.draft_id }}">Delete</button>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+	</section>
+	{% endif %}
+
+	<section class="panel">
+		<div class="section-heading">
+			<div><p class="eyebrow">ON THE SITE</p><h2>Published articles</h2></div>
+			<span>{{ articles | length }}</span>
+		</div>
+		<div class="item-list">
+			{% for article in articles %}
+			<article class="list-item">
+				<div class="item-status live-dot"></div>
+				<div class="item-copy">
+					<h3><a href="{{ url_for('edit_article', path=article.original_path) }}">{{ article.heading }}</a></h3>
+					<p>{{ article.date }} · {{ article.categories | join(' / ') }}</p>
+				</div>
+				<div class="item-actions">
+					<a class="button ghost compact" href="https://inzaniak.github.io/{{ article.original_path }}" target="_blank" rel="noopener">Live site</a>
+					<a class="button compact" href="{{ url_for('edit_article', path=article.original_path) }}">Edit</a>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+	</section>
+</main>
+{% endblock %}

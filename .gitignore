@@ -8,3 +8,7 @@ Gemfile.lock
 .DS_Store
 .codetrap
 .serena
+.blog-editor/
+.venv-editor/
+__pycache__/
+*.py[cod]

@@ -29,4 +29,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - blog_editor
+  - requirements-editor.txt
+  - tests
   - vendor

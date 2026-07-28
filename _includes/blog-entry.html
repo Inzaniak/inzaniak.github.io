@@ -1,0 +1,12 @@
+<article class="blog-entry signal-row animate-box" data-animate-effect="digitalScan">
+	<span class="signal-index">{% if include.index < 10 %}00{% elsif include.index < 100 %}0{% endif %}{{ include.index }}</span>
+	<a href="{{ include.url | escape }}" class="blog-img signal-thumb" aria-hidden="true" tabindex="-1">
+		<img src="{{ include.image | escape }}" class="img-responsive" alt=""{% if include.crossorigin %} crossorigin="{{ include.crossorigin | escape }}"{% endif %}>
+	</a>
+	<div class="desc signal-info">
+		<span class="signal-meta">{% for category in include.categories %}<small>{{ category | escape }}</small>{% unless forloop.last %} / {% endunless %}{% endfor %}</span>
+		<h3><a href="{{ include.url | escape }}">{{ include.title | escape }}</a></h3>
+		<p>{{ include.summary | escape }}</p>
+	</div>
+	<a href="{{ include.url | escape }}" class="signal-action" aria-label="{{ include.action | default: 'Read' | escape }} {{ include.title | escape }}"> {% include icon.html name="arrow-right" %}</a>
+</article>

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}{{ article.heading or "New article" }}{% endblock %}
+{% block content %}
+<main class="editor-shell">
+	<form id="article-form" class="editor-form" novalidate>
+		<div class="editor-topbar">
+			<div>
+				<a class="back-link" href="{{ url_for('dashboard') }}">← All articles</a>
+				<h1>{{ "Edit article" if article.original_path else "New article" }}</h1>
+			</div>
+			<div class="publish-actions">
+				<span id="save-status" class="save-status">Not saved yet</span>
+				<button type="button" class="button primary" id="publish-button">Publish &amp; validate</button>
+			</div>
+		</div>
+
+		<div id="message" class="message" hidden></div>
+
+		<section class="form-section">
+			<p class="eyebrow">IDENTITY</p>
+			<label class="field wide">
+				<span>Headline <b>*</b></span>
+				<input id="heading" name="heading" value="{{ article.heading }}" placeholder="A clear, useful title" required>
+			</label>
+			<div class="field-grid">
+				<label class="field">
+					<span>Slug <b>*</b></span>
+					<input id="slug" name="slug" value="{{ article.slug }}" placeholder="my-article-title"{% if article.original_path %} readonly{% endif %} required>
+					<small>/blog/articles/<strong id="slug-preview">{{ article.slug or "my-article-title" }}</strong>.html</small>
+				</label>
+				<label class="field">
+					<span>Publication date <b>*</b></span>
+					<input type="date" id="date" name="date" value="{{ article.date }}" required>
+				</label>
+			</div>
+			<label class="field wide">
+				<span>Categories <b>*</b></span>
+				<input id="categories" name="categories" value="{{ article.categories | join(', ') }}" placeholder="GENAI, Stable Diffusion, Workflow">
+				<small>Comma separated; these become the article kicker and blog card metadata.</small>
+			</label>
+		</section>
+
+		<section class="form-section">
+			<p class="eyebrow">DISCOVERY</p>
+			<label class="field wide">
+				<span>Deck <b>*</b></span>
+				<input id="deck" name="deck" value="{{ article.deck }}" placeholder="One compelling line beneath the headline">
+			</label>
+			<label class="field wide">
+				<span>Blog card summary <b>*</b></span>
+				<input id="summary" name="summary" value="{{ article.summary }}" placeholder="A short reason to open the article">
+			</label>
+			<label class="field wide">
+				<span>Search description <b>*</b></span>
+				<textarea id="description" name="description" rows="2" placeholder="Describe the article for search engines">{{ article.description }}</textarea>
+			</label>
+			<div class="field-grid">
+				<label class="field">
+					<span>SEO title</span>
+					<input id="seo_title" name="seo_title" value="{{ article.seo_title }}" placeholder="Defaults to Inzaniak - Headline">
+				</label>
+				<label class="field">
+					<span>Keywords</span>
+					<input id="keywords" name="keywords" value="{{ article.keywords }}" placeholder="inzaniak, tutorial, topic">
+				</label>
+			</div>
+			<label class="field wide">
+				<span>Cover image <b>*</b></span>
+				<div class="upload-field">
+					<input id="image" name="image" value="{{ article.image }}" placeholder="/blog/media/example.jpg or https://…">
+					<label class="button compact">
+						Upload
+						<input type="file" id="cover-upload" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+					</label>
+				</div>
+			</label>
+		</section>
+
+		<section class="form-section writing-section">
+			<div class="writing-heading">
+				<div><p class="eyebrow">ARTICLE</p><h2>Body</h2></div>
+				<button type="button" class="button ghost compact" id="source-toggle">HTML source</button>
+			</div>
+			<div class="toolbar" role="toolbar" aria-label="Text formatting">
+				<select id="block-format" aria-label="Block style">
+					<option value="p">Paragraph</option>
+					<option value="h2">Heading 2</option>
+					<option value="h3">Heading 3</option>
+					<option value="h4">Heading 4</option>
+					<option value="blockquote">Quote</option>
+					<option value="pre">Code block</option>
+				</select>
+				<span class="toolbar-separator"></span>
+				<button type="button" data-command="bold" title="Bold"><strong>B</strong></button>
+				<button type="button" data-command="italic" title="Italic"><em>I</em></button>
+				<button type="button" data-command="underline" title="Underline"><u>U</u></button>
+				<button type="button" data-command="strikeThrough" title="Strike through"><s>S</s></button>
+				<span class="toolbar-separator"></span>
+				<button type="button" data-command="insertUnorderedList" title="Bullet list">• List</button>
+				<button type="button" data-command="insertOrderedList" title="Numbered list">1. List</button>
+				<button type="button" id="link-button" title="Insert link">Link</button>
+				<label class="toolbar-upload" title="Insert image">Image<input type="file" id="body-upload" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label>
+				<span class="toolbar-separator"></span>
+				<button type="button" data-command="undo" title="Undo">↶</button>
+				<button type="button" data-command="redo" title="Redo">↷</button>
+			</div>
+			<div id="rich-editor" class="rich-editor" contenteditable="true" spellcheck="true"></div>
+			<textarea id="source-editor" class="source-editor" spellcheck="false" hidden></textarea>
+		</section>
+	</form>
+
+	<aside class="preview-panel">
+		<div class="preview-label"><span>LIVE PREVIEW</span><span>Article view</span></div>
+		<article class="article-preview">
+			<header>
+				<p id="preview-kicker">{{ article.categories | join(' / ') }}</p>
+				<h1 id="preview-heading">{{ article.heading or "Your headline" }}</h1>
+				<p id="preview-deck">{{ article.deck or "Your article deck will appear here." }}</p>
+			</header>
+			<div id="preview-body" class="preview-body"></div>
+		</article>
+	</aside>
+</main>
+<script id="initial-article" type="application/json">{{ article | tojson }}</script>
+<script id="initial-draft" type="application/json">{{ draft_id | tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='editor.js') }}" defer></script>{% endblock %}

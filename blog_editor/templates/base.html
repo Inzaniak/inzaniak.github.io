@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token }}">
+	<title>{% block title %}Blog Editor{% endblock %} · Inzaniak</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='editor.css') }}">
+</head>
+<body>
+	<header class="app-header">
+		<a class="brand" href="{{ url_for('dashboard') }}">
+			<span class="brand-mark">INZ</span>
+			<span><strong>Blog Editor</strong><small>Local authoring desk</small></span>
+		</a>
+		<nav>
+			<a href="{{ url_for('dashboard') }}">Articles</a>
+			<a class="button primary compact" href="{{ url_for('new_article') }}">New article</a>
+		</nav>
+	</header>
+	{% block content %}{% endblock %}
+	<script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>
