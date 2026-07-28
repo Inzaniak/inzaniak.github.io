@@ -4,38 +4,6 @@
 
 
 
-	var isMobile = {
-		Android: function() {
-			return navigator.userAgent.match(/Android/i);
-		},
-			BlackBerry: function() {
-			return navigator.userAgent.match(/BlackBerry/i);
-		},
-			iOS: function() {
-			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-		},
-			Opera: function() {
-			return navigator.userAgent.match(/Opera Mini/i);
-		},
-			Windows: function() {
-			return navigator.userAgent.match(/IEMobile/i);
-		},
-			any: function() {
-			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-		}
-	};
-
-	var fullHeight = function() {
-
-		if ( !isMobile.any() ) {
-			$('.js-fullheight').css('height', $(window).height());
-			$(window).resize(function(){
-				$('.js-fullheight').css('height', $(window).height());
-			});
-		}
-
-	};
-
 	// Animations
 
 	var contentWayPoint = function() {
@@ -52,23 +20,12 @@
 					$('body .animate-box.item-animate').each(function(k){
 						var el = $(this);
 						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							var isCard = el.hasClass('col-padding') || effect === 'digitalScan';
+							// Cards get the scan reveal; headings and section titles fade in from the left.
+							var isCard = el.hasClass('col-padding') || el.data('animate-effect') === 'digitalScan';
 
-							if ( isCard ) {
-								el.addClass('digitalScan animated');
-							} else if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated');
-							} else {
-								el.addClass('fadeInUp animated');
-							}
-
+							el.addClass(isCard ? 'digitalScan animated' : 'fadeInLeft animated');
 							el.removeClass('item-animate');
-						},  k * 50, 'easeInOutExpo' );
+						},  k * 50 );
 					});
 
 				}, 100);
@@ -126,12 +83,15 @@
 
 	};
 
+	// FlexSlider is loaded by index.html alone (see its `extra_js`), so everywhere
+	// else this is a no-op.
 	var sliderMain = function() {
+
+		if ( !$.fn.flexslider ) { return; }
 
 		$('#fh5co-hero .flexslider').flexslider({
 			animation: "fade",
 			slideshowSpeed: 5000,
-			directionNav: true,
 			start: function(){
 				setTimeout(function(){
 					$('.slider-text').removeClass('animated fadeInUp');
@@ -156,7 +116,6 @@
 		$('body').addClass('motion-enabled');
 		$(window).on('load', contentWayPoint);
 
-		fullHeight();
 		burgerMenu();
 		mobileMenuOutsideClick();
 		sliderMain();

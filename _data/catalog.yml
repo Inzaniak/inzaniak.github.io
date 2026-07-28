@@ -3,10 +3,9 @@
 #
 # Note: every entry was labelled LORA in the original hand-written markup,
 # including the checkpoints. Preserved verbatim - correct as you go.
-
 - { name: "Catalog", image: "catalog/catalog.webp", url: "https://www.patreon.com/posts/complete-catalog-88151767" }
-- { name: "1Shot", image: "catalog/1shot.webp", url: "https://civitai.com/models/24342" }
 - { name: "1liner", image: "catalog/1liner.webp", url: "http://www.patreon.com/posts/1liner-lora-lab-96724264" }
+- { name: "1Shot", image: "catalog/1shot.webp", url: "https://civitai.com/models/24342" }
 - { name: "2Shot", image: "catalog/2shot.webp", url: "https://civitai.com/models/24364" }
 - { name: "3Shot", image: "catalog/3shot.webp", url: "https://civitai.com/models/24397" }
 - { name: "4Shot", image: "catalog/4shot.webp", url: "https://civitai.com/models/24298" }
@@ -24,8 +23,10 @@
 - { name: "Artichoke", image: "catalog/artichoke.webp", url: "http://www.patreon.com/posts/artichoke-lora-93326525" }
 - { name: "Asparagus", image: "catalog/asparagus.webp", url: "http://www.patreon.com/posts/asparagus-lora-93992500" }
 - { name: "Avocado", image: "catalog/avocado.webp", url: "http://www.patreon.com/posts/avocado-lora-86480372" }
+- { name: "Avocado XL", image: "catalog/avocado_xl.webp", url: "https://civitai.com/models/658619" }
 - { name: "BadCG", image: "catalog/badcg.webp", url: "https://civitai.com/models/46984" }
 - { name: "BadPaint", image: "catalog/badpaint.webp", url: "https://civitai.com/models/42374" }
+- { name: "Bao XL", image: "catalog/bao_xl.webp", url: "https://civitai.com/models/654847" }
 - { name: "Bee", image: "catalog/bee.webp", url: "http://www.patreon.com/posts/bee-lora-early-97222945" }
 - { name: "Bell pepper", image: "catalog/bellpepper.webp", url: "http://www.patreon.com/posts/bell-pepper-lora-91390201" }
 - { name: "Blacklight", image: "catalog/blacklight.webp", url: "https://civitai.com/models/46450" }
@@ -38,6 +39,7 @@
 - { name: "Cabbage", image: "catalog/cabbage.webp", url: "https://civitai.com/models/193520" }
 - { name: "Carrot", image: "catalog/carrot.webp", url: "https://civitai.com/models/89425" }
 - { name: "Celery", image: "catalog/celery.webp", url: "http://www.patreon.com/posts/celery-lora-94243687" }
+- { name: "Celery XL", image: "catalog/celery_xl.webp", url: "https://civitai.com/models/655121" }
 - { name: "Cell", image: "catalog/cell.webp", url: "http://www.patreon.com/posts/cell-lora-early-82839898" }
 - { name: "Chameleon", image: "catalog/chameleon.webp", url: "https://civitai.com/models/27686" }
 - { name: "Cherry", image: "catalog/cherry.webp", url: "http://www.patreon.com/posts/cherry-lora-87476774" }
@@ -49,12 +51,15 @@
 - { name: "Concept", image: "catalog/concept.webp", url: "https://civitai.com/models/161687" }
 - { name: "Contact", image: "catalog/contact.webp", url: "https://civitai.com/models/27874" }
 - { name: "Corn", image: "catalog/corn.webp", url: "http://www.patreon.com/posts/corn-lora-early-92377756" }
+- { name: "Corn XL", image: "catalog/corn_xl.webp", url: "https://civitai.com/models/654996" }
 - { name: "Cube", image: "catalog/cube.webp", url: "http://www.patreon.com/posts/cube-lora-early-83152986" }
 - { name: "Dawn", image: "catalog/1dawn.webp", url: "http://www.patreon.com/posts/dawn-lora-lab-96961098" }
 - { name: "Deep", image: "catalog/deep.webp", url: "https://civitai.com/models/25115" }
+- { name: "Dimsum XL", image: "catalog/dimsum_xl.webp", url: "https://civitai.com/models/654906" }
 - { name: "Duo", image: "catalog/duo.webp", url: "https://civitai.com/models/48690" }
 - { name: "Durian", image: "catalog/durian.webp", url: "http://www.patreon.com/posts/durian-lora-88670972" }
 - { name: "Dusk", image: "catalog/dusk.webp", url: "http://www.patreon.com/posts/dusk-lora-early-83623524" }
+- { name: "Edamame XL", image: "catalog/edamame_xl.webp", url: "https://civitai.com/models/654878" }
 - { name: "Emerald", image: "catalog/emerald.webp", url: "http://www.patreon.com/posts/emerald-lora-lab-88877968" }
 - { name: "Fantasy", image: "catalog/fantasy.webp", url: "http://www.patreon.com/posts/fantasy-lora-96960653" }
 - { name: "Fantasy Toon Style", image: "catalog/fantasytoonstyle.webp", url: "https://civitai.com/models/24266" }
@@ -71,6 +76,7 @@
 - { name: "Impasto", image: "catalog/impasto.webp", url: "http://www.patreon.com/posts/impasto-lora-96217642" }
 - { name: "Intense", image: "catalog/intense.webp", url: "http://www.patreon.com/posts/intense-lora-83521574" }
 - { name: "Jams", image: "catalog/jams.webp", url: "http://www.patreon.com/posts/jams-lora-lab-92575471" }
+- { name: "Kimchi Pony", image: "catalog/kimchi_xl.webp", url: "https://civitai.com/models/654938" }
 - { name: "Kiwi", image: "catalog/kiwi.webp", url: "https://civitai.com/models/103720" }
 - { name: "Learn", image: "catalog/learn.webp", url: "http://www.patreon.com/posts/learn-lora-lab-96153846" }
 - { name: "Lemon", image: "catalog/lemon.webp", url: "http://www.patreon.com/posts/lemon-lora-early-85729617" }
@@ -82,6 +88,15 @@
 - { name: "Mango", image: "catalog/mango.webp", url: "http://www.patreon.com/posts/mango-lora-early-86273090" }
 - { name: "Marker", image: "catalog/marker.webp", url: "https://civitai.com/models/58852" }
 - { name: "Melon", image: "catalog/melon.webp", url: "http://www.patreon.com/posts/melon-lora-early-82844800" }
+- { name: "Mistoon Cube", type: "Checkpoint", image: "catalog/Mistoon_Cube.jpg", url: "https://civitai.com/models/1191333" }
+- { name: "Mistoon Diamond", type: "Checkpoint", image: "catalog/Mistoon_Diamond.webp", url: "https://civitai.com/models/207482" }
+- { name: "Mistoon Emerald", type: "Checkpoint", image: "catalog/mistoon_emerald.webp", url: "https://civitai.com/models/28322" }
+- { name: "Mistoon Jade", type: "Checkpoint", image: "catalog/Mistoon_Jade.webp", url: "https://civitai.com/models/272575" }
+- { name: "Mistoon Obsidian", type: "Checkpoint", image: "catalog/mistoon_obsidian.webp", url: "https://civitai.com/models/266783" }
+- { name: "Mistoon Pearl", type: "Checkpoint", image: "catalog/mistoon_pearl.webp", url: "https://civitai.com/models/287637" }
+- { name: "Mistoon Ruby", type: "Checkpoint", image: "catalog/mistoon_ruby_3.webp", url: "https://civitai.com/models/26332" }
+- { name: "Mistoon Squared", type: "Checkpoint", image: "catalog/Mistoon_Squared.jpg", url: "https://civitai.com/models/1143234" }
+- { name: "Mistoon XL Copper", type: "Checkpoint", image: "catalog/Mistoon_XL_Copper.webp", url: "https://civitai.com/models/319650" }
 - { name: "Mistoon_xl_lab", image: "catalog/mistoon_xl_lab.webp", url: "http://www.patreon.com/posts/mistoon-xl-lab-89749522" }
 - { name: "Noodle", image: "catalog/noodle.webp", url: "http://www.patreon.com/posts/noodle-lora-83032232" }
 - { name: "Onion", image: "catalog/onion.webp", url: "http://www.patreon.com/posts/onion-lora-early-90824225" }
@@ -100,6 +115,8 @@
 - { name: "Port", image: "catalog/port.webp", url: "http://www.patreon.com/posts/port-lora-early-96720478" }
 - { name: "Potato", image: "catalog/potato.webp", url: "https://civitai.com/models/225987" }
 - { name: "Pumpkin", image: "catalog/pumpkin.webp", url: "https://civitai.com/models/117519" }
+- { name: "PX12", image: "catalog/px12_xl.webp", url: "https://civitai.com/models/865579" }
+- { name: "PX8", image: "catalog/px8_xl.webp", url: "https://civitai.com/models/804676" }
 - { name: "Raspberry", image: "catalog/raspberry.webp", url: "http://www.patreon.com/posts/raspberry-lora-87848343" }
 - { name: "Reel", image: "catalog/reel.webp", url: "http://www.patreon.com/posts/reel-lora-lab-90700427" }
 - { name: "Renaissance", image: "catalog/renaissance.webp", url: "http://www.patreon.com/posts/renaissance-loha-82836745" }
@@ -130,6 +147,7 @@
 - { name: "Tamarillo", image: "catalog/tamarillo.webp", url: "https://civitai.com/models/150999" }
 - { name: "Tangerine", image: "catalog/tangerine.webp", url: "http://www.patreon.com/posts/tangerine-lora-86740221" }
 - { name: "Technicolor", image: "catalog/technicolor.webp", url: "http://www.patreon.com/posts/technicolor-lora-94705500" }
+- { name: "Technicolor XL", image: "catalog/technicolor_XL.webp", url: "https://civitai.com/models/378631" }
 - { name: "Thick", image: "catalog/thick.webp", url: "https://civitai.com/models/60664" }
 - { name: "Tomato", image: "catalog/tomato.webp", url: "http://www.patreon.com/posts/tomato-lora-lab-89148501" }
 - { name: "Tuna", image: "catalog/tuna.webp", url: "https://civitai.com/models/61355" }
@@ -139,6 +157,7 @@
 - { name: "Vibe", image: "catalog/vibe.webp", url: "http://www.patreon.com/posts/vibe-lora-early-88225977" }
 - { name: "Vintage", image: "catalog/vintage.webp", url: "https://civitai.com/models/49872" }
 - { name: "Void", image: "catalog/void.webp", url: "http://www.patreon.com/posts/void-lora-early-95359222" }
+- { name: "Wasabi XL", image: "catalog/wasabi_xl.webp", url: "https://civitai.com/models/651194" }
 - { name: "Watermelon", image: "catalog/watermelon.webp", url: "http://www.patreon.com/posts/watermelon-lora-82848940" }
 - { name: "Weird", image: "catalog/weird.webp", url: "https://civitai.com/models/24862" }
 - { name: "Whale", image: "catalog/whale.webp", url: "https://civitai.com/models/30604" }

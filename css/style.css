@@ -336,10 +336,6 @@ figure figcaption {
   }
 }
 
-#fh5co-aside .fh5co-footer span {
-  display: block;
-}
-
 #fh5co-aside .fh5co-footer ul {
   padding: 0;
   margin: 8px 0 0 0;
@@ -438,7 +434,8 @@ figure figcaption {
 @media screen and (max-width: 768px) {
   #fh5co-main .fh5co-narrow-content {
     width: 100%;
-    padding: 3em 1.2em;
+    /* Top padding clears the fixed burger button. */
+    padding: 72px 1.2em 3em;
   }
 }
 
@@ -446,8 +443,10 @@ figure figcaption {
 *   Hero Slider (#fh5co-hero)
 * ======================================================= */
 
+/* The hero fills the viewport. This used to be an inline height written by a
+   jQuery resize handler gated on a user-agent sniff; `dvh` does it natively. */
 #fh5co-hero {
-  min-height: 500px;
+  min-height: max(500px, 100dvh);
   background: var(--bg) !important;
   width: 100%;
   float: left;
@@ -456,7 +455,10 @@ figure figcaption {
 
 #fh5co-hero .flexslider {
   border: none;
-  z-index: 1;
+  /* Deliberately not a stacking context. `z-index: 1` here trapped the slider's
+     own pagination dots (`.flex-control-nav`, z-index 1000) below the dither
+     canvas, which is a sibling of this element at z-index 3. */
+  z-index: auto;
   margin-bottom: 0;
   background: var(--bg);
 }
@@ -482,7 +484,7 @@ figure figcaption {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
-  min-height: 500px;
+  min-height: max(500px, 100dvh);
   position: relative;
 }
 
@@ -521,16 +523,15 @@ figure figcaption {
 }
 
 #fh5co-hero .flexslider .slider-text {
-  display: table;
+  display: flex;
+  align-items: center;
   opacity: 0;
-  min-height: 500px;
+  min-height: max(500px, 100dvh);
   z-index: 9;
 }
 
 #fh5co-hero .flexslider .slider-text > .slider-text-inner {
-  display: table-cell;
-  vertical-align: middle;
-  min-height: 700px;
+  width: 100%;
   padding: 2em;
 }
 
@@ -592,8 +593,11 @@ figure figcaption {
   margin-left: -10px;
 }
 
+/* Spans set `grid-column-end` rather than the `grid-column` shorthand: the
+   shorthand also resets `grid-column-start`, so an `offset` rule applied later
+   would silently collapse the item to a single column. */
 .row > [class*="col-"] {
-  grid-column: span 12;
+  grid-column-end: span 12;
   min-width: 0;
   padding-right: 10px;
   padding-left: 10px;
@@ -616,54 +620,29 @@ figure figcaption {
   height: auto;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-.clearfix::before,
-.clearfix::after {
-  display: table;
-  content: "";
-}
-
-.clearfix::after {
-  clear: both;
-}
-
 @media screen and (min-width: 768px) {
   .row > .col-sm-6 {
-    grid-column: span 6;
+    grid-column-end: span 6;
   }
 }
 
 @media screen and (min-width: 992px) {
   .row > .col-md-3 {
-    grid-column: span 3;
+    grid-column-end: span 3;
   }
 
   .row > .col-md-4 {
-    grid-column: span 4;
-  }
-
-  .row > .col-md-6 {
-    grid-column: span 6;
+    grid-column-end: span 4;
   }
 
   .row > .col-md-8 {
-    grid-column: span 8;
-  }
-
-  .row > .col-md-12 {
-    grid-column: span 12;
+    grid-column-end: span 8;
   }
 
   .row > .col-md-offset-2 {
     grid-column-start: 3;
   }
 
-  .row > .col-md-offset-3 {
-    grid-column-start: 4;
-  }
 }
 
 /* =======================================================
@@ -998,16 +977,6 @@ figure figcaption {
   transition: transform 0.3s ease;
 }
 
-.work .desc span {
-  display: block;
-  color: var(--text-muted) !important;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  -webkit-transform: translate3d(0, 10px, 0);
-  transform: translate3d(0, 10px, 0);
-  transition: transform 0.3s ease;
-}
-
 .work:hover .desc {
   opacity: 1;
 }
@@ -1050,10 +1019,6 @@ figure figcaption {
   border-radius: 1px;
 }
 
-.fh5co-heading.fh5co-light {
-  color: var(--text) !important;
-}
-
 /* =======================================================
 *   Buttons Design System
 * ======================================================= */
@@ -1094,13 +1059,13 @@ figure figcaption {
   color: #ffffff !important;
 }
 
-.btn-learn, .btn-demo, .btn-dither, .btn-default {
+.btn-learn, .btn-demo {
   background-color: var(--surface-hover) !important;
   color: var(--text) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-.btn-learn:hover, .btn-demo:hover, .btn-dither:hover {
+.btn-learn:hover, .btn-demo:hover {
   background-color: var(--surface-active) !important;
   color: #ffffff !important;
   border-color: var(--accent) !important;
@@ -1146,70 +1111,6 @@ figure figcaption {
 *   Telemetry Counters & Features
 * ======================================================= */
 
-.fh5co-counter .fh5co-number {
-  font-size: 64px !important;
-  color: var(--accent) !important;
-  font-family: var(--font-mono) !important;
-  font-weight: 700 !important;
-  margin: 0;
-  padding: 0;
-  line-height: .9;
-}
-
-.fh5co-counter .fh5co-text h3 {
-  color: var(--text) !important;
-  font-family: var(--font-mono) !important;
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.fh5co-feature {
-  text-align: left;
-  width: 100%;
-  float: left;
-  margin-bottom: 30px;
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border-subtle);
-  padding: 20px;
-  border-radius: 4px;
-}
-
-.fh5co-feature .fh5co-icon {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-hover) !important;
-  border-radius: 4px;
-}
-
-.fh5co-feature .fh5co-icon i {
-  color: var(--accent) !important;
-  font-size: 26px !important;
-}
-
-.fh5co-feature .fh5co-text {
-  padding-left: 80px;
-  width: 100%;
-}
-
-.fh5co-feature .fh5co-text h3 {
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--text) !important;
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: var(--font-sans);
-}
-
 /* =======================================================
 *   Tables & Form Controls
 * ======================================================= */
@@ -1247,32 +1148,81 @@ tr:hover td {
   background: var(--surface-hover);
 }
 
-.form-control {
+/* =======================================================
+*   Navigation Toggle (Mobile)
+*   js/main.js toggles `body.offcanvas` and `.active` on the
+*   button; everything below is what those two classes drive.
+* ======================================================= */
+
+.fh5co-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1002;
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* The three burger bars: the middle one is the <i>, the outer two its pseudo-elements. */
+.fh5co-nav-toggle i {
+  position: relative;
   display: block;
-  width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  background: var(--surface) !important;
-  border: 1px solid var(--border-subtle) !important;
-  color: var(--text) !important;
-  font-family: var(--font-sans) !important;
-  border-radius: 4px !important;
+  width: 20px;
+  height: 2px;
+  margin: 21px auto 0;
+  background: var(--text) !important;
+  transition: background 0.2s ease;
 }
 
-.form-control:focus {
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 2px rgba(255, 51, 75, 0.25) !important;
-}
-
-/* Navigation Toggle (Mobile) */
-.fh5co-nav-toggle i,
 .fh5co-nav-toggle i::before,
 .fh5co-nav-toggle i::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
   background: var(--text) !important;
+  transition: transform 0.2s ease, top 0.2s ease;
 }
 
+.fh5co-nav-toggle i::before {
+  top: -6px;
+}
+
+.fh5co-nav-toggle i::after {
+  top: 6px;
+}
+
+/* Open state: middle bar vanishes, outer two cross into an X. */
 .fh5co-nav-toggle.active i {
   background: transparent !important;
+}
+
+.fh5co-nav-toggle.active i::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.fh5co-nav-toggle.active i::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .fh5co-nav-toggle {
+    display: block;
+  }
+
+  /* #fh5co-aside is parked at translateX(-270px) at this width; slide it back in. */
+  body.offcanvas #fh5co-aside {
+    transform: translateX(0);
+    box-shadow: 24px 0 60px rgba(0, 0, 0, 0.55);
+  }
 }
 
 /* =======================================================
@@ -1300,10 +1250,6 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
 
 .col-padding {
   padding: 10px !important;
-}
-
-.js .animate-box {
-  opacity: 1;
 }
 
 /* Card entrance: stepped top-to-bottom reveal, shared across content pages. */
@@ -1411,31 +1357,6 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
   animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-
 @-webkit-keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -1473,43 +1394,6 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
   animation-name: fadeInLeft;
 }
 
-@-webkit-keyframes fadeInRight {
-  from {
-    opacity: 0;
-    /*-webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);*/
-    -webkit-transform: translate3d(50px, 0, 0);
-    transform: translate3d(50px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    /*-webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);*/
-    -webkit-transform: translate3d(50px, 0, 0);
-    transform: translate3d(50px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-  animation-name: fadeInRight;
-}
-
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1545,6 +1429,197 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+}
+
+/* =======================================================
+*   Articles (_layouts/article.html)
+*   Blog posts are plain HTML in the site shell; this is the
+*   whole of their styling.
+* ======================================================= */
+
+.article {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 40px) 96px;
+}
+
+.article-masthead {
+  padding: clamp(48px, 7vw, 88px) 0 clamp(34px, 4vw, 52px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.article-back {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: clamp(40px, 7vw, 76px);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.article-back:hover {
+  color: var(--accent);
+}
+
+.article-kicker {
+  margin: 0 0 16px;
+  color: var(--accent) !important;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-masthead h1 {
+  margin: 0 0 20px;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.article-deck {
+  max-width: 60ch;
+  margin: 0;
+  color: #b4b4bb !important;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.55;
+}
+
+.article-body {
+  padding-top: clamp(32px, 4vw, 52px);
+}
+
+.article-body p,
+.article-body li {
+  color: #c8c8ce;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.article-body p {
+  margin: 0 0 1.5em;
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+  scroll-margin-top: 28px;
+  letter-spacing: -0.035em;
+}
+
+.article-body h2 {
+  margin: 2.2em 0 0.7em;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--border-subtle);
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.article-body h3 {
+  margin: 1.8em 0 0.6em;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.2;
+}
+
+.article-body h4 {
+  margin: 1.6em 0 0.5em;
+  font-size: 20px;
+}
+
+.article-body > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.article-body strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.article-body em {
+  color: #e4e4e7;
+}
+
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+.article-body pre {
+  margin: 24px 0;
+  padding: 20px;
+  overflow-x: auto;
+  background: #0b0b0d;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+}
+
+.article-body code {
+  color: #e4e4e7;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.5em;
+  padding-left: 1.4em;
+}
+
+.article-body li {
+  margin-bottom: 0.45em;
+}
+
+.article-body hr {
+  margin: 42px 0;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Wide tables scroll inside the article rather than widening the page. */
+.article-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+  .article-masthead {
+    padding-top: 72px;
+  }
+
+  .article-back {
+    margin-bottom: 42px;
+  }
+
+  .article-body p,
+  .article-body li {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+@media print {
+  .article-back {
+    display: none;
+  }
 }
 
 /* =======================================================

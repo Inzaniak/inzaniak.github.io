@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div id="fh5co-main">
+	<article class="article">
+		<header class="article-masthead">
+			<a class="article-back" href="{{ '/blog.html' | relative_url }}">{% include icon.html name="arrow-left" %} Back to blog</a>
+			<p class="article-kicker">{{ page.kicker }}</p>
+			<h1>{{ page.heading | default: page.title }}</h1>
+			{%- if page.deck %}
+			<p class="article-deck">{{ page.deck }}</p>
+			{%- endif %}
+		</header>
+
+		<div class="article-body">
+			{{ content }}
+		</div>
+	</article>
+</div>

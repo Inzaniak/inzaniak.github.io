@@ -14,8 +14,8 @@ extra_js: [/js/dither-engine.js]
 			{%- for model in site.data.catalog %}
 			{%- assign kind = model.type | default: "LORA" %}
 			<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-				<a href="{{ model.url }}" class="work catalog-card image-popup" target="_blank" rel="noopener"
-					style="background-image: url({{ model.image | relative_url }});"
+				<a href="{{ model.url }}" class="work catalog-card" target="_blank" rel="noopener"
+					style="background-image: url('{{ model.image | relative_url | uri_escape }}');"
 					aria-label="{{ model.name }} — {{ kind }}">
 					<div class="desc">
 						<h3>{{ model.name }}</h3>

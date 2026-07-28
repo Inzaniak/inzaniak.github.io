@@ -18,12 +18,21 @@ no CI step — pushing to `master` deploys.
 | `_data/social.yml` | Footer social links |
 | `_data/catalog.yml` | The Stable Diffusion model catalog rendered by `catalog.html` |
 | `css/style.css` | The "Charcoal & Crimson Dither" design system, including `:root` design tokens |
-| `css/about-grid.css` | Layout specific to the About page |
-| `js/` | `main.js` (nav + hero slider), `dither-engine.js` (hero canvas), `about-progress.js` |
+| `css/about-grid.css` | Layout specific to the About page (loaded only by `about.html`) |
+| `css/flexslider.css` | FlexSlider theme (loaded only by `index.html`, the one page with a slider) |
+| `js/` | `main.js` (nav + card animations + hero slider), `dither-engine.js` (hero/card canvas), `about-progress.js` |
 | `catalog/`, `images/`, `media/`, `music/` | Image assets |
-| `blog/` | Published article exports |
+| `blog/` | Articles (`_layouts/article.html`), with images in `blog/media/` and `blog/compressed/` |
 
 Top-level `*.html` files are page content only — the chrome comes from `_layouts/default.html`.
+
+Per-page assets go in front matter rather than the shared `<head>`, so a page only
+pays for what it uses:
+
+```yaml
+extra_css: [/css/about-grid.css]
+extra_js: [/js/dither-engine.js]
+```
 
 ## Adding content
 
@@ -31,6 +40,21 @@ Top-level `*.html` files are page content only — the chrome comes from `_layou
 
 ```yaml
 - { name: Wasabi, type: LORA, image: catalog/wasabi_xl.webp, url: https://civitai.com/models/... }
+```
+
+**An article** — create `blog/articles/foo.html` with `layout: article` and plain HTML
+below the front matter, then add a card to `blog.html`:
+
+```yaml
+---
+layout: article
+title: "Inzaniak - Foo"
+heading: "Foo"
+kicker: "GENAI / Stable Diffusion / Workflow"
+deck: "One line under the headline."
+description: What this article is about.
+active: blog
+---
 ```
 
 **A page** — create `foo.html` with front matter, then add it to `_data/nav.yml`:
@@ -57,5 +81,5 @@ bundle exec jekyll serve      # http://127.0.0.1:4000
 ## Credits
 
 Originally derived from the "Marble" template by freehtml5.co; the layout, design system, and
-all current styling are custom. Third-party code still in use: jQuery, jQuery Easing, jQuery
-Waypoints, FlexSlider, Font Awesome (CDN kit), and Google Fonts (Inter, JetBrains Mono).
+all current styling are custom. Third-party code still in use: jQuery, jQuery Waypoints,
+FlexSlider (`index.html` only), Font Awesome (CDN kit), and Google Fonts (Inter, JetBrains Mono).
