@@ -1546,3 +1546,48 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+
+/* =======================================================
+*   Catalog cards
+*   Replaces four inline styles repeated on each of the 140
+*   hand-written cards.
+*
+*   The markup used <h1>/<h2> per card (140 <h1>s on one page).
+*   These rules reproduce exactly what those elements computed to,
+*   so <h3>/<p> can be used instead without a visual change - which
+*   means overriding the smaller `.work .desc h3` rule above and its
+*   hover transform, neither of which applied to the old <h1>.
+*
+*   Note the inline `color: black` in the old markup never took
+*   effect; an !important rule won, so the text renders light with a
+*   white stroke. Kept as-is.
+* ======================================================= */
+
+.catalog-card {
+  height: 439px;
+  width: 252px;
+}
+
+.catalog-card .desc h3,
+.catalog-card .desc p {
+  color: var(--text) !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  text-transform: none;
+  -webkit-text-stroke: 1px white;
+  -webkit-transform: none;
+  transform: none;
+  transition: none;
+}
+
+.catalog-card .desc h3 {
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.catalog-card .desc p {
+  font-size: 21px;
+  letter-spacing: -0.02em;
+}
