@@ -5,9 +5,9 @@
     document.querySelectorAll("[data-outline-section]")
   );
   var links = Array.prototype.slice.call(
-    document.querySelectorAll(".about-outline a")
+    document.querySelectorAll(".page-outline a")
   );
-  var fill = document.querySelector(".about-outline__fill");
+  var fill = document.querySelector(".page-outline__fill");
   var activeId = "";
   var updateQueued = false;
 

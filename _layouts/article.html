@@ -2,9 +2,15 @@
 layout: default
 ---
 
+<nav class="page-outline article-outline" aria-label="Article outline" hidden>
+	<span class="page-outline__track" aria-hidden="true"></span>
+	<span class="page-outline__fill" aria-hidden="true"></span>
+	<ol></ol>
+</nav>
+
 <div id="fh5co-main">
 	<article class="article">
-		<header class="article-masthead">
+		<header class="article-masthead" id="article-top">
 			<a class="article-back" href="{{ '/blog.html' | relative_url }}">{% include icon.html name="arrow-left" %} Back to blog</a>
 			<p class="article-kicker">{{ page.kicker }}</p>
 			<h1>{{ page.heading | default: page.title }}</h1>
@@ -18,3 +24,5 @@ layout: default
 		</div>
 	</article>
 </div>
+
+<script src="{{ '/js/article-outline.js' | relative_url }}?v={{ site.asset_version }}"></script>
