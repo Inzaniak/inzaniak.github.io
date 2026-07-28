@@ -4,7 +4,7 @@ title: "Inzaniak - Blog"
 description: "Guides and write-ups on Stable Diffusion workflows, LoRA training, and generative art."
 keywords: "inzaniak, blog, stable diffusion, lora, comfyui, generative art"
 active: "blog"
-extra_js: [/js/dither-engine.js]
+extra_js: [/js/dither-engine.js, /js/blog-scroll-cue.js]
 ---
 
 <div id="fh5co-main">
@@ -23,4 +23,7 @@ extra_js: [/js/dither-engine.js]
 		</div>
 	</div>
 
+	<button class="blog-scroll-cue" type="button" aria-label="Scroll to next article" hidden>
+		{% include icon.html name="arrow-down" %}
+	</button>
 </div>

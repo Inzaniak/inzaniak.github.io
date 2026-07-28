@@ -919,6 +919,60 @@ figure figcaption {
   background: var(--accent);
 }
 
+.blog-scroll-cue {
+  position: fixed;
+  z-index: 1000;
+  right: 40%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+  color: #ffffff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  opacity: 1;
+  transform: translate(50%, 0);
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.blog-scroll-cue[hidden] {
+  display: none;
+}
+
+.blog-scroll-cue:hover,
+.blog-scroll-cue:focus-visible {
+  color: var(--accent);
+  background: var(--bg);
+  outline: none;
+}
+
+.blog-scroll-cue .icon {
+  font-size: 20px;
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 1200px) {
+  .blog-scroll-cue {
+    right: 35%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .blog-scroll-cue {
+    right: 50%;
+  }
+}
+
 @media screen and (max-width: 1100px) {
   .blog-entry.signal-row {
     grid-template-columns: 42px minmax(150px, 0.55fr) minmax(220px, 1.45fr) 48px;
@@ -1012,6 +1066,10 @@ figure figcaption {
 
 @media (prefers-reduced-motion: reduce) {
   .card-dither-canvas {
+    transition: none;
+  }
+
+  .blog-scroll-cue {
     transition: none;
   }
 }
