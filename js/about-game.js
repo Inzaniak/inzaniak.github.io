@@ -1659,6 +1659,198 @@
     }
   }
 
+  class GenerativeAIRadar {
+    constructor(cardEl) {
+      this.card = cardEl;
+      if (!this.card) return;
+
+      this.labelEl = this.card.querySelector('#genai-signal-label');
+      this.titleEl = this.card.querySelector('#genai-signal-title');
+      this.metaEl = this.card.querySelector('#genai-signal-meta');
+      this.topicButtons = Array.from(this.card.querySelectorAll('[data-genai-topic]'));
+      this.activeIndex = 0;
+      this.scanInterval = null;
+      this.signals = [
+        { label: 'SCANNING: MODELS', title: 'New model releases', meta: 'READ · TEST · COMPARE' },
+        { label: 'SCANNING: NEWS', title: 'Latest GenAI news', meta: 'FOLLOW · VERIFY · CONNECT' },
+        { label: 'SCANNING: TOOLS', title: 'Emerging AI tools', meta: 'DISCOVER · BUILD · REVIEW' },
+        { label: 'SCANNING: TRENDS', title: 'Signals worth tracking', meta: 'STUDY · QUESTION · ADAPT' }
+      ];
+
+      this.init();
+    }
+
+    init() {
+      this.topicButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+          this.showSignal(index);
+          this.restartScan();
+        });
+      });
+
+      this.card.addEventListener('mouseenter', () => this.startScan());
+      this.card.addEventListener('mouseleave', () => this.stopScan());
+      this.card.addEventListener('focusin', () => this.startScan());
+      this.card.addEventListener('focusout', (event) => {
+        if (!this.card.contains(event.relatedTarget)) this.stopScan();
+      });
+    }
+
+    showSignal(index) {
+      this.activeIndex = index % this.signals.length;
+      const signal = this.signals[this.activeIndex];
+      if (this.labelEl) this.labelEl.textContent = signal.label;
+      if (this.titleEl) this.titleEl.textContent = signal.title;
+      if (this.metaEl) this.metaEl.textContent = signal.meta;
+      this.topicButtons.forEach((button, buttonIndex) => {
+        button.classList.toggle('is-active', buttonIndex === this.activeIndex);
+      });
+    }
+
+    startScan() {
+      if (this.scanInterval) return;
+      this.scanInterval = window.setInterval(() => {
+        this.showSignal((this.activeIndex + 1) % this.signals.length);
+      }, 1800);
+    }
+
+    stopScan() {
+      window.clearInterval(this.scanInterval);
+      this.scanInterval = null;
+    }
+
+    restartScan() {
+      this.stopScan();
+      this.startScan();
+    }
+  }
+
+  class SportsMatchCenter {
+    constructor(cardEl) {
+      this.card = cardEl;
+      if (!this.card) return;
+
+      this.tabs = Array.from(this.card.querySelectorAll('[data-sport]'));
+      this.periodEl = this.card.querySelector('#sports-period');
+      this.homeTeamEl = this.card.querySelector('#sports-home-team');
+      this.awayTeamEl = this.card.querySelector('#sports-away-team');
+      this.homeScoreEl = this.card.querySelector('#sports-home-score');
+      this.awayScoreEl = this.card.querySelector('#sports-away-score');
+      this.playEl = this.card.querySelector('#sports-play-text');
+      this.statOneLabelEl = this.card.querySelector('#sports-stat-one-label');
+      this.statOneEl = this.card.querySelector('#sports-stat-one');
+      this.statTwoLabelEl = this.card.querySelector('#sports-stat-two-label');
+      this.statTwoEl = this.card.querySelector('#sports-stat-two');
+      this.statThreeLabelEl = this.card.querySelector('#sports-stat-three-label');
+      this.statThreeEl = this.card.querySelector('#sports-stat-three');
+      this.activeSport = 'football';
+      this.clockSeconds = 72 * 60 + 14;
+      this.clockInterval = null;
+      this.playIndex = 0;
+      this.matches = {
+        football: {
+          period: 'SECOND HALF',
+          home: 'HOME',
+          away: 'AWAY',
+          homeScore: '2',
+          awayScore: '1',
+          startSeconds: 72 * 60 + 14,
+          plays: [
+            'ATTACK BUILDING ON THE LEFT WING',
+            'HIGH PRESS WINS BACK POSSESSION',
+            'CROSS CLEARED AT THE NEAR POST'
+          ],
+          stats: [['POSSESSION', '58%'], ['SHOTS', '12'], ['PASSES', '487']]
+        },
+        'american-football': {
+          period: 'Q3',
+          home: 'HOME',
+          away: 'AWAY',
+          homeScore: '21',
+          awayScore: '17',
+          startSeconds: 8 * 60 + 42,
+          plays: [
+            '2ND & 6 AT THE 38 YARD LINE',
+            'PLAY ACTION · 14 YARD COMPLETION',
+            'DEFENSE SHOWING A DOUBLE BLITZ'
+          ],
+          stats: [['DOWN', '2 & 6'], ['YARDS', '274'], ['DRIVES', '7']]
+        }
+      };
+
+      this.init();
+    }
+
+    init() {
+      this.tabs.forEach((tab) => {
+        tab.addEventListener('click', (event) => {
+          event.stopPropagation();
+          this.setSport(tab.dataset.sport);
+        });
+      });
+
+      this.card.addEventListener('mouseenter', () => this.startClock());
+      this.card.addEventListener('mouseleave', () => this.stopClock());
+      this.card.addEventListener('focusin', () => this.startClock());
+      this.card.addEventListener('focusout', (event) => {
+        if (!this.card.contains(event.relatedTarget)) this.stopClock();
+      });
+    }
+
+    setSport(sport) {
+      const match = this.matches[sport];
+      if (!match) return;
+
+      this.activeSport = sport;
+      this.clockSeconds = match.startSeconds;
+      this.playIndex = 0;
+      this.tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.sport === sport));
+      if (this.homeTeamEl) this.homeTeamEl.textContent = match.home;
+      if (this.awayTeamEl) this.awayTeamEl.textContent = match.away;
+      if (this.homeScoreEl) this.homeScoreEl.textContent = match.homeScore;
+      if (this.awayScoreEl) this.awayScoreEl.textContent = match.awayScore;
+      this.updateStats(match);
+      this.updateClock();
+    }
+
+    updateStats(match) {
+      const labels = [this.statOneLabelEl, this.statTwoLabelEl, this.statThreeLabelEl];
+      const values = [this.statOneEl, this.statTwoEl, this.statThreeEl];
+      match.stats.forEach((stat, index) => {
+        if (labels[index]) labels[index].textContent = stat[0];
+        if (values[index]) values[index].textContent = stat[1];
+      });
+      if (this.playEl) this.playEl.textContent = match.plays[this.playIndex];
+    }
+
+    updateClock() {
+      const match = this.matches[this.activeSport];
+      const minutes = Math.floor(this.clockSeconds / 60);
+      const seconds = String(this.clockSeconds % 60).padStart(2, '0');
+      if (this.periodEl) this.periodEl.textContent = `${match.period} · ${minutes}:${seconds}`;
+    }
+
+    startClock() {
+      if (this.clockInterval) return;
+      this.clockInterval = window.setInterval(() => {
+        this.clockSeconds += this.activeSport === 'football' ? 1 : -1;
+        if (this.clockSeconds < 0) this.clockSeconds = this.matches[this.activeSport].startSeconds;
+        if (this.clockSeconds % 6 === 0) {
+          const match = this.matches[this.activeSport];
+          this.playIndex = (this.playIndex + 1) % match.plays.length;
+          if (this.playEl) this.playEl.textContent = match.plays[this.playIndex];
+        }
+        this.updateClock();
+      }, 1000);
+    }
+
+    stopClock() {
+      window.clearInterval(this.clockInterval);
+      this.clockInterval = null;
+    }
+  }
+
   // Initialize passion cards when DOM is ready
   function initPassionCards() {
     const gamingCard = document.getElementById('gaming-card');
@@ -1689,6 +1881,16 @@
     const bloggingCard = document.getElementById('blogging-card');
     if (bloggingCard) {
       new DitherBloggingTypewriter(bloggingCard);
+    }
+
+    const genaiCard = document.getElementById('genai-card');
+    if (genaiCard) {
+      new GenerativeAIRadar(genaiCard);
+    }
+
+    const sportsCard = document.getElementById('sports-card');
+    if (sportsCard) {
+      new SportsMatchCenter(sportsCard);
     }
   }
 

@@ -282,7 +282,18 @@
   min-height: 290px;
   padding: clamp(1.5rem, 3vw, 2.75rem);
   background: var(--about-bg);
+  cursor: pointer;
   overflow: hidden;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#about-grid .grid-role:hover,
+#about-grid .grid-role:focus-visible {
+  z-index: 2;
+  background: var(--surface-hover);
+  box-shadow: inset 0 0 0 1px var(--about-accent);
+  outline: none;
+  transform: translateY(-3px);
 }
 
 #about-grid .grid-role::after {
@@ -317,8 +328,167 @@
 #about-grid .grid-role p {
   position: relative;
   z-index: 1;
-  margin-bottom: 0;
+  margin-bottom: 1.75rem;
   font-size: clamp(16px, 1vw, 18px);
+}
+
+#about-grid .grid-role__action {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--about-accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#about-grid .grid-role__action span {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+#about-grid .grid-role:hover .grid-role__action span,
+#about-grid .grid-role:focus-visible .grid-role__action span {
+  transform: translate(3px, -3px);
+}
+
+body.role-modal-open {
+  overflow: hidden;
+}
+
+#about-grid .role-modal {
+  width: min(1040px, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100vh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--about-line);
+  background: var(--about-bg);
+  color: var(--about-ink);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.65);
+  overflow: auto;
+}
+
+#about-grid .role-modal::backdrop {
+  background: rgba(5, 5, 8, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+#about-grid .role-modal__surface {
+  position: relative;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background-image:
+    linear-gradient(var(--about-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--about-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+#about-grid .role-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--about-line);
+  background: var(--about-bg);
+  color: var(--about-ink);
+  cursor: pointer;
+  font-size: 1.7rem;
+  line-height: 1;
+  place-items: center;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+#about-grid .role-modal__close:hover,
+#about-grid .role-modal__close:focus-visible {
+  border-color: var(--about-accent);
+  background: var(--about-accent);
+  color: var(--about-bg);
+  outline: none;
+}
+
+#about-grid .role-modal__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 1.25rem;
+  padding-right: 3.5rem;
+}
+
+#about-grid .role-modal__header h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+#about-grid .role-modal__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 1px;
+  border: 1px solid var(--about-line);
+  background: var(--about-line);
+}
+
+#about-grid .role-modal__details {
+  display: grid;
+  gap: 1px;
+  background: var(--about-line);
+}
+
+#about-grid .role-modal__section {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--about-bg);
+}
+
+#about-grid .role-modal__section--job {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#about-grid .role-modal__section h3 {
+  margin: 0 0 1rem;
+  color: var(--about-accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#about-grid .role-modal__section p {
+  margin: 0;
+  color: var(--about-ink);
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.55;
+}
+
+#about-grid .role-modal__section ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#about-grid .role-modal__section li {
+  padding: 0.48rem 0.7rem;
+  border: 1px solid var(--about-line);
+  background: var(--about-surface);
+  color: var(--about-ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 #about-grid .grid-image--contain {
@@ -1429,6 +1599,322 @@
   box-shadow: 0 0 8px rgba(255, 51, 75, 0.4);
 }
 
+/* Generative AI Card Interactive Daily Radar */
+#about-grid .grid-card--genai,
+#about-grid .grid-card--sports {
+  cursor: pointer;
+}
+
+#about-grid .grid-card--genai .grid-card__content,
+#about-grid .grid-card--sports .grid-card__content {
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#about-grid .grid-card--genai:hover .grid-card__content,
+#about-grid .grid-card--genai:focus-within .grid-card__content,
+#about-grid .grid-card--genai.is-active .grid-card__content,
+#about-grid .grid-card--sports:hover .grid-card__content,
+#about-grid .grid-card--sports:focus-within .grid-card__content,
+#about-grid .grid-card--sports.is-active .grid-card__content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+#about-grid .grid-card__genai-layer,
+#about-grid .grid-card__sports-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  overflow: hidden;
+  background: #0e0e11;
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+#about-grid .grid-card--genai:hover .grid-card__genai-layer,
+#about-grid .grid-card--genai:focus-within .grid-card__genai-layer,
+#about-grid .grid-card--genai.is-active .grid-card__genai-layer,
+#about-grid .grid-card--sports:hover .grid-card__sports-layer,
+#about-grid .grid-card--sports:focus-within .grid-card__sports-layer,
+#about-grid .grid-card--sports.is-active .grid-card__sports-layer {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#about-grid .genai-header,
+#about-grid .sports-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#about-grid .genai-title,
+#about-grid .sports-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--about-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+#about-grid .genai-dot,
+#about-grid .sports-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--about-accent);
+  box-shadow: 0 0 6px var(--about-accent);
+}
+
+#about-grid .genai-streak,
+#about-grid .sports-live {
+  color: var(--about-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+#about-grid .genai-radar {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(100px, 0.8fr) minmax(130px, 1.2fr);
+  align-items: center;
+  gap: clamp(12px, 3vw, 28px);
+  min-height: 0;
+  padding: 10px 4px;
+}
+
+#about-grid .genai-radar__rings {
+  position: relative;
+  width: min(100%, 148px);
+  aspect-ratio: 1;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 51, 75, 0.65);
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(255, 51, 75, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 51, 75, 0.1) 1px, transparent 1px);
+  background-size: 25% 25%;
+}
+
+#about-grid .genai-radar__rings > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 51, 75, 0.28);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#about-grid .genai-radar__rings > span:nth-child(1) { width: 25%; height: 25%; }
+#about-grid .genai-radar__rings > span:nth-child(2) { width: 52%; height: 52%; }
+#about-grid .genai-radar__rings > span:nth-child(3) { width: 78%; height: 78%; }
+
+#about-grid .genai-radar__sweep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--about-accent), transparent);
+  box-shadow: 0 0 8px rgba(255, 51, 75, 0.7);
+  transform-origin: left center;
+  animation: genaiSweep 2.6s linear infinite;
+}
+
+@keyframes genaiSweep {
+  to { transform: rotate(360deg); }
+}
+
+#about-grid .genai-radar__blip {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--about-ink);
+  box-shadow: 0 0 8px var(--about-accent);
+  animation: genaiBlip 1.8s ease-in-out infinite;
+}
+
+#about-grid .genai-radar__blip--one { top: 29%; left: 64%; }
+#about-grid .genai-radar__blip--two { top: 67%; left: 31%; animation-delay: 0.6s; }
+#about-grid .genai-radar__blip--three { top: 73%; left: 71%; animation-delay: 1.2s; }
+
+@keyframes genaiBlip {
+  0%, 100% { opacity: 0.25; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+
+#about-grid .genai-signal {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#about-grid .genai-signal__label,
+#about-grid .genai-signal > span:last-child {
+  color: var(--about-muted);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+#about-grid .genai-signal strong {
+  color: var(--about-ink);
+  font-size: clamp(13px, 1.5vw, 18px);
+  line-height: 1.25;
+}
+
+#about-grid .genai-topics,
+#about-grid .sports-tabs {
+  display: grid;
+  gap: 5px;
+}
+
+#about-grid .genai-topics {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#about-grid .genai-topic,
+#about-grid .sports-tab {
+  padding: 5px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  background: var(--about-surface);
+  color: var(--about-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#about-grid .genai-topic:hover,
+#about-grid .genai-topic:focus-visible,
+#about-grid .genai-topic.is-active,
+#about-grid .sports-tab:hover,
+#about-grid .sports-tab:focus-visible,
+#about-grid .sports-tab.is-active {
+  border-color: var(--about-accent);
+  outline: none;
+  background: rgba(255, 51, 75, 0.14);
+  color: var(--about-ink);
+}
+
+/* Sports Card Interactive Match Center */
+#about-grid .sports-tabs {
+  grid-template-columns: 1fr 1fr;
+  margin: 8px 0;
+}
+
+#about-grid .sports-scoreboard {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    #111113;
+  background-size: 20px 20px;
+}
+
+#about-grid .sports-period {
+  color: var(--about-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+#about-grid .sports-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 30px);
+  margin: 5px 0;
+}
+
+#about-grid .sports-score > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#about-grid .sports-score strong {
+  color: var(--about-ink);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+}
+
+#about-grid .sports-team,
+#about-grid .sports-versus {
+  color: var(--about-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#about-grid .sports-play {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--about-muted);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+#about-grid .sports-play__pulse {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--about-accent);
+  animation: badgePulse 1s infinite;
+}
+
+#about-grid .sports-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#about-grid .sports-stats > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px 7px;
+  background: #111113;
+}
+
+#about-grid .sports-stats span {
+  color: var(--about-muted);
+  font-size: 7px;
+  letter-spacing: 0.04em;
+}
+
+#about-grid .sports-stats strong {
+  color: var(--about-ink);
+  font-size: 10px;
+}
+
 #about-grid .grid-card__icon {
   display: grid;
   width: 2.75rem;
@@ -1439,6 +1925,14 @@
   font-family: "JetBrains Mono", monospace;
   font-size: 1rem;
   font-weight: 700;
+}
+
+#about-grid .grid-card__icon > i {
+  width: 1.25em;
+  color: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-align: center;
 }
 
 #about-grid .grid-contact {
@@ -1804,6 +2298,14 @@
     grid-template-columns: 1fr;
   }
 
+  #about-grid .role-modal__layout {
+    grid-template-columns: 1fr;
+  }
+
+  #about-grid .role-modal__section--job {
+    min-height: 0;
+  }
+
   #about-grid .grid-role-list {
     grid-template-columns: 1fr;
   }
@@ -1850,6 +2352,25 @@
 
   #about-grid .grid-role {
     min-height: 0;
+  }
+
+  #about-grid .role-modal {
+    width: calc(100vw - 1rem);
+    max-height: calc(100vh - 1rem);
+  }
+
+  #about-grid .role-modal__surface {
+    padding: 1rem;
+  }
+
+  #about-grid .role-modal__header {
+    display: block;
+    padding: 2.75rem 0 0;
+  }
+
+  #about-grid .role-modal__close {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 
   #about-grid .grid-image--duo img {

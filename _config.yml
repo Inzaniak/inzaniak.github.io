@@ -11,7 +11,7 @@ baseurl: ""
 share_image: images/avatar_2023.png
 
 # Bumped by hand when a cached asset must be invalidated.
-asset_version: 8
+asset_version: 9
 
 google_analytics: G-J1CYDZPGX6
 google_site_verification: dQr81B-h8iWojcnhsEZ_51_isvec2rm9iKr1V8ftqNk

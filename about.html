@@ -5,7 +5,7 @@ description: "Meet Umberto Grando: data professional, programmer, musician, game
 keywords: "inzaniak, Umberto Grando, data analyst, programming, ambient music, generative art"
 active: "about"
 extra_css: [/css/about-grid.css]
-extra_js: [/js/about-progress.js, /js/about-game.js]
+extra_js: [/js/about-progress.js, /js/about-roles.js, /js/about-game.js]
 ---
 
 <nav class="page-outline" aria-label="About page progress">
@@ -61,22 +61,57 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					</div>
 				</article>
 				<div class="grid-role-list" aria-label="My three areas of work at Porini">
-					<article class="grid-role">
+					<article class="grid-role" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="role-modal" data-role="data">
 						<span class="grid-role__number">01</span>
 						<h3>Data</h3>
 						<p>I worked on developing data platforms and reporting solutions that make information easier to access, understand, and act on.</p>
+						<span class="grid-role__action">Learn more <span aria-hidden="true">↗</span></span>
 					</article>
-					<article class="grid-role">
+					<article class="grid-role" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="role-modal" data-role="iot">
 						<span class="grid-role__number">02</span>
 						<h3>IoT</h3>
 						<p>I worked on developing cloud solutions that bring data from edge devices into the cloud for centralized processing and analysis.</p>
+						<span class="grid-role__action">Learn more <span aria-hidden="true">↗</span></span>
 					</article>
-					<article class="grid-role">
+					<article class="grid-role" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="role-modal" data-role="ai">
 						<span class="grid-role__number">03</span>
 						<h3>AI</h3>
 						<p>I worked on developing generative AI solutions, exploring how modern models can support practical business scenarios.</p>
+						<span class="grid-role__action">Learn more <span aria-hidden="true">↗</span></span>
 					</article>
 				</div>
+
+				<dialog class="role-modal" id="role-modal" aria-labelledby="role-modal-title">
+					<div class="role-modal__surface">
+						<button class="role-modal__close" type="button" aria-label="Close details" data-role-modal-close>
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<header class="role-modal__header">
+							<span class="grid-kicker" id="role-modal-kicker"></span>
+							<h2 id="role-modal-title"></h2>
+						</header>
+						<div class="role-modal__layout">
+							<section class="role-modal__section role-modal__section--job" aria-labelledby="role-modal-job-heading">
+								<h3 id="role-modal-job-heading">My job</h3>
+								<p id="role-modal-job"></p>
+							</section>
+							<div class="role-modal__details">
+								<section class="role-modal__section" aria-labelledby="role-modal-customers-heading">
+									<h3 id="role-modal-customers-heading">Customers</h3>
+									<ul id="role-modal-customers"></ul>
+								</section>
+								<section class="role-modal__section" aria-labelledby="role-modal-technologies-heading">
+									<h3 id="role-modal-technologies-heading">Technologies</h3>
+									<ul id="role-modal-technologies"></ul>
+								</section>
+								<section class="role-modal__section" aria-labelledby="role-modal-skills-heading">
+									<h3 id="role-modal-skills-heading">Skills</h3>
+									<ul id="role-modal-skills"></ul>
+								</section>
+							</div>
+						</div>
+					</div>
+				</dialog>
 			</section>
 
 			<section class="grid-chapter" id="numbers" data-outline-section>
@@ -255,7 +290,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--gaming" id="gaming-card" tabindex="0" aria-label="Gaming passion card with interactive playable breakout game">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">G</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO PLAY 🕹️</span>
 							</div>
 							<h3>Gaming</h3>
@@ -273,7 +308,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--coding" id="coding-card" tabindex="0" aria-label="Coding passion card with interactive Python terminal">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">&lt;/&gt;</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO RUN 💻</span>
 							</div>
 							<h3>Coding</h3>
@@ -297,7 +332,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--music" id="music-card" tabindex="0" aria-label="Music passion card with interactive minimal DAW sequencer">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">♪</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER FOR DAW 🎧</span>
 							</div>
 							<h3>Music</h3>
@@ -375,7 +410,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--tech" id="tech-card" tabindex="0" aria-label="Technology passion card with interactive telemetry cluster monitor">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">⌁</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>CLUSTER TELEMETRY 📊</span>
 							</div>
 							<h3>Technology</h3>
@@ -413,7 +448,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--art" id="art-card" tabindex="0" aria-label="Generative Art passion card with interactive AI diffusion generator sampler">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">✦</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>DIFFUSION AI ✦</span>
 							</div>
 							<h3>Generative Art</h3>
@@ -444,7 +479,7 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 					<article class="grid-card grid-card--blogging" id="blogging-card" tabindex="0" aria-label="Blogging passion card with interactive retro typewriter excerpt reader">
 						<div class="grid-card__content">
 							<div class="grid-card__header">
-								<span class="grid-card__icon">✎</span>
+								<span class="grid-card__icon"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
 								<span class="grid-card__badge"><span class="badge-pulse"></span>BLOG FEED ✍️</span>
 							</div>
 							<h3>Blogging</h3>
@@ -466,6 +501,79 @@ extra_js: [/js/about-progress.js, /js/about-game.js]
 								<div class="blogging-body">
 									<p class="blogging-excerpt"><span id="blogging-text"></span><span class="blogging-cursor">▋</span></p>
 								</div>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--genai" id="genai-card" tabindex="0" aria-label="Generative AI passion card with interactive daily learning radar">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>DAILY RADAR ✦</span>
+							</div>
+							<h3>Generative AI</h3>
+							<p>I spend at least one hour every day studying the latest news, trends, and tools in the Generative AI space.</p>
+						</div>
+						<div class="grid-card__genai-layer">
+							<div class="genai-header">
+								<div class="genai-title"><span class="genai-dot"></span>GENAI_DAILY_RADAR</div>
+								<span class="genai-streak">60+ MIN / DAY</span>
+							</div>
+							<div class="genai-radar">
+								<div class="genai-radar__rings" aria-hidden="true">
+									<span></span><span></span><span></span>
+									<i class="genai-radar__sweep"></i>
+									<i class="genai-radar__blip genai-radar__blip--one"></i>
+									<i class="genai-radar__blip genai-radar__blip--two"></i>
+									<i class="genai-radar__blip genai-radar__blip--three"></i>
+								</div>
+								<div class="genai-signal">
+									<span class="genai-signal__label" id="genai-signal-label">SCANNING: MODELS</span>
+									<strong id="genai-signal-title">New model releases</strong>
+									<span id="genai-signal-meta">READ · TEST · COMPARE</span>
+								</div>
+							</div>
+							<div class="genai-topics" aria-label="Daily study topics">
+								<button type="button" class="genai-topic is-active" data-genai-topic="0">MODELS</button>
+								<button type="button" class="genai-topic" data-genai-topic="1">NEWS</button>
+								<button type="button" class="genai-topic" data-genai-topic="2">TOOLS</button>
+								<button type="button" class="genai-topic" data-genai-topic="3">TRENDS</button>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--sports" id="sports-card" tabindex="0" aria-label="Sports passion card with interactive Football and American Football match center">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>MATCH CENTER 🏟️</span>
+							</div>
+							<h3>Sports</h3>
+							<p>I follow Football and American Football, from the build-up and tactics to every decisive play.</p>
+						</div>
+						<div class="grid-card__sports-layer">
+							<div class="sports-header">
+								<div class="sports-title"><span class="sports-dot"></span>LIVE_MATCH_CENTER</div>
+								<span class="sports-live">● LIVE</span>
+							</div>
+							<div class="sports-tabs" role="group" aria-label="Choose a sport">
+								<button type="button" class="sports-tab is-active" data-sport="football">⚽ FOOTBALL</button>
+								<button type="button" class="sports-tab" data-sport="american-football">🏈 AM. FOOTBALL</button>
+							</div>
+							<div class="sports-scoreboard">
+								<span class="sports-period" id="sports-period">SECOND HALF · 72:14</span>
+								<div class="sports-score">
+									<div><span class="sports-team" id="sports-home-team">HOME</span><strong id="sports-home-score">2</strong></div>
+									<span class="sports-versus">—</span>
+									<div><strong id="sports-away-score">1</strong><span class="sports-team" id="sports-away-team">AWAY</span></div>
+								</div>
+								<div class="sports-play">
+									<span class="sports-play__pulse"></span>
+									<span id="sports-play-text">ATTACK BUILDING ON THE LEFT WING</span>
+								</div>
+							</div>
+							<div class="sports-stats">
+								<div><span id="sports-stat-one-label">POSSESSION</span><strong id="sports-stat-one">58%</strong></div>
+								<div><span id="sports-stat-two-label">SHOTS</span><strong id="sports-stat-two">12</strong></div>
+								<div><span id="sports-stat-three-label">PASSES</span><strong id="sports-stat-three">487</strong></div>
 							</div>
 						</div>
 					</article>
