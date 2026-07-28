@@ -53,7 +53,11 @@
 						var el = $(this);
 						setTimeout( function () {
 							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
+							var isCard = el.hasClass('col-padding');
+
+							if ( isCard ) {
+								el.addClass('digitalScan animated');
+							} else if ( effect === 'fadeIn') {
 								el.addClass('fadeIn animated');
 							} else if ( effect === 'fadeInLeft') {
 								el.addClass('fadeInLeft animated');
@@ -147,8 +151,12 @@
 
 	// Document on load.
 	$(function(){
+		// Hide card grids as soon as the DOM is ready, then start their
+		// entrance only after artwork and styles have finished loading.
+		$('body').addClass('motion-enabled');
+		$(window).on('load', contentWayPoint);
+
 		fullHeight();
-		contentWayPoint();
 		burgerMenu();
 		mobileMenuOutsideClick();
 		sliderMain();
