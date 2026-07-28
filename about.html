@@ -5,7 +5,7 @@ description: "Meet Umberto Grando: data professional, programmer, musician, game
 keywords: "inzaniak, Umberto Grando, data analyst, programming, ambient music, generative art"
 active: "about"
 extra_css: [/css/about-grid.css]
-extra_js: [/js/about-progress.js]
+extra_js: [/js/about-progress.js, /js/about-game.js]
 ---
 
 <nav class="about-outline" aria-label="About page progress">
@@ -252,12 +252,223 @@ extra_js: [/js/about-progress.js]
 					</div>
 				</article>
 				<div class="grid-cards">
-					<article class="grid-card"><span class="grid-card__icon">G</span><h3>Gaming</h3><p>Gaming has always been an important piece of my life and it is really exciting seeing it getting bigger every year. Lately you'll find me playing mainly on Steam, Xbox, and my Steam Deck.</p></article>
-					<article class="grid-card"><span class="grid-card__icon">&lt;/&gt;</span><h3>Coding</h3><p>I mainly code in Python, but I can also "speak" other languages. I've also made this website!</p></article>
-					<article class="grid-card"><span class="grid-card__icon">♪</span><h3>Music</h3><p>I love listening to every music genre. From ambient to hip-hop, from psychedelic rock to dungeonsynth, I love to explore every music genre available. When I'm not listening to music (or playing) you'll find me producing on my eurorack.</p></article>
-					<article class="grid-card"><span class="grid-card__icon">⌁</span><h3>Technology</h3><p>I'm always updated on the latest technological trend and hardware. I love experimenting with different technologies and when I can I prefer going open-source.</p></article>
-					<article class="grid-card"><span class="grid-card__icon">✦</span><h3>Generative Art</h3><p>With the release of Stable Diffusion to the public I've started experimenting with generative art. As of now I've released 60+ custom models and hundreds of pictures.</p></article>
-					<article class="grid-card"><span class="grid-card__icon">✎</span><h3>Blogging</h3><p>I enjoy documenting what I learn through articles and practical guides, sharing my experiments and making technical topics easier for others to explore.</p></article>
+					<article class="grid-card grid-card--gaming" id="gaming-card" tabindex="0" aria-label="Gaming passion card with interactive playable breakout game">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">G</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO PLAY 🕹️</span>
+							</div>
+							<h3>Gaming</h3>
+							<p>Gaming has always been an important piece of my life and it is really exciting seeing it getting bigger every year. Lately you'll find me playing mainly on Steam, Xbox, and my Steam Deck.</p>
+						</div>
+						<div class="grid-card__game-layer">
+							<canvas class="grid-card__game-canvas"></canvas>
+							<div class="grid-card__game-hud">
+								<div class="hud-box"><span class="hud-lbl">SCORE</span><span class="hud-num" id="game-score">0000</span></div>
+								<div class="hud-center"><span class="hud-msg" id="game-msg">MOVE MOUSE • CLICK TO LAUNCH</span></div>
+								<div class="hud-box"><span class="hud-lbl">HI-SCORE</span><span class="hud-num" id="game-hiscore">0000</span></div>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--coding" id="coding-card" tabindex="0" aria-label="Coding passion card with interactive Python terminal">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">&lt;/&gt;</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO RUN 💻</span>
+							</div>
+							<h3>Coding</h3>
+							<p>I mainly code in Python, but I can also "speak" other languages. I've also made this website!</p>
+						</div>
+						<div class="grid-card__terminal-layer">
+							<div class="terminal-header">
+								<div class="terminal-dots">
+									<span class="dot dot--red"></span>
+									<span class="dot"></span>
+									<span class="dot"></span>
+								</div>
+								<span class="terminal-title">deep_thought.py — Python</span>
+								<span class="terminal-status">RUNNING</span>
+							</div>
+							<div class="terminal-body">
+								<pre class="terminal-code"><code id="coding-terminal-text"></code><span class="terminal-cursor">▋</span></pre>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--music" id="music-card" tabindex="0" aria-label="Music passion card with interactive minimal DAW sequencer">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">♪</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER FOR DAW 🎧</span>
+							</div>
+							<h3>Music</h3>
+							<p>I love listening to every music genre. From ambient to hip-hop, from psychedelic rock to dungeonsynth, I love to explore every music genre available. When I'm not listening to music (or playing) you'll find me producing on my eurorack.</p>
+						</div>
+						<div class="grid-card__daw-layer">
+							<div class="daw-header">
+								<div class="daw-title"><span class="daw-dot"></span>EURORACK MINI-DAW</div>
+								<div class="daw-controls">
+									<button type="button" class="card-mute-btn" id="daw-mute-btn" aria-label="Toggle Sound">🔇 MUTED</button>
+									<button type="button" class="daw-btn" id="daw-play-btn">▶ PLAY</button>
+									<button type="button" class="daw-btn" id="daw-bpm-btn">120 BPM</button>
+									<button type="button" class="daw-btn" id="daw-preset-btn">PRESET</button>
+								</div>
+							</div>
+							<div class="daw-grid">
+								<div class="daw-row" data-track="synth">
+									<span class="track-label">SYNTH</span>
+									<div class="step-container">
+										<button type="button" class="daw-step" data-step="0" aria-label="Synth step 1"></button>
+										<button type="button" class="daw-step" data-step="1" aria-label="Synth step 2"></button>
+										<button type="button" class="daw-step" data-step="2" aria-label="Synth step 3"></button>
+										<button type="button" class="daw-step" data-step="3" aria-label="Synth step 4"></button>
+										<button type="button" class="daw-step" data-step="4" aria-label="Synth step 5"></button>
+										<button type="button" class="daw-step" data-step="5" aria-label="Synth step 6"></button>
+										<button type="button" class="daw-step" data-step="6" aria-label="Synth step 7"></button>
+										<button type="button" class="daw-step" data-step="7" aria-label="Synth step 8"></button>
+									</div>
+								</div>
+								<div class="daw-row" data-track="hihat">
+									<span class="track-label">HAT</span>
+									<div class="step-container">
+										<button type="button" class="daw-step" data-step="0" aria-label="Hihat step 1"></button>
+										<button type="button" class="daw-step" data-step="1" aria-label="Hihat step 2"></button>
+										<button type="button" class="daw-step" data-step="2" aria-label="Hihat step 3"></button>
+										<button type="button" class="daw-step" data-step="3" aria-label="Hihat step 4"></button>
+										<button type="button" class="daw-step" data-step="4" aria-label="Hihat step 5"></button>
+										<button type="button" class="daw-step" data-step="5" aria-label="Hihat step 6"></button>
+										<button type="button" class="daw-step" data-step="6" aria-label="Hihat step 7"></button>
+										<button type="button" class="daw-step" data-step="7" aria-label="Hihat step 8"></button>
+									</div>
+								</div>
+								<div class="daw-row" data-track="snare">
+									<span class="track-label">SNARE</span>
+									<div class="step-container">
+										<button type="button" class="daw-step" data-step="0" aria-label="Snare step 1"></button>
+										<button type="button" class="daw-step" data-step="1" aria-label="Snare step 2"></button>
+										<button type="button" class="daw-step" data-step="2" aria-label="Snare step 3"></button>
+										<button type="button" class="daw-step" data-step="3" aria-label="Snare step 4"></button>
+										<button type="button" class="daw-step" data-step="4" aria-label="Snare step 5"></button>
+										<button type="button" class="daw-step" data-step="5" aria-label="Snare step 6"></button>
+										<button type="button" class="daw-step" data-step="6" aria-label="Snare step 7"></button>
+										<button type="button" class="daw-step" data-step="7" aria-label="Snare step 8"></button>
+									</div>
+								</div>
+								<div class="daw-row" data-track="kick">
+									<span class="track-label">KICK</span>
+									<div class="step-container">
+										<button type="button" class="daw-step" data-step="0" aria-label="Kick step 1"></button>
+										<button type="button" class="daw-step" data-step="1" aria-label="Kick step 2"></button>
+										<button type="button" class="daw-step" data-step="2" aria-label="Kick step 3"></button>
+										<button type="button" class="daw-step" data-step="3" aria-label="Kick step 4"></button>
+										<button type="button" class="daw-step" data-step="4" aria-label="Kick step 5"></button>
+										<button type="button" class="daw-step" data-step="5" aria-label="Kick step 6"></button>
+										<button type="button" class="daw-step" data-step="6" aria-label="Kick step 7"></button>
+										<button type="button" class="daw-step" data-step="7" aria-label="Kick step 8"></button>
+									</div>
+								</div>
+							</div>
+							<div class="daw-footer">
+								<span class="daw-hint">CLICK STEPS TO EDIT BEAT • CLICK PRESET FOR NEW PATTERNS</span>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--tech" id="tech-card" tabindex="0" aria-label="Technology passion card with interactive telemetry cluster monitor">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">⌁</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>CLUSTER TELEMETRY 📊</span>
+							</div>
+							<h3>Technology</h3>
+							<p>I'm always updated on the latest technological trend and hardware. I love experimenting with different technologies and when I can I prefer going open-source.</p>
+						</div>
+						<div class="grid-card__telemetry-layer">
+							<div class="telemetry-header">
+								<div class="telemetry-title"><span class="telemetry-dot"></span>CLUSTER MONITOR v2.4</div>
+								<div class="telemetry-controls">
+									<button type="button" class="telemetry-btn" id="tech-stress-btn">⚡ STRESS TEST</button>
+								</div>
+							</div>
+							<div class="telemetry-nodes">
+								<div class="node-pill is-online"><span class="node-dot"></span>NODE-01 <small id="node-1-load">14%</small></div>
+								<div class="node-pill is-online"><span class="node-dot"></span>NODE-02 <small id="node-2-load">28%</small></div>
+								<div class="node-pill is-online"><span class="node-dot"></span>NODE-03 <small id="node-3-load">19%</small></div>
+								<div class="node-pill is-online"><span class="node-dot"></span>NODE-04 <small id="node-4-load">32%</small></div>
+							</div>
+							<div class="telemetry-graph-box">
+								<div class="graph-label"><span>CPU REALTIME LOAD</span> <span id="tech-cpu-val" class="graph-val">24%</span></div>
+								<canvas class="telemetry-canvas" id="tech-canvas"></canvas>
+							</div>
+							<div class="telemetry-meters">
+								<div class="meter-item">
+									<div class="meter-info"><span>MEM LOAD</span><span id="tech-mem-val">42%</span></div>
+									<div class="meter-track"><div class="meter-fill" id="tech-mem-fill" style="width: 42%;"></div></div>
+								</div>
+								<div class="meter-item">
+									<div class="meter-info"><span>NET TRAFFIC</span><span id="tech-net-val">1.2 GB/s</span></div>
+									<div class="meter-track"><div class="meter-fill meter-fill--alt" id="tech-net-fill" style="width: 58%;"></div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--art" id="art-card" tabindex="0" aria-label="Generative Art passion card with interactive AI diffusion generator sampler">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">✦</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>DIFFUSION AI ✦</span>
+							</div>
+							<h3>Generative Art</h3>
+							<p>With the release of Stable Diffusion to the public I've started experimenting with generative art. As of now I've released 60+ custom models and hundreds of pictures.</p>
+						</div>
+						<div class="grid-card__art-layer">
+							<div class="art-header">
+								<div class="art-title"><span class="art-dot"></span>DIFFUSION_SAMPLER v1.5</div>
+								<div class="art-controls">
+									<button type="button" class="art-btn" id="art-gen-btn">✦ GENERATE</button>
+								</div>
+							</div>
+							<div class="art-canvas-box">
+								<div class="art-info">
+									<span class="art-prompt">PROMPT: "retro crimson cyberpunk dither"</span>
+									<span class="art-step-txt" id="art-step-txt">READY (20/20)</span>
+								</div>
+								<canvas class="art-canvas" id="art-canvas"></canvas>
+								<div class="art-progress-track">
+									<div class="art-progress-fill" id="art-step-fill" style="width: 100%;"></div>
+								</div>
+							</div>
+							<div class="art-footer">
+								<span class="art-hint">MOVE MOUSE TO EXPLORE NOISE • CLICK GENERATE TO DIFFUSE</span>
+							</div>
+						</div>
+					</article>
+					<article class="grid-card grid-card--blogging" id="blogging-card" tabindex="0" aria-label="Blogging passion card with interactive retro typewriter excerpt reader">
+						<div class="grid-card__content">
+							<div class="grid-card__header">
+								<span class="grid-card__icon">✎</span>
+								<span class="grid-card__badge"><span class="badge-pulse"></span>BLOG FEED ✍️</span>
+							</div>
+							<h3>Blogging</h3>
+							<p>I enjoy documenting what I learn through articles and practical guides, sharing my experiments and making technical topics easier for others to explore.</p>
+						</div>
+						<div class="grid-card__blogging-layer">
+							<div class="blogging-header">
+								<div class="blogging-title"><span class="blogging-dot"></span>TYPEWRITER_FEED v1.0</div>
+								<div class="blogging-controls">
+									<button type="button" class="blogging-btn" id="blogging-next-btn">↻ NEXT POST</button>
+								</div>
+							</div>
+							<div class="blogging-paper">
+								<div class="blogging-meta-bar">
+									<span class="blogging-meta" id="blogging-post-meta">ARTICLE 01/03 • TECH & SHADERS</span>
+									<span class="blogging-readtime">⏱ 4 MIN</span>
+								</div>
+								<h4 class="blogging-post-title" id="blogging-post-title">Building Procedural Dither Shaders in WebGL</h4>
+								<div class="blogging-body">
+									<p class="blogging-excerpt"><span id="blogging-text"></span><span class="blogging-cursor">▋</span></p>
+								</div>
+							</div>
+						</div>
+					</article>
 				</div>
 			</section>
 
