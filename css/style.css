@@ -5,7 +5,7 @@
 * ======================================================= */
 
 :root {
-  --font-sans: 'Pixelify Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Color Palette */
@@ -26,6 +26,10 @@
   --dither-25: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect width='1' height='1' fill='%23f4f4f5'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23f4f4f5'/%3E%3C/svg%3E");
   --dither-50: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect width='2' height='2' fill='%23f4f4f5'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23f4f4f5'/%3E%3C/svg%3E");
   --dither-crimson: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect width='2' height='2' fill='%23ff334b'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23ff334b'/%3E%3C/svg%3E");
+}
+
+body.page-home {
+  --font-sans: 'Pixelify Sans', system-ui, -apple-system, sans-serif;
 }
 
 /* Inline SVG icons (see _includes/icon.html). Sized in em so they inherit the

@@ -7,7 +7,7 @@
 	{%- include head.html %}
 </head>
 
-<body>
+<body{% if page.active == 'home' %} class="page-home"{% endif %}>
 	<div id="fh5co-page">
 		{%- include sidebar.html %}
 
