@@ -34,7 +34,14 @@
       this.canvas.style.width = '100%';
       this.canvas.style.height = '100%';
       this.canvas.style.pointerEvents = 'none';
-      this.canvas.style.zIndex = '3';
+      // Behind the slides, not on top of them. FlexSlider's fade writes an
+      // inline `z-index: 2` onto the active `li`, making it a stacking context:
+      // a canvas stacked above it would bury the slide's own overlay and text,
+      // which no z-index inside the slide can escape. Instead the canvas sits
+      // under the slides and `.dither-active` stops them painting the raw photo.
+      // 1, not 0: `.flexslider` is positioned and comes later in tree order, so
+      // at 0 the canvas loses the tie and its opaque background hides the photo.
+      this.canvas.style.zIndex = '1';
 
       if (getComputedStyle(this.hero).position === 'static') {
         this.hero.style.position = 'relative';
@@ -57,12 +64,23 @@
       this.targetY = -1000;
       this.isHovered = false;
 
+      // The render loop is per-pixel JavaScript; stop it once the hero has been
+      // scrolled past rather than paying for it for the whole page.
+      this.isVisible = true;
+      this.frameHandle = null;
+
       this.init();
     }
 
     async init() {
       // Preload background images
       await Promise.all(this.imageUrls.map(url => this.loadImage(url)));
+
+      // Only hand the artwork over to the canvas once there is artwork to hand
+      // over, so a failed decode (or no JS at all) leaves the CSS backgrounds
+      // showing instead of a bare hero.
+      if (!Object.keys(this.loadedImages).length) return;
+      this.hero.classList.add('dither-active');
 
       this.resize();
       window.addEventListener('resize', () => this.resize());
@@ -82,8 +100,10 @@
       // Synchronize with active flexslider slide
       this.observeFlexslider();
 
+      this.observeVisibility();
+
       // Start render loop
-      requestAnimationFrame((t) => this.render(t));
+      this.queueFrame();
     }
 
     loadImage(url) {
@@ -113,6 +133,24 @@
       });
 
       return urls;
+    }
+
+    observeVisibility() {
+      if (!('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          this.isVisible = entry.isIntersecting;
+          this.queueFrame();
+        });
+      }, { rootMargin: '150px' });
+
+      observer.observe(this.hero);
+    }
+
+    queueFrame() {
+      if (this.frameHandle !== null || !this.isVisible) return;
+      this.frameHandle = requestAnimationFrame((t) => this.render(t));
     }
 
     observeFlexslider() {
@@ -148,8 +186,11 @@
     }
 
     render(time) {
+      this.frameHandle = null;
+      if (!this.isVisible) return;
+
       if (this.width === 0 || this.height === 0) {
-        requestAnimationFrame((t) => this.render(t));
+        this.queueFrame();
         return;
       }
 
@@ -243,7 +284,7 @@
         this.ctx.drawImage(this.offCanvas, 0, 0, this.width, this.height);
       }
 
-      requestAnimationFrame((t) => this.render(t));
+      this.queueFrame();
     }
   }
 

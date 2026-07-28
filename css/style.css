@@ -5,7 +5,7 @@
 * ======================================================= */
 
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Pixelify Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Color Palette */
@@ -455,9 +455,8 @@ figure figcaption {
 
 #fh5co-hero .flexslider {
   border: none;
-  /* Deliberately not a stacking context. `z-index: 1` here trapped the slider's
-     own pagination dots (`.flex-control-nav`, z-index 1000) below the dither
-     canvas, which is a sibling of this element at z-index 3. */
+  /* Deliberately not a stacking context, so the slides and the dither canvas
+     (a sibling of this element) stack against each other directly. */
   z-index: auto;
   margin-bottom: 0;
   background: var(--bg);
@@ -486,6 +485,16 @@ figure figcaption {
   background-position: bottom center;
   min-height: max(500px, 100dvh);
   position: relative;
+}
+
+/* With the engine running, the canvas below the slides paints the photo. The
+   slide must stop painting it too, or the undithered original would cover the
+   canvas: FlexSlider's fade gives the active `li` an inline `z-index: 2`, which
+   stacks it (and its background) above the canvas. js/dither-engine.js reads the
+   URL off the inline style attribute, so hiding the paint here does not hide the
+   source. */
+#fh5co-hero.dither-active .flexslider .slides li {
+  background-image: none !important;
 }
 
 #fh5co-hero .flexslider .flex-control-nav {
@@ -533,6 +542,9 @@ figure figcaption {
 #fh5co-hero .flexslider .slider-text > .slider-text-inner {
   width: 100%;
   padding: 2em;
+  /* Above the slide's own `.overlay` tint (z-index 1). */
+  position: relative;
+  z-index: 10;
 }
 
 @media screen and (max-width: 768px) {
@@ -547,19 +559,24 @@ figure figcaption {
   padding: 0;
   color: var(--text) !important;
   font-family: var(--font-sans);
+  /* A hard, unblurred offset rather than a soft glow: the hero type sits on a
+     4px-cell dither, and a blurred shadow smears those cells into mud. */
+  text-shadow: 2px 2px 0 rgba(17, 17, 19, 0.85);
 }
 
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1 {
   margin-bottom: 16px;
-  font-size: 42px;
+  /* Pixelify Sans runs small and its pixel grid needs room, so the hero sits a
+     step larger and looser than a grotesque of the same nominal size would. */
+  font-size: 48px;
   line-height: 1.25;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 @media screen and (max-width: 768px) {
   #fh5co-hero .flexslider .slider-text > .slider-text-inner h1 {
-    font-size: 26px;
+    font-size: 30px;
   }
 }
 
@@ -569,7 +586,10 @@ figure figcaption {
   margin-bottom: 28px;
   font-weight: 400;
   font-family: var(--font-mono);
-  color: var(--text-muted) !important;
+  /* `--text-muted` (#71717a) is legible on the flat page background but not on
+     top of a photo, where it lands on mid-tones of its own value. Stay lighter
+     than the h1 for hierarchy, but well clear of the artwork. */
+  color: rgba(244, 244, 245, 0.92) !important;
 }
 
 /* =======================================================
@@ -1325,23 +1345,6 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
 
 #hero-dither-canvas {
   opacity: 0.95;
-}
-
-#fh5co-hero .flexslider .slider-text > .slider-text-inner {
-  position: relative;
-  z-index: 10;
-}
-
-#fh5co-hero .flexslider .slider-text-inner h1 {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9) !important;
-}
-
-#fh5co-hero .flexslider .slider-text-inner h2 {
-  color: #f4f4f5 !important;
-  font-weight: 500 !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 0, 0, 0.85) !important;
 }
 
 /* =======================================================

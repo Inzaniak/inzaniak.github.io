@@ -99,7 +99,7 @@
 #about-grid h2,
 #about-grid h3 {
   color: var(--about-ink);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
 }
 
 #about-grid .grid-hero h1 {
