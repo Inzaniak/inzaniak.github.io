@@ -32,15 +32,15 @@ extra_js: [/js/about-progress.js]
 				</div>
 				<div class="grid-hero__copy">
 					<span class="grid-kicker">Creative technologist · Data professional · Musician</span>
-					<h1 id="about-title">Hello, I’m Umberto.</h1>
+					<h1 id="about-title">Hello, I’m <span class="name-reveal" tabindex="0" role="button" aria-label="Umberto (alias Inzaniak)"><span class="name-reveal__default">Umberto</span><span class="name-reveal__alias" aria-hidden="true">Inzaniak</span></span>.</h1>
 					<p class="grid-lead">Hello World! I'm Umberto Grando, and I am a multi-talented creator, who's always looking for new and exciting ways to explore and express my passions for music, programming, and gaming.</p>
 					<p>I believe that my combination of skills is what sets me apart, as I strive to create something new and interesting by blending the digital and creative aspects.</p>
 					<p>I'm always looking for new projects and opportunities, and I'd love for you to join me on my journey of exploration and self-expression.</p>
 					<div class="grid-links" aria-label="Selected profiles">
-						<a class="grid-pill" href="https://inzaniak.bandcamp.com">Bandcamp</a>
-						<a class="grid-pill" href="https://medium.com/@inzaniak">Medium</a>
-						<a class="grid-pill" href="https://www.patreon.com/Inzaniak">Patreon</a>
-						<a class="grid-pill" href="https://www.linkedin.com/in/umberto-grando-a8527b150/">LinkedIn</a>
+						<a class="grid-pill" href="https://inzaniak.bandcamp.com" target="_blank" rel="noopener"><i class="fa-brands fa-bandcamp" aria-hidden="true"></i> Bandcamp</a>
+						<a class="grid-pill" href="https://medium.com/@inzaniak" target="_blank" rel="noopener"><i class="fa-brands fa-medium" aria-hidden="true"></i> Medium</a>
+						<a class="grid-pill" href="https://www.patreon.com/Inzaniak" target="_blank" rel="noopener"><i class="fa-brands fa-patreon" aria-hidden="true"></i> Patreon</a>
+						<a class="grid-pill" href="https://www.linkedin.com/in/umberto-grando-a8527b150/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
 					</div>
 				</div>
 			</section>
@@ -113,95 +113,123 @@ extra_js: [/js/about-progress.js]
 					<span class="grid-index">03 / Stack & Tools</span>
 					<h2>Worked, Learned & Used</h2>
 				</header>
+
+				<div class="stack-controls">
+					<div class="stack-search-wrap">
+						<svg class="stack-search__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+						<input type="text" id="stack-search-input" class="stack-search__input" placeholder="Search stack & tools..." aria-label="Search technologies in stack">
+						<button type="button" id="stack-search-clear" class="stack-search__clear" aria-label="Clear search" hidden>&times;</button>
+					</div>
+
+					<div class="stack-legend" role="region" aria-label="Stack status legend">
+						<div class="stack-legend__item" tabindex="0" data-legend-status="worked">
+							<span class="stack-dot stack-dot--worked" aria-hidden="true"></span>
+							<span class="stack-legend__text">Worked</span>
+							<div class="stack-tooltip" role="tooltip">I've used that technology on a project and I'm proficient at</div>
+						</div>
+						<div class="stack-legend__item" tabindex="0" data-legend-status="learned">
+							<span class="stack-dot stack-dot--learned" aria-hidden="true"></span>
+							<span class="stack-legend__text">Learned</span>
+							<div class="stack-tooltip" role="tooltip">Something I'm proficient at</div>
+						</div>
+						<div class="stack-legend__item" tabindex="0" data-legend-status="used">
+							<span class="stack-dot stack-dot--used" aria-hidden="true"></span>
+							<span class="stack-legend__text">Used</span>
+							<div class="stack-tooltip" role="tooltip">Something I've used on personal projects</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="grid-marquee">
+					<div id="stack-no-results" class="stack-no-results" hidden>No technologies found matching "<span id="stack-no-results-query"></span>"</div>
 					<div class="marquee-track marquee-track--left1">
-						<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Python</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">Generative AI</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">LLMs</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Power BI</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Microsoft Azure</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">OpenAI API</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">PyTorch</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Stable Diffusion</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">LangChain</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">RAG Architecture</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Prompt Engineering</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">Scikit-Learn</span></span>
 						<!-- Duplicate for seamless loop -->
-						<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Python</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">Generative AI</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">LLMs</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Power BI</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Microsoft Azure</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">OpenAI API</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">PyTorch</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Stable Diffusion</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">LangChain</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">RAG Architecture</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Prompt Engineering</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">Scikit-Learn</span></span>
 					</div>
 
 					<div class="marquee-track marquee-track--right">
-						<span class="marquee-pill">SQL</span>
-						<span class="marquee-pill">SSAS</span>
-						<span class="marquee-pill">DAX</span>
-						<span class="marquee-pill">Power Query (M)</span>
-						<span class="marquee-pill">Azure Data Factory</span>
-						<span class="marquee-pill">JavaScript</span>
-						<span class="marquee-pill">HTML5 / CSS3</span>
-						<span class="marquee-pill">C#</span>
-						<span class="marquee-pill">R</span>
-						<span class="marquee-pill">Bash</span>
-						<span class="marquee-pill">Pandas & NumPy</span>
-						<span class="marquee-pill">ETL / ELT</span>
-						<span class="marquee-pill">REST APIs</span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">SQL</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">SSAS</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">DAX</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Power Query (M)</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Azure Data Factory</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">JavaScript</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">HTML5 / CSS3</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">C#</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">R</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Bash</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Pandas & NumPy</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">ETL / ELT</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">REST APIs</span></span>
 						<!-- Duplicate for seamless loop -->
-						<span class="marquee-pill">SQL</span>
-						<span class="marquee-pill">SSAS</span>
-						<span class="marquee-pill">DAX</span>
-						<span class="marquee-pill">Power Query (M)</span>
-						<span class="marquee-pill">Azure Data Factory</span>
-						<span class="marquee-pill">JavaScript</span>
-						<span class="marquee-pill">HTML5 / CSS3</span>
-						<span class="marquee-pill">C#</span>
-						<span class="marquee-pill">R</span>
-						<span class="marquee-pill">Bash</span>
-						<span class="marquee-pill">Pandas & NumPy</span>
-						<span class="marquee-pill">ETL / ELT</span>
-						<span class="marquee-pill">REST APIs</span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">SQL</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">SSAS</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">DAX</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Power Query (M)</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Azure Data Factory</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">JavaScript</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">HTML5 / CSS3</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">C#</span></span>
+						<span class="marquee-pill" data-status="learned"><span class="stack-dot stack-dot--learned" aria-hidden="true"></span><span class="pill-text">R</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Bash</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Pandas & NumPy</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">ETL / ELT</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">REST APIs</span></span>
 					</div>
 
 					<div class="marquee-track marquee-track--left2">
-						<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Ableton Live</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Eurorack Modular</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Synthesizers</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Sound Design</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">ComfyUI</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">LoRA Fine-Tuning</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Git & GitHub</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Docker</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Linux</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">VS Code</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Jupyter</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">DaVinci Resolve</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Web Scraping</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Tampermonkey</span></span>
 						<!-- Duplicate for seamless loop -->
-						<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
-						<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Ableton Live</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Eurorack Modular</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Synthesizers</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Sound Design</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">ComfyUI</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">LoRA Fine-Tuning</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Git & GitHub</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Docker</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Linux</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">VS Code</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Jupyter</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">DaVinci Resolve</span></span>
+						<span class="marquee-pill" data-status="worked"><span class="stack-dot stack-dot--worked" aria-hidden="true"></span><span class="pill-text">Web Scraping</span></span>
+						<span class="marquee-pill" data-status="used"><span class="stack-dot stack-dot--used" aria-hidden="true"></span><span class="pill-text">Tampermonkey</span></span>
 					</div>
 				</div>
 			</section>
