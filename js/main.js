@@ -53,7 +53,7 @@
 						var el = $(this);
 						setTimeout( function () {
 							var effect = el.data('animate-effect');
-							var isCard = el.hasClass('col-padding');
+							var isCard = el.hasClass('col-padding') || effect === 'digitalScan';
 
 							if ( isCard ) {
 								el.addClass('digitalScan animated');

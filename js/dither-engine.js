@@ -1,6 +1,6 @@
 /**
  * Inzaniak High-Contrast Color Bayer Dither Engine
- * Transforms hero background images into crisp, high-visibility 4x4 Bayer dithered color artwork.
+ * Transforms hero and card images into crisp, high-visibility 4x4 Bayer dithered color artwork.
  */
 
 (function () {
@@ -232,11 +232,215 @@
     }
   }
 
+  class CardImageDitherEngine {
+    constructor(card) {
+      this.card = card;
+      this.image = card.querySelector('.blog-img img');
+      this.imageContainer = this.image && this.image.closest('.blog-img');
+      this.renderTarget = this.imageContainer || card;
+      this.sourceUrl = this.image
+        ? (this.image.currentSrc || this.image.src)
+        : this.getBackgroundUrl(card);
+      this.isRendering = false;
+      this.renderedWidth = 0;
+      this.renderedHeight = 0;
+      this.isActive = false;
+      this.animationFrame = null;
+      this.mouseX = null;
+      this.mouseY = null;
+      this.targetX = null;
+      this.targetY = null;
+
+      if (!this.sourceUrl || !this.renderTarget) return;
+
+      this.canvas = document.createElement('canvas');
+      this.canvas.className = 'card-dither-canvas';
+      this.canvas.setAttribute('aria-hidden', 'true');
+      this.renderTarget.appendChild(this.canvas);
+
+      this.card.addEventListener('pointerenter', (event) => this.activate(event));
+      this.card.addEventListener('pointermove', (event) => this.updatePointer(event));
+      this.card.addEventListener('pointerleave', () => this.deactivate());
+      this.card.addEventListener('focusin', () => this.activate());
+      this.card.addEventListener('focusout', (event) => {
+        if (!this.card.contains(event.relatedTarget)) this.deactivate();
+      });
+    }
+
+    getBackgroundUrl(element) {
+      const backgroundImage = getComputedStyle(element).backgroundImage;
+      const match = backgroundImage.match(/^url\((['"]?)(.*)\1\)$/);
+      return match ? match[2] : '';
+    }
+
+    activate(event) {
+      this.isActive = true;
+      this.card.classList.add('is-dither-active');
+      this.updatePointer(event);
+      this.prepare();
+      this.startAnimation();
+    }
+
+    deactivate() {
+      this.isActive = false;
+      this.card.classList.remove('is-dither-active');
+      if (this.animationFrame) {
+        cancelAnimationFrame(this.animationFrame);
+        this.animationFrame = null;
+      }
+    }
+
+    updatePointer(event) {
+      const rect = this.renderTarget.getBoundingClientRect();
+      const x = event ? event.clientX - rect.left : rect.width / 2;
+      const y = event ? event.clientY - rect.top : rect.height / 2;
+
+      this.targetX = Math.min(rect.width, Math.max(0, x));
+      this.targetY = Math.min(rect.height, Math.max(0, y));
+      if (this.mouseX === null || this.mouseY === null) {
+        this.mouseX = this.targetX;
+        this.mouseY = this.targetY;
+      }
+    }
+
+    prepare() {
+      const width = Math.round(this.renderTarget.clientWidth);
+      const height = Math.round(this.renderTarget.clientHeight);
+
+      if (!width || !height || this.isRendering) return;
+      if (width === this.renderedWidth && height === this.renderedHeight) {
+        this.startAnimation();
+        return;
+      }
+
+      this.isRendering = true;
+      const source = new Image();
+      source.crossOrigin = 'anonymous';
+      source.onload = () => {
+        try {
+          this.prepareSource(source, width, height);
+          this.canvas.classList.add('is-ready');
+          this.renderedWidth = width;
+          this.renderedHeight = height;
+          this.startAnimation();
+        } catch (error) {
+          // Some remote hosts do not permit pixel access. Keep the original image.
+          this.canvas.remove();
+          this.sourceUrl = '';
+        }
+        this.isRendering = false;
+      };
+      source.onerror = () => {
+        this.canvas.remove();
+        this.sourceUrl = '';
+        this.isRendering = false;
+      };
+      source.src = this.sourceUrl;
+    }
+
+    prepareSource(source, width, height) {
+      this.cellSize = 3;
+      this.offWidth = Math.max(1, Math.ceil(width / this.cellSize));
+      this.offHeight = Math.max(1, Math.ceil(height / this.cellSize));
+      this.offCanvas = document.createElement('canvas');
+      this.offContext = this.offCanvas.getContext('2d', { willReadFrequently: true });
+      this.context = this.canvas.getContext('2d');
+
+      this.offCanvas.width = this.offWidth;
+      this.offCanvas.height = this.offHeight;
+      this.canvas.width = width;
+      this.canvas.height = height;
+
+      const sourceRatio = source.naturalWidth / source.naturalHeight;
+      const targetRatio = this.offWidth / this.offHeight;
+      let drawWidth;
+      let drawHeight;
+      let drawX;
+      let drawY;
+
+      if (targetRatio > sourceRatio) {
+        drawWidth = this.offWidth;
+        drawHeight = this.offWidth / sourceRatio;
+        drawX = 0;
+        drawY = (this.offHeight - drawHeight) / 2;
+      } else {
+        drawHeight = this.offHeight;
+        drawWidth = this.offHeight * sourceRatio;
+        drawX = (this.offWidth - drawWidth) / 2;
+        drawY = 0;
+      }
+
+      this.offContext.drawImage(source, drawX, drawY, drawWidth, drawHeight);
+      this.sourcePixels = new Uint8ClampedArray(
+        this.offContext.getImageData(0, 0, this.offWidth, this.offHeight).data
+      );
+    }
+
+    startAnimation() {
+      if (!this.isActive || !this.sourcePixels || this.animationFrame) return;
+      this.animationFrame = requestAnimationFrame(() => this.renderFrame());
+    }
+
+    renderFrame() {
+      this.animationFrame = null;
+      if (!this.isActive || !this.sourcePixels) return;
+
+      this.mouseX += (this.targetX - this.mouseX) * 0.16;
+      this.mouseY += (this.targetY - this.mouseY) * 0.16;
+
+      const imageData = this.offContext.createImageData(this.offWidth, this.offHeight);
+      imageData.data.set(this.sourcePixels);
+      const pixels = imageData.data;
+      const levels = 4;
+      const colorStep = 255 / (levels - 1);
+      const spread = 92;
+      const lightRadius = Math.min(this.offWidth, this.offHeight) * 0.62;
+      const lightX = this.mouseX / this.cellSize;
+      const lightY = this.mouseY / this.cellSize;
+
+      for (let y = 0; y < this.offHeight; y++) {
+        for (let x = 0; x < this.offWidth; x++) {
+          const index = (y * this.offWidth + x) * 4;
+          const offset = ((BAYER_4X4[y % 4][x % 4] / 16) - 0.5) * spread;
+          const distance = Math.hypot(x - lightX, y - lightY);
+          const lightBoost = distance < lightRadius
+            ? (1 - distance / lightRadius) * 78
+            : 0;
+
+          pixels[index] = Math.round(
+            Math.min(255, Math.max(0, pixels[index] + offset + lightBoost)) / colorStep
+          ) * colorStep;
+          pixels[index + 1] = Math.round(
+            Math.min(255, Math.max(0, pixels[index + 1] + offset + lightBoost)) / colorStep
+          ) * colorStep;
+          pixels[index + 2] = Math.round(
+            Math.min(255, Math.max(0, pixels[index + 2] + offset + lightBoost)) / colorStep
+          ) * colorStep;
+        }
+      }
+
+      this.offContext.putImageData(imageData, 0, 0);
+      this.context.imageSmoothingEnabled = false;
+      this.context.clearRect(0, 0, this.renderedWidth, this.renderedHeight);
+      this.context.drawImage(this.offCanvas, 0, 0, this.renderedWidth, this.renderedHeight);
+      this.startAnimation();
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const hero = document.getElementById('fh5co-hero');
     if (hero) {
       new ColorImageDitherEngine(hero);
     }
+
+    const imageCards = Array.from(document.querySelectorAll('.blog-img img'))
+      .map((image) => image.closest('.blog-entry'))
+      .filter(Boolean);
+    const backgroundCards = Array.from(document.querySelectorAll('.work'));
+
+    imageCards.concat(backgroundCards).forEach((card) => {
+      new CardImageDitherEngine(card);
+    });
   });
 
 })();

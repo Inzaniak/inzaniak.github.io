@@ -353,11 +353,16 @@
 
 #about-grid .grid-image--contain {
   padding: clamp(1.5rem, 5vw, 5rem);
+  background: #ffffff;
 }
 
 #about-grid .grid-image--contain img {
   object-fit: contain;
-  filter: grayscale(0.2);
+  filter: none;
+}
+
+#about-grid .grid-image--contain:hover img {
+  filter: none;
 }
 
 #about-grid .grid-image--duo {
@@ -435,6 +440,21 @@
   line-height: 1.7;
 }
 
+#about-grid mark {
+  background: rgba(255, 51, 75, 0.14);
+  color: #ffffff;
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255, 51, 75, 0.4);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#about-grid mark:hover {
+  background: rgba(255, 51, 75, 0.26);
+  border-bottom-color: var(--about-accent);
+}
+
 #about-grid .grid-card__icon {
   display: grid;
   width: 2.75rem;
@@ -479,6 +499,106 @@
   color: var(--about-ink);
   background: var(--about-bg);
 }
+
+/* 3-Row Infinite Marquee Ticker */
+#about-grid .grid-marquee {
+  background: var(--about-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 2.25rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+#about-grid .grid-marquee::before,
+#about-grid .grid-marquee::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+#about-grid .grid-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--about-surface) 0%, transparent 100%);
+}
+
+#about-grid .grid-marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--about-surface) 0%, transparent 100%);
+}
+
+#about-grid .marquee-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  margin-bottom: 1rem;
+  will-change: transform;
+}
+
+#about-grid .marquee-track:last-child {
+  margin-bottom: 0;
+}
+
+#about-grid .marquee-track--left1 {
+  animation: scrollLeft 38s linear infinite;
+}
+
+#about-grid .marquee-track--right {
+  animation: scrollRight 42s linear infinite;
+}
+
+#about-grid .marquee-track--left2 {
+  animation: scrollLeft 35s linear infinite;
+}
+
+#about-grid .grid-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+#about-grid .marquee-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--about-bg);
+  color: var(--about-ink);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+#about-grid .marquee-pill:hover {
+  border-color: var(--about-accent);
+  background: rgba(255, 51, 75, 0.15);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+#about-grid .marquee-pill .accent-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--about-accent);
+  display: inline-block;
+}
+
 
 @media screen and (max-width: 992px) {
   #about-grid .grid-hero,
