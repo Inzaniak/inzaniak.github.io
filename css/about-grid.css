@@ -1,10 +1,14 @@
-/* Signal Grid — About page */
+/* Signal Grid — About page
+ *
+ * Local aliases onto the design tokens in style.css, so the palette has one
+ * home. --about-muted is the one deliberate divergence: this page needs a
+ * lighter muted than --text-muted (#71717a) for legibility over the grid. */
 #about-grid {
-  --about-bg: #111113;
-  --about-surface: #1a1a1e;
-  --about-ink: #f4f4f5;
+  --about-bg: var(--bg);
+  --about-surface: var(--surface);
+  --about-ink: var(--text);
   --about-muted: #92929d;
-  --about-accent: #ff334b;
+  --about-accent: var(--accent);
   --about-line: var(--page-grid-line, rgba(255, 255, 255, 0.1));
   color: var(--about-ink);
   background-color: var(--about-bg);
@@ -13,7 +17,7 @@
     linear-gradient(90deg, var(--about-line) 1px, transparent 1px);
   background-size: var(--page-grid-size, 48px) var(--page-grid-size, 48px);
   background-attachment: fixed;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.65;
 }
 
