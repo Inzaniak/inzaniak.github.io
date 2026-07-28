@@ -20,6 +20,11 @@ fontawesome_kit: https://kit.fontawesome.com/5afbd8625f.js
 plugins:
   - jekyll-sitemap
 
+# The Search Console verification stub is not a page; keep it out of the sitemap.
+defaults:
+  - scope: { path: "google659f310ba548b87a.html" }
+    values: { sitemap: false }
+
 exclude:
   - Gemfile
   - Gemfile.lock

@@ -19,6 +19,12 @@
       this.hero = heroEl;
       if (!this.hero) return;
 
+      // Read the slide backgrounds off the DOM rather than repeating them here,
+      // so adding a hero slide is a one-line change in index.html. Bail before
+      // touching the DOM if there is nothing to dither.
+      this.imageUrls = this.readSlideImages();
+      if (!this.imageUrls.length) return;
+
       // Create canvas overlay positioned over hero slides
       this.canvas = document.createElement('canvas');
       this.canvas.id = 'hero-dither-canvas';
@@ -41,13 +47,6 @@
       this.offCanvas = document.createElement('canvas');
       this.offCtx = this.offCanvas.getContext('2d', { willReadFrequently: true });
 
-      // Image paths corresponding to flexslider background slides
-      this.imageUrls = [
-        'images/bg1.jpg',
-        'images/bg2.jpg',
-        'images/bg3.jpg',
-        'images/bg4.jpg'
-      ];
       this.loadedImages = {};
       this.currentImageIndex = 0;
 
@@ -98,6 +97,22 @@
         img.onerror = () => resolve();
         img.src = url;
       });
+    }
+
+    readSlideImages() {
+      const slides = this.hero.querySelectorAll('.slides > li');
+      const urls = [];
+
+      slides.forEach(slide => {
+        // Read the inline style, not the computed one: flexslider clones slides
+        // for its carousel, and getComputedStyle would resolve to absolute URLs.
+        const match = /url\(\s*['"]?(.*?)['"]?\s*\)/.exec(slide.style.backgroundImage || '');
+        if (match && urls.indexOf(match[1]) === -1) {
+          urls.push(match[1]);
+        }
+      });
+
+      return urls;
     }
 
     observeFlexslider() {
