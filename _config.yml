@@ -1,1 +1,27 @@
-theme: jekyll-theme-cayman
+title: Inzaniak
+tagline: AKA Umberto Grando
+author: Inzaniak
+description: >-
+  Inzaniak (Umberto Grando) — ambient and lofi music, synth media, Stable
+  Diffusion models, and writing on generative art.
+url: https://inzaniak.github.io
+baseurl: ""
+
+# Default social/share image, used when a page does not set its own.
+share_image: images/avatar_2023.png
+
+# Bumped by hand when a cached asset must be invalidated.
+asset_version: 4
+
+google_analytics: G-J1CYDZPGX6
+google_site_verification: dQr81B-h8iWojcnhsEZ_51_isvec2rm9iKr1V8ftqNk
+fontawesome_kit: https://kit.fontawesome.com/5afbd8625f.js
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

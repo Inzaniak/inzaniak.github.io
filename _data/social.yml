@@ -1,0 +1,5 @@
+# Sidebar footer icons. `icon` is a Font Awesome class pair.
+- { name: Bandcamp, url: "https://inzaniak.bandcamp.com",                        icon: "fa-brands fa-bandcamp" }
+- { name: Medium,   url: "https://medium.com/@inzaniak",                          icon: "fa-brands fa-medium" }
+- { name: Patreon,  url: "https://www.patreon.com/Inzaniak",                      icon: "fa-brands fa-patreon" }
+- { name: LinkedIn, url: "https://www.linkedin.com/in/umberto-grando-a8527b150/", icon: "fa-brands fa-linkedin" }

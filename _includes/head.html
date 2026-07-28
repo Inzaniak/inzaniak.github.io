@@ -1,0 +1,51 @@
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc = page.description | default: site.description -%}
+{%- assign page_image = page.share_image | default: site.share_image | absolute_url -%}
+{%- assign page_url = page.url | absolute_url -%}
+<meta charset="utf-8">
+<title>{{ page_title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ page_desc | strip_newlines | strip }}">
+{%- if page.keywords %}
+<meta name="keywords" content="{{ page.keywords }}">
+{%- endif %}
+<meta name="author" content="{{ site.author }}">
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+<link rel="canonical" href="{{ page_url }}">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc | strip_newlines | strip }}">
+<meta property="og:image" content="{{ page_image }}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc | strip_newlines | strip }}">
+<meta name="twitter:image" content="{{ page_image }}">
+
+<link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ '/css/animate.css' | relative_url }}?v={{ site.asset_version }}">
+<link rel="stylesheet" href="{{ '/css/icomoon.css' | relative_url }}?v={{ site.asset_version }}">
+<link rel="stylesheet" href="{{ '/css/flexslider.css' | relative_url }}?v={{ site.asset_version }}">
+<link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}?v={{ site.asset_version }}">
+{%- for sheet in page.extra_css %}
+<link rel="stylesheet" href="{{ sheet | relative_url }}?v={{ site.asset_version }}">
+{%- endfor %}
+
+<script src="{{ site.fontawesome_kit }}" crossorigin="anonymous"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>

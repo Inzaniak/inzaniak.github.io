@@ -1,380 +1,314 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-J1CYDZPGX6"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-220411771-1');
-	gtag('config', 'G-J1CYDZPGX6');
-	</script>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>About Umberto Grando — Inzaniak</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Meet Umberto Grando: data professional, programmer, musician, gamer, and generative artist.">
-	<meta name="keywords" content="inzaniak, Umberto Grando, data analyst, programming, ambient music, generative art">
-	<meta name="author" content="Inzaniak">
-	<meta name="google-site-verification" content="dQr81B-h8iWojcnhsEZ_51_isvec2rm9iKr1V8ftqNk">
+---
+layout: default
+title: "About Umberto Grando — Inzaniak"
+description: "Meet Umberto Grando: data professional, programmer, musician, gamer, and generative artist."
+keywords: "inzaniak, Umberto Grando, data analyst, programming, ambient music, generative art"
+active: "about"
+extra_css: [/css/about-grid.css]
+extra_js: [/js/about-progress.js]
+---
 
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/flexslider.css">
-	<link rel="stylesheet" href="css/style.css?v=signal-rows-3">
-	<link rel="stylesheet" href="css/about-grid.css">
+<nav class="about-outline" aria-label="About page progress">
+	<span class="about-outline__track" aria-hidden="true"></span>
+	<span class="about-outline__fill" aria-hidden="true"></span>
+	<ol>
+		<li><a href="#intro" aria-label="Introduction">00</a><span class="about-outline__label">Intro</span></li>
+		<li><a href="#work" aria-label="Work">01</a><span class="about-outline__label">Work</span></li>
+		<li><a href="#numbers" aria-label="The Numbers">02</a><span class="about-outline__label">Numbers</span></li>
+		<li><a href="#stack" aria-label="Stack & Tools">03</a><span class="about-outline__label">Stack</span></li>
+		<li><a href="#passions" aria-label="Passions">04</a><span class="about-outline__label">Passions</span></li>
+		<li><a href="#projects" aria-label="Selected projects">05</a><span class="about-outline__label">Projects</span></li>
+		<li><a href="#small-projects" aria-label="Minor projects">06</a><span class="about-outline__label">Small tools</span></li>
+		<li><a href="#contact" aria-label="Contact">07</a><span class="about-outline__label">Contact</span></li>
+	</ol>
+</nav>
 
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<script src="https://kit.fontawesome.com/5afbd8625f.js" crossorigin="anonymous"></script>
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-</head>
-
-<body>
-	<div id="fh5co-page">
-		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" aria-label="Toggle navigation"><i></i></a>
-		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-			<h1 id="fh5co-logo"><a href="index.html">Inzaniak</a></h1>
-			<h3 id="fh5co-sublogo">AKA Umberto Grando</h3>
-			<nav id="fh5co-main-menu" role="navigation" aria-label="Main navigation">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li class="fh5co-active"><a href="about.html" aria-current="page">About</a></li>
-					<li><a href="music.html">Music</a></li>
-					<li><a href="media.html">Media</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="stuff.html">Stuff</a></li>
-					<li><a href="links.html">Links</a></li>
-				</ul>
-			</nav>
-
-			<div class="fh5co-footer">
-				<p><small>&copy; All Rights Reserved.</small></p>
-				<ul aria-label="Social profiles">
-					<li><a href="https://inzaniak.bandcamp.com" aria-label="Bandcamp"><i class="fab fa-bandcamp"></i></a></li>
-					<li><a href="https://medium.com/@inzaniak" aria-label="Medium"><i class="fa-brands fa-medium"></i></a></li>
-					<li><a href="https://www.patreon.com/Inzaniak" aria-label="Patreon"><i class="fab fa-patreon"></i></a></li>
-					<li><a href="https://www.linkedin.com/in/umberto-grando-a8527b150/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-				</ul>
-			</div>
-		</aside>
-
-		<nav class="about-outline" aria-label="About page progress">
-			<span class="about-outline__track" aria-hidden="true"></span>
-			<span class="about-outline__fill" aria-hidden="true"></span>
-			<ol>
-				<li><a href="#intro" aria-label="Introduction">00</a><span class="about-outline__label">Intro</span></li>
-				<li><a href="#work" aria-label="Work">01</a><span class="about-outline__label">Work</span></li>
-				<li><a href="#numbers" aria-label="The Numbers">02</a><span class="about-outline__label">Numbers</span></li>
-				<li><a href="#stack" aria-label="Stack & Tools">03</a><span class="about-outline__label">Stack</span></li>
-				<li><a href="#passions" aria-label="Passions">04</a><span class="about-outline__label">Passions</span></li>
-				<li><a href="#projects" aria-label="Selected projects">05</a><span class="about-outline__label">Projects</span></li>
-				<li><a href="#small-projects" aria-label="Minor projects">06</a><span class="about-outline__label">Small tools</span></li>
-				<li><a href="#contact" aria-label="Contact">07</a><span class="about-outline__label">Contact</span></li>
-			</ol>
-		</nav>
-
-		<div id="fh5co-main">
-			<main id="about-grid">
-				<div class="grid-shell">
-					<section class="grid-hero" id="intro" data-outline-section aria-labelledby="about-title">
-						<div class="grid-image grid-hero__image">
-							<img src="images/avatar_2023.png" alt="Portrait of Umberto Grando">
-						</div>
-						<div class="grid-hero__copy">
-							<span class="grid-kicker">Creative technologist · Data professional · Musician</span>
-							<h1 id="about-title">Hello, I’m Umberto.</h1>
-							<p class="grid-lead">Hello World! I'm Umberto Grando, and I am a multi-talented creator, who's always looking for new and exciting ways to explore and express my passions for music, programming, and gaming.</p>
-							<p>I believe that my combination of skills is what sets me apart, as I strive to create something new and interesting by blending the digital and creative aspects.</p>
-							<p>I'm always looking for new projects and opportunities, and I'd love for you to join me on my journey of exploration and self-expression.</p>
-							<div class="grid-links" aria-label="Selected profiles">
-								<a class="grid-pill" href="https://inzaniak.bandcamp.com">Bandcamp</a>
-								<a class="grid-pill" href="https://medium.com/@inzaniak">Medium</a>
-								<a class="grid-pill" href="https://www.patreon.com/Inzaniak">Patreon</a>
-								<a class="grid-pill" href="https://www.linkedin.com/in/umberto-grando-a8527b150/">LinkedIn</a>
-							</div>
-						</div>
-					</section>
-
-					<section class="grid-chapter" id="work" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">01 / Work</span>
-							<h2>One company. Three fields.</h2>
-						</header>
-						<article class="grid-feature">
-							<div class="grid-image grid-image--contain">
-								<img src="https://www.comonext.it/wp-content/uploads/2017/04/logo-DGS-porini.png" alt="DGS Porini logo">
-							</div>
-							<div class="grid-copy">
-								<span class="grid-kicker">Data · IoT · AI · Since 2016</span>
-								<h3>My Job at Porini</h3>
-								<p>I've worked at Porini since 2016, growing across three connected areas of technology. Porini is an international Microsoft partner that helps organizations design and deliver solutions for digital transformation.</p>
-							</div>
-						</article>
-						<div class="grid-role-list" aria-label="My three areas of work at Porini">
-							<article class="grid-role">
-								<span class="grid-role__number">01</span>
-								<h3>Data</h3>
-								<p>I worked on developing data platforms and reporting solutions that make information easier to access, understand, and act on.</p>
-							</article>
-							<article class="grid-role">
-								<span class="grid-role__number">02</span>
-								<h3>IoT</h3>
-								<p>I worked on developing cloud solutions that bring data from edge devices into the cloud for centralized processing and analysis.</p>
-							</article>
-							<article class="grid-role">
-								<span class="grid-role__number">03</span>
-								<h3>AI</h3>
-								<p>I worked on developing generative AI solutions, exploring how modern models can support practical business scenarios.</p>
-							</article>
-						</div>
-					</section>
-
-					<section class="grid-chapter" id="numbers" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">02 / Proof</span>
-							<h2>The Numbers</h2>
-						</header>
-						<div class="grid-stats">
-							<article class="grid-stat">
-								<strong>10+</strong>
-								<h3>Years</h3>
-								<p>For over 10 years at Porini, I have been continuously evolving across the data and artificial intelligence landscape. Over the past 4 years, I have served as an <mark>AI Tech Lead</mark>, leading technical strategy and hands-on development for innovative <mark>generative AI projects</mark> and enterprise solutions. Throughout this decade-long journey, I've worn multiple hats—such as <mark>Data Scientist</mark>, <mark>Data Analyst</mark>, <mark>IoT Specialist</mark>, and <mark>Teacher</mark>—collaborating with talented teams across a <mark>diverse range of projects</mark> to turn complex technical challenges into real-world business value.</p>
-							</article>
-							<article class="grid-stat">
-								<strong>500+</strong>
-								<h3>Teaching Hours</h3>
-								<p>As a seasoned teacher, I have invested more than <mark>500 hours</mark> of time imparting knowledge of essential tools and concepts to my colleagues and students, such as <mark>Power BI</mark>, <mark>SQL</mark>, <mark>SSAS</mark>, and <mark>Azure</mark>. I spent time creating <mark>engaging and interactive learning materials</mark>, with real-world examples that make complex concepts easy to understand. Not only have I honed my skills in these tools, but also honed my ability to connect with multiple individuals, teaching in a <mark>direct and effective way</mark> to ensure a comprehensive understanding for all.</p>
-							</article>
-							<article class="grid-stat">
-								<strong>50+</strong>
-								<h3>Projects</h3>
-								<p>With a wealth of experience under my belt, I've spent the past 6 years immersing myself in a wide range of projects, from <mark>traditional business analytics</mark> to <mark>cutting-edge AI in healthcare</mark> and <mark>big data collection</mark> for real-time analysis. Throughout this time, I've been dedicated to mastering the tools of the trade, honing my skills to become an <mark>expert at tackling any project</mark> that comes my way.</p>
-							</article>
-							<article class="grid-stat">
-								<strong>6+</strong>
-								<h3>Programming Languages</h3>
-								<p>During my career I've built a lot of experience working with various languages, with a particular focus on <mark>Python</mark>. Even when I've encountered new technologies and languages, I've always been able to <mark>quickly adapt and master</mark> them to effectively achieve the goals of the project, <mark>delivering results on time</mark> and without any issues. I believe in <mark>using the right tool for the job</mark> and am always eager to learn new skills and technologies to expand my capabilities.</p>
-							</article>
-						</div>
-					</section>
-
-					<section class="grid-chapter" id="stack" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">03 / Stack & Tools</span>
-							<h2>Worked, Learned & Used</h2>
-						</header>
-						<div class="grid-marquee">
-							<div class="marquee-track marquee-track--left1">
-								<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
-								<!-- Duplicate for seamless loop -->
-								<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
-							</div>
-
-							<div class="marquee-track marquee-track--right">
-								<span class="marquee-pill">SQL</span>
-								<span class="marquee-pill">SSAS</span>
-								<span class="marquee-pill">DAX</span>
-								<span class="marquee-pill">Power Query (M)</span>
-								<span class="marquee-pill">Azure Data Factory</span>
-								<span class="marquee-pill">JavaScript</span>
-								<span class="marquee-pill">HTML5 / CSS3</span>
-								<span class="marquee-pill">C#</span>
-								<span class="marquee-pill">R</span>
-								<span class="marquee-pill">Bash</span>
-								<span class="marquee-pill">Pandas & NumPy</span>
-								<span class="marquee-pill">ETL / ELT</span>
-								<span class="marquee-pill">REST APIs</span>
-								<!-- Duplicate for seamless loop -->
-								<span class="marquee-pill">SQL</span>
-								<span class="marquee-pill">SSAS</span>
-								<span class="marquee-pill">DAX</span>
-								<span class="marquee-pill">Power Query (M)</span>
-								<span class="marquee-pill">Azure Data Factory</span>
-								<span class="marquee-pill">JavaScript</span>
-								<span class="marquee-pill">HTML5 / CSS3</span>
-								<span class="marquee-pill">C#</span>
-								<span class="marquee-pill">R</span>
-								<span class="marquee-pill">Bash</span>
-								<span class="marquee-pill">Pandas & NumPy</span>
-								<span class="marquee-pill">ETL / ELT</span>
-								<span class="marquee-pill">REST APIs</span>
-							</div>
-
-							<div class="marquee-track marquee-track--left2">
-								<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
-								<!-- Duplicate for seamless loop -->
-								<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
-								<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
-							</div>
-						</div>
-					</section>
-
-					<section class="grid-chapter" id="passions" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">04 / Off-hours</span>
-							<h2>My Passions</h2>
-						</header>
-						<article class="grid-feature">
-							<div class="grid-image">
-								<img src="images/passions.jpg" alt="Collage representing gaming, programming, and music">
-							</div>
-							<div class="grid-copy">
-								<span class="grid-kicker">Play · Build · Listen</span>
-								<h3>Curiosity after hours</h3>
-								<p>When I'm not working, I find myself fully immersing in my favorite hobbies, which include gaming, programming, and music. These activities not only provide a great source of entertainment and relaxation, but they also serve as a means of honing my skills in problem-solving, logical thinking, and creativity.</p>
-								<p>As a gamer, I enjoy testing my strategic thinking and quick reflexes, while programming allows me to flex my problem-solving muscles and challenge myself to find new solutions. And finally, music provides an outlet for my creative side, allowing me to produce my own compositions and experiment with different sounds and styles.</p>
-								<p>These hobbies not only bring joy and balance in my life but also contribute to my professional development as they keep my mind sharp and constantly engaged.</p>
-							</div>
-						</article>
-						<div class="grid-cards">
-							<article class="grid-card"><span class="grid-card__icon">G</span><h3>Gaming</h3><p>Gaming has always been an important piece of my life and it is really exciting seeing it getting bigger every year. Lately you'll find me playing mainly on Steam, Xbox, and my Steam Deck.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">&lt;/&gt;</span><h3>Coding</h3><p>I mainly code in Python, but I can also "speak" other languages. I've also made this website!</p></article>
-							<article class="grid-card"><span class="grid-card__icon">♪</span><h3>Music</h3><p>I love listening to every music genre. From ambient to hip-hop, from psychedelic rock to dungeonsynth, I love to explore every music genre available. When I'm not listening to music (or playing) you'll find me producing on my eurorack.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">⌁</span><h3>Technology</h3><p>I'm always updated on the latest technological trend and hardware. I love experimenting with different technologies and when I can I prefer going open-source.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">✦</span><h3>Generative Art</h3><p>With the release of Stable Diffusion to the public I've started experimenting with generative art. As of now I've released 60+ custom models and hundreds of pictures.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">✎</span><h3>Blogging</h3><p>I enjoy documenting what I learn through articles and practical guides, sharing my experiments and making technical topics easier for others to explore.</p></article>
-						</div>
-					</section>
-
-					<section class="grid-chapter" id="projects" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">05 / Selected</span>
-							<h2>My Projects</h2>
-						</header>
-						<article class="grid-feature">
-							<div class="grid-image"><img src="images/projects.png" alt="Illustration representing Umberto's projects"></div>
-							<div class="grid-copy">
-								<span class="grid-kicker">Always in progress</span>
-								<h3>Learning by making</h3>
-								<p>In my free time, I am always striving to keep my mind active and push my limits through a variety of side projects. I find inspiration for these projects in my passions, current trends and emerging technologies. From building my own applications, creating music compositions to experimenting with new programming languages and frameworks. Keeping myself challenged in this way, not only keeps me engaged but also makes it easy for me to approach my job with enthusiasm and a hunger for knowledge. I believe in the power of lifelong learning, and I make sure to never stop exploring and growing.</p>
-							</div>
-						</article>
-						<article class="grid-feature">
-							<div class="grid-image grid-image--duo">
-								<img src="images/odissey1.png" alt="Odissey music website interface">
-								<img src="images/odissey2.png" alt="Odissey music discovery screen">
-							</div>
-							<div class="grid-copy">
-								<span class="grid-kicker">Python · APIs · Music data</span>
-								<h3>Odissey — A musical exploration website</h3>
-								<p>Odissey is my very own personal music journey, a website I crafted to keep track of all the music I listen to and discover new gems. It's like having a virtual music librarian at your fingertips. It taps into the vast resources of Spotify, LastFM, Musicbrainz, and Tidal to fetch most of the information for the frontend. It also delves into the depths of music-related websites like RateYourMusic, AlbumOfTheYear and Allmusic using web scraping to retrieve additional information such as reviews, artist summaries and albums summaries. The website runs on my server machine, powered by the Python Bottle web framework, making it a fully-fledged and easily accessible music companion.</p>
-							</div>
-						</article>
-						<article class="grid-feature">
-							<div class="grid-image"><img src="images/medium1.png" alt="Umberto's Medium blog"></div>
-							<div class="grid-copy">
-								<span class="grid-kicker">50+ articles · 100k+ views</span>
-								<h3>My Medium Blog</h3>
-								<p>In February 2022, I embarked on a journey to share my knowledge and experience with the world through my blog on Medium. I started it as a way to share tips and examples of the things I work on in my daily job and to keep myself motivated to learn new things. I never thought it would reach so many readers and get so much attention. As I wrote more and more articles, I've had over 50+ articles and more than 100k visualizations on the platform.</p>
-								<p>Today, my blog is not just a way for me to share my knowledge and experiences but also an outlet for me to express myself and connect with others who share the same interests. I'm humbled and grateful for the response and I look forward to continue sharing my insights with the community.</p>
-								<a class="grid-action" href="https://medium.com/@inzaniak" target="_blank" rel="noopener">Go to Medium ↗</a>
-							</div>
-						</article>
-						<article class="grid-feature">
-							<div class="grid-image"><img src="images/stasi.jpg" alt="Cover art for Stasi, Umberto's first album"></div>
-							<div class="grid-copy">
-								<span class="grid-kicker">Ambient album · 2022</span>
-								<h3>Stasi — My First Album</h3>
-								<p>In 2022, I set out to explore my passion for music production by releasing my first ambient album on major music platforms. Though my journey with electronic music began in 2019, it was only through experimenting with various genres that I found my calling with the ambient genre. I took a deep dive into understanding its origins and meanings, and learning the tools of the trade like Ableton and DaVinci Resolve. Along the way, I discovered new artists and albums that have inspired me and used music as a tool for self-reflection.</p>
-								<p>The result of my journey is my album "Stasi", a collection of tracks that I am humbly proud of, as it represents not just my artistic growth but also my personal journey.</p>
-								<a class="grid-action" href="https://inzaniak.bandcamp.com/album/stasi" target="_blank" rel="noopener">Listen ↗</a>
-							</div>
-						</article>
-						<article class="grid-feature">
-							<div class="grid-image"><img src="images/LoRAs.webp" alt="Gallery of Umberto's Stable Diffusion LoRAs"></div>
-							<div class="grid-copy">
-								<span class="grid-kicker">60+ models · 10k+ followers</span>
-								<h3>My Stable Diffusion Journey</h3>
-								<p>With the release of Stable Diffusion I've started learning and experimenting with the process of art generation using diffusion models</p>
-								<p>In a few months, I've released over 60 custom models and hundred of pictures on my Deviant Art account with over 10k followers.</p>
-								<a class="grid-action" href="https://www.deviantart.com/inzaniak" target="_blank" rel="noopener">Discover ↗</a>
-							</div>
-						</article>
-					</section>
-
-					<section class="grid-chapter" id="small-projects" data-outline-section>
-						<header class="grid-chapter__head">
-							<span class="grid-index">06 / Small tools</span>
-							<h2>Minor Projects</h2>
-						</header>
-						<div class="grid-cards">
-							<article class="grid-card"><span class="grid-card__icon">Py</span><h3>Taskobra</h3><p>Taskobra is a Python package I've built to help people schedule Windows jobs programmatically using the Task Scheduler. This is a simple package that can be downloaded on my Github</p></article>
-							<article class="grid-card"><span class="grid-card__icon">D</span><h3>Discord Bot</h3><p>I've also coded the bot on my Discord server. With this bot I have access to text generation using a custom model, image generation using Stable Diffusion v1.5 and a lot of meme functionalities.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">&gt;_</span><h3>GameCli</h3><p>GameCli is an incredibly useful tool for any gaming enthusiast. It's a Python console application that simplifies the process of discovering, tracking and finding new games. With just a few commands, it retrieves a wealth of information such as prices, reviews, number of players, playtime and much more by tapping into multiple APIs and scouring the web.</p></article>
-							<article class="grid-card"><span class="grid-card__icon">JS</span><h3>Javascript Snippets</h3><p>I usually find myself writing Javascript snippets to improve my experience on the web (mainly using the browser extension named Tampermonkey). These help me with things like removing ads, changing the layout of a website, adding new functionalities and much more.</p></article>
-						</div>
-					</section>
-
-					<section class="grid-contact" id="contact" data-outline-section>
-						<div>
-							<small>Have a project, idea, or strange experiment?</small>
-							<h2>Get in touch.</h2>
-						</div>
-						<a class="grid-action" href="mailto:grando.umberto@gmail.com">Contact me ↗</a>
-					</section>
+<div id="fh5co-main">
+	<main id="about-grid">
+		<div class="grid-shell">
+			<section class="grid-hero" id="intro" data-outline-section aria-labelledby="about-title">
+				<div class="grid-image grid-hero__image">
+					<img src="images/avatar_2023.png" alt="Portrait of Umberto Grando">
 				</div>
-			</main>
-		</div>
-	</div>
+				<div class="grid-hero__copy">
+					<span class="grid-kicker">Creative technologist · Data professional · Musician</span>
+					<h1 id="about-title">Hello, I’m Umberto.</h1>
+					<p class="grid-lead">Hello World! I'm Umberto Grando, and I am a multi-talented creator, who's always looking for new and exciting ways to explore and express my passions for music, programming, and gaming.</p>
+					<p>I believe that my combination of skills is what sets me apart, as I strive to create something new and interesting by blending the digital and creative aspects.</p>
+					<p>I'm always looking for new projects and opportunities, and I'd love for you to join me on my journey of exploration and self-expression.</p>
+					<div class="grid-links" aria-label="Selected profiles">
+						<a class="grid-pill" href="https://inzaniak.bandcamp.com">Bandcamp</a>
+						<a class="grid-pill" href="https://medium.com/@inzaniak">Medium</a>
+						<a class="grid-pill" href="https://www.patreon.com/Inzaniak">Patreon</a>
+						<a class="grid-pill" href="https://www.linkedin.com/in/umberto-grando-a8527b150/">LinkedIn</a>
+					</div>
+				</div>
+			</section>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.flexslider-min.js"></script>
-	<script src="js/main.js?v=signal-rows-2"></script>
-	<script src="js/about-progress.js"></script>
-</body>
-</html>
+			<section class="grid-chapter" id="work" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">01 / Work</span>
+					<h2>One company. Three fields.</h2>
+				</header>
+				<article class="grid-feature">
+					<div class="grid-image grid-image--contain">
+						<img src="https://www.comonext.it/wp-content/uploads/2017/04/logo-DGS-porini.png" alt="DGS Porini logo">
+					</div>
+					<div class="grid-copy">
+						<span class="grid-kicker">Data · IoT · AI · Since 2016</span>
+						<h3>My Job at Porini</h3>
+						<p>I've worked at Porini since 2016, growing across three connected areas of technology. Porini is an international Microsoft partner that helps organizations design and deliver solutions for digital transformation.</p>
+					</div>
+				</article>
+				<div class="grid-role-list" aria-label="My three areas of work at Porini">
+					<article class="grid-role">
+						<span class="grid-role__number">01</span>
+						<h3>Data</h3>
+						<p>I worked on developing data platforms and reporting solutions that make information easier to access, understand, and act on.</p>
+					</article>
+					<article class="grid-role">
+						<span class="grid-role__number">02</span>
+						<h3>IoT</h3>
+						<p>I worked on developing cloud solutions that bring data from edge devices into the cloud for centralized processing and analysis.</p>
+					</article>
+					<article class="grid-role">
+						<span class="grid-role__number">03</span>
+						<h3>AI</h3>
+						<p>I worked on developing generative AI solutions, exploring how modern models can support practical business scenarios.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="grid-chapter" id="numbers" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">02 / Proof</span>
+					<h2>The Numbers</h2>
+				</header>
+				<div class="grid-stats">
+					<article class="grid-stat">
+						<strong>10+</strong>
+						<h3>Years</h3>
+						<p>For over 10 years at Porini, I have been continuously evolving across the data and artificial intelligence landscape. Over the past 4 years, I have served as an <mark>AI Tech Lead</mark>, leading technical strategy and hands-on development for innovative <mark>generative AI projects</mark> and enterprise solutions. Throughout this decade-long journey, I've worn multiple hats—such as <mark>Data Scientist</mark>, <mark>Data Analyst</mark>, <mark>IoT Specialist</mark>, and <mark>Teacher</mark>—collaborating with talented teams across a <mark>diverse range of projects</mark> to turn complex technical challenges into real-world business value.</p>
+					</article>
+					<article class="grid-stat">
+						<strong>500+</strong>
+						<h3>Teaching Hours</h3>
+						<p>As a seasoned teacher, I have invested more than <mark>500 hours</mark> of time imparting knowledge of essential tools and concepts to my colleagues and students, such as <mark>Power BI</mark>, <mark>SQL</mark>, <mark>SSAS</mark>, and <mark>Azure</mark>. I spent time creating <mark>engaging and interactive learning materials</mark>, with real-world examples that make complex concepts easy to understand. Not only have I honed my skills in these tools, but also honed my ability to connect with multiple individuals, teaching in a <mark>direct and effective way</mark> to ensure a comprehensive understanding for all.</p>
+					</article>
+					<article class="grid-stat">
+						<strong>50+</strong>
+						<h3>Projects</h3>
+						<p>With a wealth of experience under my belt, I've spent the past 6 years immersing myself in a wide range of projects, from <mark>traditional business analytics</mark> to <mark>cutting-edge AI in healthcare</mark> and <mark>big data collection</mark> for real-time analysis. Throughout this time, I've been dedicated to mastering the tools of the trade, honing my skills to become an <mark>expert at tackling any project</mark> that comes my way.</p>
+					</article>
+					<article class="grid-stat">
+						<strong>6+</strong>
+						<h3>Programming Languages</h3>
+						<p>During my career I've built a lot of experience working with various languages, with a particular focus on <mark>Python</mark>. Even when I've encountered new technologies and languages, I've always been able to <mark>quickly adapt and master</mark> them to effectively achieve the goals of the project, <mark>delivering results on time</mark> and without any issues. I believe in <mark>using the right tool for the job</mark> and am always eager to learn new skills and technologies to expand my capabilities.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="grid-chapter" id="stack" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">03 / Stack & Tools</span>
+					<h2>Worked, Learned & Used</h2>
+				</header>
+				<div class="grid-marquee">
+					<div class="marquee-track marquee-track--left1">
+						<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
+						<!-- Duplicate for seamless loop -->
+						<span class="marquee-pill"><span class="accent-dot"></span>Python</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Generative AI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LLMs</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Power BI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Microsoft Azure</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>OpenAI API</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>PyTorch</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Stable Diffusion</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LangChain</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>RAG Architecture</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Prompt Engineering</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Scikit-Learn</span>
+					</div>
+
+					<div class="marquee-track marquee-track--right">
+						<span class="marquee-pill">SQL</span>
+						<span class="marquee-pill">SSAS</span>
+						<span class="marquee-pill">DAX</span>
+						<span class="marquee-pill">Power Query (M)</span>
+						<span class="marquee-pill">Azure Data Factory</span>
+						<span class="marquee-pill">JavaScript</span>
+						<span class="marquee-pill">HTML5 / CSS3</span>
+						<span class="marquee-pill">C#</span>
+						<span class="marquee-pill">R</span>
+						<span class="marquee-pill">Bash</span>
+						<span class="marquee-pill">Pandas & NumPy</span>
+						<span class="marquee-pill">ETL / ELT</span>
+						<span class="marquee-pill">REST APIs</span>
+						<!-- Duplicate for seamless loop -->
+						<span class="marquee-pill">SQL</span>
+						<span class="marquee-pill">SSAS</span>
+						<span class="marquee-pill">DAX</span>
+						<span class="marquee-pill">Power Query (M)</span>
+						<span class="marquee-pill">Azure Data Factory</span>
+						<span class="marquee-pill">JavaScript</span>
+						<span class="marquee-pill">HTML5 / CSS3</span>
+						<span class="marquee-pill">C#</span>
+						<span class="marquee-pill">R</span>
+						<span class="marquee-pill">Bash</span>
+						<span class="marquee-pill">Pandas & NumPy</span>
+						<span class="marquee-pill">ETL / ELT</span>
+						<span class="marquee-pill">REST APIs</span>
+					</div>
+
+					<div class="marquee-track marquee-track--left2">
+						<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
+						<!-- Duplicate for seamless loop -->
+						<span class="marquee-pill"><span class="accent-dot"></span>Ableton Live</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Eurorack Modular</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Synthesizers</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Sound Design</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>ComfyUI</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>LoRA Fine-Tuning</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Git & GitHub</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Docker</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Linux</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>VS Code</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Jupyter</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>DaVinci Resolve</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Web Scraping</span>
+						<span class="marquee-pill"><span class="accent-dot"></span>Tampermonkey</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="grid-chapter" id="passions" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">04 / Off-hours</span>
+					<h2>My Passions</h2>
+				</header>
+				<article class="grid-feature">
+					<div class="grid-image">
+						<img src="images/passions.jpg" alt="Collage representing gaming, programming, and music">
+					</div>
+					<div class="grid-copy">
+						<span class="grid-kicker">Play · Build · Listen</span>
+						<h3>Curiosity after hours</h3>
+						<p>When I'm not working, I find myself fully immersing in my favorite hobbies, which include gaming, programming, and music. These activities not only provide a great source of entertainment and relaxation, but they also serve as a means of honing my skills in problem-solving, logical thinking, and creativity.</p>
+						<p>As a gamer, I enjoy testing my strategic thinking and quick reflexes, while programming allows me to flex my problem-solving muscles and challenge myself to find new solutions. And finally, music provides an outlet for my creative side, allowing me to produce my own compositions and experiment with different sounds and styles.</p>
+						<p>These hobbies not only bring joy and balance in my life but also contribute to my professional development as they keep my mind sharp and constantly engaged.</p>
+					</div>
+				</article>
+				<div class="grid-cards">
+					<article class="grid-card"><span class="grid-card__icon">G</span><h3>Gaming</h3><p>Gaming has always been an important piece of my life and it is really exciting seeing it getting bigger every year. Lately you'll find me playing mainly on Steam, Xbox, and my Steam Deck.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">&lt;/&gt;</span><h3>Coding</h3><p>I mainly code in Python, but I can also "speak" other languages. I've also made this website!</p></article>
+					<article class="grid-card"><span class="grid-card__icon">♪</span><h3>Music</h3><p>I love listening to every music genre. From ambient to hip-hop, from psychedelic rock to dungeonsynth, I love to explore every music genre available. When I'm not listening to music (or playing) you'll find me producing on my eurorack.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">⌁</span><h3>Technology</h3><p>I'm always updated on the latest technological trend and hardware. I love experimenting with different technologies and when I can I prefer going open-source.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">✦</span><h3>Generative Art</h3><p>With the release of Stable Diffusion to the public I've started experimenting with generative art. As of now I've released 60+ custom models and hundreds of pictures.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">✎</span><h3>Blogging</h3><p>I enjoy documenting what I learn through articles and practical guides, sharing my experiments and making technical topics easier for others to explore.</p></article>
+				</div>
+			</section>
+
+			<section class="grid-chapter" id="projects" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">05 / Selected</span>
+					<h2>My Projects</h2>
+				</header>
+				<article class="grid-feature">
+					<div class="grid-image"><img src="images/projects.png" alt="Illustration representing Umberto's projects"></div>
+					<div class="grid-copy">
+						<span class="grid-kicker">Always in progress</span>
+						<h3>Learning by making</h3>
+						<p>In my free time, I am always striving to keep my mind active and push my limits through a variety of side projects. I find inspiration for these projects in my passions, current trends and emerging technologies. From building my own applications, creating music compositions to experimenting with new programming languages and frameworks. Keeping myself challenged in this way, not only keeps me engaged but also makes it easy for me to approach my job with enthusiasm and a hunger for knowledge. I believe in the power of lifelong learning, and I make sure to never stop exploring and growing.</p>
+					</div>
+				</article>
+				<article class="grid-feature">
+					<div class="grid-image grid-image--duo">
+						<img src="images/odissey1.png" alt="Odissey music website interface">
+						<img src="images/odissey2.png" alt="Odissey music discovery screen">
+					</div>
+					<div class="grid-copy">
+						<span class="grid-kicker">Python · APIs · Music data</span>
+						<h3>Odissey — A musical exploration website</h3>
+						<p>Odissey is my very own personal music journey, a website I crafted to keep track of all the music I listen to and discover new gems. It's like having a virtual music librarian at your fingertips. It taps into the vast resources of Spotify, LastFM, Musicbrainz, and Tidal to fetch most of the information for the frontend. It also delves into the depths of music-related websites like RateYourMusic, AlbumOfTheYear and Allmusic using web scraping to retrieve additional information such as reviews, artist summaries and albums summaries. The website runs on my server machine, powered by the Python Bottle web framework, making it a fully-fledged and easily accessible music companion.</p>
+					</div>
+				</article>
+				<article class="grid-feature">
+					<div class="grid-image"><img src="images/medium1.png" alt="Umberto's Medium blog"></div>
+					<div class="grid-copy">
+						<span class="grid-kicker">50+ articles · 100k+ views</span>
+						<h3>My Medium Blog</h3>
+						<p>In February 2022, I embarked on a journey to share my knowledge and experience with the world through my blog on Medium. I started it as a way to share tips and examples of the things I work on in my daily job and to keep myself motivated to learn new things. I never thought it would reach so many readers and get so much attention. As I wrote more and more articles, I've had over 50+ articles and more than 100k visualizations on the platform.</p>
+						<p>Today, my blog is not just a way for me to share my knowledge and experiences but also an outlet for me to express myself and connect with others who share the same interests. I'm humbled and grateful for the response and I look forward to continue sharing my insights with the community.</p>
+						<a class="grid-action" href="https://medium.com/@inzaniak" target="_blank" rel="noopener">Go to Medium ↗</a>
+					</div>
+				</article>
+				<article class="grid-feature">
+					<div class="grid-image"><img src="images/stasi.jpg" alt="Cover art for Stasi, Umberto's first album"></div>
+					<div class="grid-copy">
+						<span class="grid-kicker">Ambient album · 2022</span>
+						<h3>Stasi — My First Album</h3>
+						<p>In 2022, I set out to explore my passion for music production by releasing my first ambient album on major music platforms. Though my journey with electronic music began in 2019, it was only through experimenting with various genres that I found my calling with the ambient genre. I took a deep dive into understanding its origins and meanings, and learning the tools of the trade like Ableton and DaVinci Resolve. Along the way, I discovered new artists and albums that have inspired me and used music as a tool for self-reflection.</p>
+						<p>The result of my journey is my album "Stasi", a collection of tracks that I am humbly proud of, as it represents not just my artistic growth but also my personal journey.</p>
+						<a class="grid-action" href="https://inzaniak.bandcamp.com/album/stasi" target="_blank" rel="noopener">Listen ↗</a>
+					</div>
+				</article>
+				<article class="grid-feature">
+					<div class="grid-image"><img src="images/LoRAs.webp" alt="Gallery of Umberto's Stable Diffusion LoRAs"></div>
+					<div class="grid-copy">
+						<span class="grid-kicker">60+ models · 10k+ followers</span>
+						<h3>My Stable Diffusion Journey</h3>
+						<p>With the release of Stable Diffusion I've started learning and experimenting with the process of art generation using diffusion models</p>
+						<p>In a few months, I've released over 60 custom models and hundred of pictures on my Deviant Art account with over 10k followers.</p>
+						<a class="grid-action" href="https://www.deviantart.com/inzaniak" target="_blank" rel="noopener">Discover ↗</a>
+					</div>
+				</article>
+			</section>
+
+			<section class="grid-chapter" id="small-projects" data-outline-section>
+				<header class="grid-chapter__head">
+					<span class="grid-index">06 / Small tools</span>
+					<h2>Minor Projects</h2>
+				</header>
+				<div class="grid-cards">
+					<article class="grid-card"><span class="grid-card__icon">Py</span><h3>Taskobra</h3><p>Taskobra is a Python package I've built to help people schedule Windows jobs programmatically using the Task Scheduler. This is a simple package that can be downloaded on my Github</p></article>
+					<article class="grid-card"><span class="grid-card__icon">D</span><h3>Discord Bot</h3><p>I've also coded the bot on my Discord server. With this bot I have access to text generation using a custom model, image generation using Stable Diffusion v1.5 and a lot of meme functionalities.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">&gt;_</span><h3>GameCli</h3><p>GameCli is an incredibly useful tool for any gaming enthusiast. It's a Python console application that simplifies the process of discovering, tracking and finding new games. With just a few commands, it retrieves a wealth of information such as prices, reviews, number of players, playtime and much more by tapping into multiple APIs and scouring the web.</p></article>
+					<article class="grid-card"><span class="grid-card__icon">JS</span><h3>Javascript Snippets</h3><p>I usually find myself writing Javascript snippets to improve my experience on the web (mainly using the browser extension named Tampermonkey). These help me with things like removing ads, changing the layout of a website, adding new functionalities and much more.</p></article>
+				</div>
+			</section>
+
+			<section class="grid-contact" id="contact" data-outline-section>
+				<div>
+					<small>Have a project, idea, or strange experiment?</small>
+					<h2>Get in touch.</h2>
+				</div>
+				<a class="grid-action" href="mailto:grando.umberto@gmail.com">Contact me ↗</a>
+			</section>
+		</div>
+	</main>
+</div>

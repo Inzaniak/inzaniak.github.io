@@ -1,0 +1,9 @@
+# The site navigation. Adding a page here adds it to the sidebar everywhere.
+# `key` must match the `active:` value in a page's front matter.
+- { title: Home,   url: /index.html,  key: home }
+- { title: About,  url: /about.html,  key: about }
+- { title: Music,  url: /music.html,  key: music }
+- { title: Media,  url: /media.html,  key: media }
+- { title: Blog,   url: /blog.html,   key: blog }
+- { title: Stuff,  url: /stuff.html,  key: stuff }
+- { title: Links,  url: /links.html,  key: links }
