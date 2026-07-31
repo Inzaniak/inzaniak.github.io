@@ -23,6 +23,14 @@ layout: default
 			{{ content }}
 		</div>
 	</article>
+
+	<dialog class="article-image-modal" aria-label="Image preview">
+		<div class="article-image-modal__surface">
+			<button class="article-image-modal__close" type="button" aria-label="Close image preview" data-article-image-close>Close</button>
+			<img class="article-image-modal__image" alt="">
+		</div>
+	</dialog>
 </div>
 
 <script src="{{ '/js/article-outline.js' | relative_url }}?v={{ site.asset_version }}"></script>
+<script src="{{ '/js/article-images.js' | relative_url }}?v={{ site.asset_version }}"></script>

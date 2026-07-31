@@ -1620,6 +1620,7 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
   max-width: 920px;
   margin: 0 auto;
   padding: 0 clamp(20px, 3vw, 40px) 96px;
+  background-color: var(--bg);
 }
 
 .article-masthead {
@@ -1731,11 +1732,100 @@ i.fa-solid, i.fa-brands, i.fab, i.fas {
 .article-body img {
   display: block;
   max-width: 100%;
+  max-height: min(70vh, 720px);
   height: auto;
   margin: 24px auto;
   border: 1px solid var(--border-subtle);
   border-radius: 3px;
   background: var(--surface);
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.article-body .article-image-trigger {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  background: var(--surface);
+  line-height: 0;
+  cursor: zoom-in;
+}
+
+.article-body .article-image-trigger img {
+  margin: 0;
+  border: 0;
+}
+
+.article-body .article-image-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.article-image-modal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.article-image-modal::backdrop {
+  background: rgba(5, 5, 8, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.article-image-modal__surface {
+  position: relative;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  padding: 48px 24px 24px;
+  place-items: center;
+}
+
+.article-image-modal__image {
+  display: block;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 72px);
+  width: auto;
+  height: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  background: var(--surface);
+  object-fit: contain;
+}
+
+.article-image-modal__close {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  right: 24px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.article-image-modal__close:hover,
+.article-image-modal__close:focus-visible {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-body .article-image-trigger,
+  .article-image-modal__close {
+    transition: none;
+  }
 }
 
 .article-body pre {
