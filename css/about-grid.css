@@ -494,6 +494,7 @@ body.role-modal-open {
 #about-grid .grid-image--contain {
   padding: clamp(1.5rem, 5vw, 5rem);
   background: #ffffff;
+  border-radius: 3rem 0 3rem 0;
 }
 
 #about-grid .grid-image--contain img {
