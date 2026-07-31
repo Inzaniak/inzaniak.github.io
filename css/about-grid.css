@@ -186,7 +186,7 @@
   text-underline-offset: 0.12em;
   text-decoration-thickness: 0.05em;
   transition: color 0.35s ease, text-decoration-color 0.35s ease;
-  overflow: hidden;
+  clip-path: inset(0 -0.15em 0 0);
   vertical-align: bottom;
   padding-bottom: 0.02em;
 }
