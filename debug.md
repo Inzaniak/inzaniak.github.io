@@ -36,6 +36,18 @@ The root cause was integer-only rendering via `Math.floor(...)`; the shortest co
 
 The translucent hover background was replaced with opaque `var(--surface-crimson-hover)` (`#241417`), preserving the original red highlight while preventing the page grid/background from showing through Blog and Stuff entries. `git diff --check` and `bundle exec jekyll build --trace` both pass.
 
+## Debug: Last.fm link layout regression
+
+### Verification results
+
+- The missing closing `</div>` was restored after the Deezer card, making Deezer and Last.fm sibling columns in the Music Platforms row.
+- `git diff --check` and `bundle exec jekyll build --trace` pass.
+- Parsed generated markup confirms the Music Platforms row has 7 direct card columns in order: Bandcamp, Spotify, SoundCloud, Tidal, Apple Music, Deezer, and Last.fm.
+
+### Resolution
+
+The layout regression was caused by malformed HTML nesting from the original insertion, not by the Last.fm URL or CSS. The Last.fm card now has the same outer column structure as the other platform cards.
+
 ## Debug: About heading crop
 
 ### Observed symptom
