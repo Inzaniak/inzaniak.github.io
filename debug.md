@@ -25,3 +25,13 @@ The About page numbers do not animate smoothly from 0 to their final values (the
 ## Resolution
 
 The root cause was integer-only rendering via `Math.floor(...)`; the shortest counter had too few visible states to look smooth. The counter now keeps every visible value as an integer using `Math.round(...)`, while the eased `requestAnimationFrame` timeline provides the smoothest possible transitions between whole-number states. It starts at zero before the section enters view, restores the exact target on the final frame, triggers once when any part of the numbers section enters the viewport, and gives reduced-motion users the final values immediately.
+
+## Current bug verification
+
+- The shared `.blog-entry.signal-row:hover` and `:focus-within` rule in `css/style.css` originally set `background: rgba(255, 51, 75, 0.08) !important`, which made the grid-backed `#fh5co-main` / `.fh5co-narrow-content` visible through hovered Blog and Stuff rows.
+- The same selector is used by both `blog.html` entries and `stuff.html` entries, matching the reported scope.
+- No temporary runtime diagnostic was needed: the computed style is explicit in the source and the selector path is deterministic.
+
+## Current bug resolution
+
+The translucent hover background was replaced with opaque `var(--surface-crimson-hover)` (`#241417`), preserving the original red highlight while preventing the page grid/background from showing through Blog and Stuff entries. `git diff --check` and `bundle exec jekyll build --trace` both pass.

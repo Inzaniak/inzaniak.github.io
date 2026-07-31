@@ -13,6 +13,7 @@
   --surface: #1a1a1e;
   --surface-hover: #26262c;
   --surface-active: #32323b;
+  --surface-crimson-hover: #241417;
   --text: #f4f4f5;
   --text-muted: #71717a;
   --accent: #ff334b;
@@ -827,7 +828,7 @@ figure figcaption {
 .blog-entry.signal-row:focus-within {
   padding-right: 16px;
   padding-left: 16px;
-  background: rgba(255, 51, 75, 0.08) !important;
+  background: var(--surface-crimson-hover) !important;
   transform: none;
   box-shadow: none;
 }
