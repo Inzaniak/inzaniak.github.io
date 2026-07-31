@@ -54,6 +54,8 @@
 }
 
 #about-grid .grid-image img {
+  position: relative;
+  z-index: 0;
   width: 100%;
   max-height: 680px;
   object-fit: cover;
@@ -61,13 +63,74 @@
   transition: transform 0.5s ease, filter 0.5s ease;
 }
 
+#about-grid .grid-hero__image::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: url("../images/avatar_2023.png") center / cover no-repeat;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
 #about-grid .grid-image:hover img {
   filter: grayscale(0.35) contrast(1.05);
   transform: scale(1.02);
 }
 
+#about-grid .grid-hero__image:hover::before {
+  animation: avatar-glitch 0.7s steps(2, end) infinite;
+}
+
+@keyframes avatar-glitch {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    filter: hue-rotate(0deg) saturate(1.5);
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  8% {
+    clip-path: inset(14% 0 72% 0);
+    filter: hue-rotate(110deg) saturate(3);
+    opacity: 0.85;
+    transform: translate(-5px, 2px);
+  }
+
+  18% {
+    clip-path: inset(63% 0 18% 0);
+    filter: hue-rotate(-70deg) saturate(3);
+    opacity: 0.7;
+    transform: translate(4px, -2px);
+  }
+
+  32% {
+    clip-path: inset(38% 0 44% 0);
+    filter: hue-rotate(80deg) saturate(2.5);
+    opacity: 0.9;
+    transform: translate(-2px, 1px);
+  }
+
+  48% {
+    clip-path: inset(78% 0 5% 0);
+    filter: hue-rotate(-110deg) saturate(3);
+    opacity: 0.75;
+    transform: translate(6px, 0);
+  }
+
+  65% {
+    clip-path: inset(8% 0 84% 0);
+    filter: hue-rotate(130deg) saturate(2.5);
+    opacity: 0.8;
+    transform: translate(-3px, -1px);
+  }
+}
+
 #about-grid .grid-hero__image::after {
   position: absolute;
+  z-index: 2;
   right: -1rem;
   bottom: -1rem;
   width: 44%;
@@ -2492,6 +2555,12 @@ body.role-modal-open {
 
   #about-grid .stack-legend {
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #about-grid .grid-hero__image:hover::before {
+    animation: none;
   }
 }
 
