@@ -13,3 +13,7 @@ Gemfile.lock
 __pycache__/
 *.py[cod]
 agents.md
+serve_err.txt
+serve_out.txt
+.agent/
+.agents/

@@ -254,5 +254,50 @@
         updateStackDisplay();
       });
     });
+
+    // --- Tool Usage Details Hover Panel ---
+    var detailsBar = document.getElementById("stack-details-bar");
+    var detailsName = document.getElementById("stack-details-name");
+    var detailsText = document.getElementById("stack-details-text");
+
+    var defaultName = "Usage & Experience";
+    var defaultText = "Hover over any technology pill below to view specific usage details and context.";
+
+    var showToolDetails = function (pill) {
+      if (!detailsBar || !detailsText || !detailsName) return;
+      var textSpan = pill.querySelector(".pill-text");
+      var rawName = pill.dataset.originalText || (textSpan ? textSpan.textContent.trim() : "");
+      var context = pill.getAttribute("data-context") || pill.getAttribute("data-status");
+      var level = pill.getAttribute("data-level") || "";
+
+      var details = pill.getAttribute("data-details") || ("Experience with " + rawName + " (" + (level ? level.charAt(0).toUpperCase() + level.slice(1) : "Proficient") + ").");
+
+      detailsName.textContent = rawName;
+      detailsText.textContent = details;
+
+      detailsBar.classList.add("is-active");
+      if (context === "work") {
+        detailsBar.classList.add("is-work");
+        detailsBar.classList.remove("is-learned");
+      } else if (context === "learned") {
+        detailsBar.classList.add("is-learned");
+        detailsBar.classList.remove("is-work");
+      }
+    };
+
+    var resetToolDetails = function () {
+      if (!detailsBar || !detailsText || !detailsName) return;
+      detailsName.textContent = defaultName;
+      detailsText.textContent = defaultText;
+      detailsBar.classList.remove("is-active", "is-work", "is-learned");
+    };
+
+    pills.forEach(function (pill) {
+      pill.setAttribute("tabindex", "0");
+      pill.addEventListener("mouseenter", function () { showToolDetails(pill); });
+      pill.addEventListener("mouseleave", resetToolDetails);
+      pill.addEventListener("focus", function () { showToolDetails(pill); });
+      pill.addEventListener("blur", resetToolDetails);
+    });
   }
 }());

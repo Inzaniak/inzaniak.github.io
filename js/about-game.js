@@ -1737,6 +1737,8 @@
       this.awayTeamEl = this.card.querySelector('#sports-away-team');
       this.homeScoreEl = this.card.querySelector('#sports-home-score');
       this.awayScoreEl = this.card.querySelector('#sports-away-score');
+      this.homeScorersEl = this.card.querySelector('#sports-home-scorers');
+      this.awayScorersEl = this.card.querySelector('#sports-away-scorers');
       this.playEl = this.card.querySelector('#sports-play-text');
       this.statOneLabelEl = this.card.querySelector('#sports-stat-one-label');
       this.statOneEl = this.card.querySelector('#sports-stat-one');
@@ -1750,32 +1752,44 @@
       this.playIndex = 0;
       this.matches = {
         football: {
-          period: 'SECOND HALF',
-          home: 'HOME',
-          away: 'AWAY',
-          homeScore: '2',
-          awayScore: '1',
-          startSeconds: 72 * 60 + 14,
+          period: 'FT · 29 AUG 2009',
+          home: 'MILAN',
+          away: 'INTER',
+          homeScore: '0',
+          awayScore: '4',
+          homeScorers: [],
+          awayScorers: ["Motta 29'", "Milito 36' (p)", "Maicon 45+1'", "Stankovic 67'"],
+          startSeconds: 90 * 60,
           plays: [
-            'ATTACK BUILDING ON THE LEFT WING',
-            'HIGH PRESS WINS BACK POSSESSION',
-            'CROSS CLEARED AT THE NEAR POST'
+            "29' GOAL! THIAGO MOTTA (0-1)",
+            "36' GOAL! DIEGO MILITO PENALTY (0-2)",
+            "40' RED CARD! GATTUSO SENT OFF",
+            "45+1' GOAL! MAICON POWER STRIKE (0-3)",
+            "67' GOAL! DEJAN STANKOVIC SCREAMER (0-4)",
+            "90' FULL TIME · MILAN 0-4 INTER (LEO VS MOU)"
           ],
-          stats: [['POSSESSION', '58%'], ['SHOTS', '12'], ['PASSES', '487']]
+          stats: [['MATCH', 'LEO VS MOU'], ['SERIE A', '09/10'], ['RED CARD', 'GATTUSO 40\'']]
         },
         'american-football': {
-          period: 'Q3',
-          home: 'HOME',
-          away: 'AWAY',
-          homeScore: '21',
-          awayScore: '17',
-          startSeconds: 8 * 60 + 42,
+          period: 'FT · SUPER BOWL LX (2026)',
+          home: 'SEAHAWKS',
+          away: 'PATRIOTS',
+          homeScore: '29',
+          awayScore: '13',
+          homeScorers: ["Walker III 8yd TD", "Myers 5x FG (Rec)"],
+          awayScorers: ["Maye 12yd TD", "Stevenson 4yd TD"],
+          startSeconds: 60 * 60,
           plays: [
-            '2ND & 6 AT THE 38 YARD LINE',
-            'PLAY ACTION · 14 YARD COMPLETION',
-            'DEFENSE SHOWING A DOUBLE BLITZ'
+            "1Q 4:12 · MYERS 31 YD FIELD GOAL (3-0)",
+            "2Q 8:45 · MYERS 42 YD FIELD GOAL (6-0)",
+            "3Q 11:20 · MYERS 28 YD FIELD GOAL (9-0)",
+            "4Q 13:05 · KENNETH WALKER III 8 YD TD RUN (16-0)",
+            "4Q 9:30 · MYERS 49 YD FIELD GOAL (19-0)",
+            "4Q 6:15 · DRAKE MAYE 12 YD TD PASS (19-7)",
+            "4Q 2:40 · MYERS 35 YD FG (SUPER BOWL RECORD)",
+            "FT · SEAHAWKS WIN SUPER BOWL LX (29-13)"
           ],
-          stats: [['DOWN', '2 & 6'], ['YARDS', '274'], ['DRIVES', '7']]
+          stats: [['SUPER BOWL', 'LX (2026)'], ['MVP', 'K. WALKER III'], ['FG RECORD', 'MYERS 5 FG']]
         }
       };
 
@@ -1810,6 +1824,14 @@
       if (this.awayTeamEl) this.awayTeamEl.textContent = match.away;
       if (this.homeScoreEl) this.homeScoreEl.textContent = match.homeScore;
       if (this.awayScoreEl) this.awayScoreEl.textContent = match.awayScore;
+      if (this.homeScorersEl) {
+        const items = Array.isArray(match.homeScorers) ? match.homeScorers : (match.homeScorers ? [match.homeScorers] : []);
+        this.homeScorersEl.innerHTML = items.map((s) => `<div>${s}</div>`).join('');
+      }
+      if (this.awayScorersEl) {
+        const items = Array.isArray(match.awayScorers) ? match.awayScorers : (match.awayScorers ? [match.awayScorers] : []);
+        this.awayScorersEl.innerHTML = items.map((s) => `<div>${s}</div>`).join('');
+      }
       this.updateStats(match);
       this.updateClock();
     }
@@ -1826,9 +1848,7 @@
 
     updateClock() {
       const match = this.matches[this.activeSport];
-      const minutes = Math.floor(this.clockSeconds / 60);
-      const seconds = String(this.clockSeconds % 60).padStart(2, '0');
-      if (this.periodEl) this.periodEl.textContent = `${match.period} · ${minutes}:${seconds}`;
+      if (this.periodEl) this.periodEl.textContent = match.period;
     }
 
     startClock() {

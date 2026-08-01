@@ -1,0 +1,368 @@
+[
+  {
+    "name": "Python",
+    "context": "work",
+    "level": "advanced",
+    "details": "Used for data analysis, AI agent development, web scraping, backend APIs, and automation scripts."
+  },
+  {
+    "name": "Generative AI",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Applied in prompt engineering, LLM pipeline building, RAG systems, and AI-assisted coding workflows."
+  },
+  {
+    "name": "Local LLMs",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Deployed and benchmarked locally using Ollama, LM Studio, and custom quantized models for private AI workflows."
+  },
+  {
+    "name": "LM Studio",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Utilized as a desktop workbench for loading, testing, and comparing local GGUF open-weight models offline."
+  },
+  {
+    "name": "Ollama",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Used for serving local LLM API endpoints and integrating open-source models into custom CLI agents and microservices."
+  },
+  {
+    "name": "Claude Code",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Used as an agentic AI coding assistant for multi-file codebase updates, system architecture, and pair programming."
+  },
+  {
+    "name": "Antigravity",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Used as an agentic AI coding assistant for multi-file codebase updates, system architecture, and pair programming."
+  },
+  {
+    "name": "Codex",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Used as an agentic AI coding assistant for multi-file codebase updates, system architecture, and pair programming."
+  },
+  {
+    "name": "Power BI",
+    "context": "work",
+    "level": "advanced",
+    "details": "Built enterprise executive dashboards, complex DAX measures, automated semantic models, and report distribution."
+  },
+  {
+    "name": "Microsoft Azure",
+    "context": "work",
+    "level": "advanced",
+    "details": "Configured cloud infrastructure including Azure App Services, Key Vaults, Azure AI Services, and IoT Hubs."
+  },
+  {
+    "name": "OpenAI API",
+    "context": "work",
+    "level": "advanced",
+    "details": "Integrated OpenAI LLMs and embeddings APIs into production RAG pipelines, chatbots, and automated workflows."
+  },
+  {
+    "name": "Azure Foundry",
+    "context": "work",
+    "level": "advanced",
+    "details": "Utilized Azure AI Foundry for building, orchestrating, and deploying enterprise AI models and evaluation flows."
+  },
+  {
+    "name": "Foundry IQ",
+    "context": "work",
+    "level": "advanced",
+    "details": "Configured enterprise knowledge indexers and intelligent enterprise search components for business intelligence."
+  },
+  {
+    "name": "Copilot Studio",
+    "context": "work",
+    "level": "advanced",
+    "details": "Developed custom conversational AI copilots, enterprise topics, and automated trigger actions for Microsoft 365."
+  },
+  {
+    "name": "App Service",
+    "context": "work",
+    "level": "advanced",
+    "details": "Deployed and managed scalable web applications, API microservices, and containerized backends on Azure."
+  },
+  {
+    "name": "PyTorch",
+    "context": "learned",
+    "level": "basic",
+    "details": "Used for deep learning experiments, custom tensor operations, and fine-tuning neural network modules."
+  },
+  {
+    "name": "Stable Diffusion",
+    "context": "work",
+    "level": "advanced",
+    "details": "Utilized for generative image creation, latent diffusion workflows, ControlNet, and custom model checkpoints."
+  },
+  {
+    "name": "LangChain",
+    "context": "learned",
+    "level": "basic",
+    "details": "Built agent chains, memory management wrappers, and document retriever pipelines for LLM apps."
+  },
+  {
+    "name": "RAG Architecture",
+    "context": "work",
+    "level": "advanced",
+    "details": "Designed hybrid vector retrieval, document chunking pipelines, reranking, and semantic search knowledge bases."
+  },
+  {
+    "name": "Prompt Engineering",
+    "context": "work",
+    "level": "advanced",
+    "details": "Developed optimized system prompts, few-shot templates, dynamic context injection, and agent tool routing."
+  },
+  {
+    "name": "Agent Harness",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Built custom agent harnesses to optimize model usage for specific tasks and applications."
+  },
+  {
+    "name": "Scikit-Learn",
+    "context": "learned",
+    "level": "basic",
+    "details": "Trained classical machine learning models including regression, classification trees, and clustering algorithms."
+  },
+  {
+    "name": "SQL",
+    "context": "work",
+    "level": "advanced",
+    "details": "Crafted complex queries, window functions, query optimizations, stored procedures, and schema migrations."
+  },
+  {
+    "name": "SSAS",
+    "context": "work",
+    "level": "advanced",
+    "details": "Developed tabular semantic models, hierarchies, relationship topologies, and enterprise analytical cubes."
+  },
+  {
+    "name": "DAX",
+    "context": "work",
+    "level": "advanced",
+    "details": "Written tons of advanced calculated columns, time-intelligence formulas, dynamic measures, and filter context evaluation logic."
+  },
+  {
+    "name": "Power Query (M)",
+    "context": "work",
+    "level": "basic",
+    "details": "Authored custom ETL data transformations, API data ingestion pipelines, and automated data cleaning logic."
+  },
+  {
+    "name": "Azure Data Factory",
+    "context": "work",
+    "level": "basic",
+    "details": "Constructed simple cloud data integration pipelines, parameterised copy tasks, and automated scheduled ETL triggers."
+  },
+  {
+    "name": "Hermes-agent",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Configured and experimented with autonomous agentic architectures for long-horizon task execution."
+  },
+  {
+    "name": "Terax",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Utilized for using multiple coding agents and custom harnesses at the same time."
+  },
+  {
+    "name": "Github Copilot",
+    "context": "work",
+    "level": "advanced",
+    "details": "Integrated into daily development workflow for agentic code workflows, unit test generation and devops automation."
+  },
+  {
+    "name": "Copilot 365",
+    "context": "work",
+    "level": "advanced",
+    "details": "Leveraged across Microsoft Office, Teams, and Outlook to automate documentation, summarize meetings, and generate reports."
+  },
+  {
+    "name": "Cowork",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Used for complex work tasks focused around automating repetitive activities and multitasking."
+  },
+  {
+    "name": "JavaScript",
+    "context": "learned",
+    "level": "basic",
+    "details": "Developed mostly custom extensions to customize my web experience and optimize page content."
+  },
+  {
+    "name": "HTML5 / CSS3",
+    "context": "learned",
+    "level": "basic",
+    "details": "Built modern, responsive, accessible web layouts with CSS Grid, Flexbox, custom design tokens, and smooth animations."
+  },
+  {
+    "name": "C#",
+    "context": "learned",
+    "level": "basic",
+    "details": "Developed backend services, CLI utilities, object-oriented libraries, and .NET web API controllers."
+  },
+  {
+    "name": "R",
+    "context": "learned",
+    "level": "basic",
+    "details": "Used for statistical data modeling, exploratory data analysis, exploratory graphics, and data manipulation."
+  },
+  {
+    "name": "Bash",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Written shell automation scripts, system configuration commands, environment provisioning, and CI/CD pipelines."
+  },
+  {
+    "name": "Pandas & NumPy",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Performed data manipulation, vector operations, CSV/Parquet processing, and multi-dimensional array math."
+  },
+  {
+    "name": "SSIS",
+    "context": "work",
+    "level": "advanced",
+    "details": "Built enterprise SQL Server ETL packages, data migration tasks, and scheduled batch database transformations."
+  },
+  {
+    "name": "REST APIs",
+    "context": "work",
+    "level": "advanced",
+    "details": "Designed, integrated, and consumed HTTP RESTful endpoints with JSON payloads, authentication, and error handling."
+  },
+  {
+    "name": "Ableton Live",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Used for music composition, multi-track audio recording, MIDI sequencing, mixing, and electronic music production."
+  },
+  {
+    "name": "Eurorack Modular",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Configured hardware modular synthesis patches using CV/Gate signals, function generators, and analog filters."
+  },
+  {
+    "name": "Synthesizers",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Designed custom sound presets, sub-bass textures, lead synth sounds, and soundscapes on analog and digital synths."
+  },
+  {
+    "name": "Sound Design",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Created custom audio samples, atmospheric textures, ambient pads, and transient impact sound effects."
+  },
+  {
+    "name": "ComfyUI",
+    "context": "learned",
+    "level": "advanced",
+    "details": "Constructed modular node-based generative AI image pipelines, ControlNet setups, IP-Adapter flows, and LoRA chaining."
+  },
+  {
+    "name": "LoRA Fine-Tuning",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Trained lightweight Low-Rank Adaptation weights for custom artistic styles and subject fine-tuning."
+  },
+  {
+    "name": "Krita",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Used for digital painting, concept sketching, texture editing, and manual image retouching."
+  },
+  {
+    "name": "Lunacy",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Created vector UI/UX layouts, wireframes, application interface prototypes, and vector graphics."
+  },
+  {
+    "name": "Gimp",
+    "context": "learned",
+    "level": "basic",
+    "details": "Utilized for bitmap image editing, background removal, photo adjustments, and graphics manipulation."
+  },
+  {
+    "name": "Godot",
+    "context": "learned",
+    "level": "basic",
+    "details": "Built 2D and 3D game prototypes, GDScript game logic, tilemap layouts, and physics collision interactions."
+  },
+  {
+    "name": "PowerToys",
+    "context": "learned",
+    "level": "intermediate",
+    "details": "Configured advanced Windows desktop utilities including FancyZones, PowerToys Run, and Keyboard Manager for workflow efficiency."
+  },
+  {
+    "name": "Git & GitHub",
+    "context": "work",
+    "level": "advanced",
+    "details": "Managed version control, git flow branching, pull request code reviews, release tagging, and GitHub Actions CI."
+  },
+  {
+    "name": "Docker",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Packaged application environments into container images, managed docker-compose multi-container setups, and isolated builds."
+  },
+  {
+    "name": "Linux",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Managed WSL2 environments, remote server administration via SSH, package managers, systemd services, and file permissions."
+  },
+  {
+    "name": "VSCode",
+    "context": "work",
+    "level": "advanced",
+    "details": "Used as primary IDE with extensions for Python, Git, Markdown, live server debugging, and terminal integration."
+  },
+  {
+    "name": "Jupyter",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Created interactive notebooks for data exploration, rapid algorithm prototyping, visualization, and ML benchmarking."
+  },
+  {
+    "name": "DaVinci Resolve",
+    "context": "learned",
+    "level": "basic",
+    "details": "Edited video projects, performed color grading, audio leveling, and exported final video deliverables."
+  },
+  {
+    "name": "Web Scraping",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Built automated scrapers using BeautifulSoup and Selenium to extract structured data from web pages."
+  },
+  {
+    "name": "Azure Key Vault",
+    "context": "work",
+    "level": "advanced",
+    "details": "Used to centralize management of credentials, secrets and certificates during projects."
+  },
+  {
+    "name": "Microsoft Teams",
+    "context": "work",
+    "level": "advanced",
+    "details": "Used to communicate with my team and coordinate projects in a structured and efficient way."
+  },
+  {
+    "name": "Microsoft 365",
+    "context": "work",
+    "level": "advanced",
+    "details": "I use daily all the tools of the Microsoft 365 (ex Office) suite: Excel, Powerpoint, and Word."
+  }
+]
