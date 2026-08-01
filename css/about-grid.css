@@ -2226,35 +2226,85 @@ body.role-modal-open {
   transform: translateY(-2px);
 }
 
-/* Mapped Status Dots */
-#about-grid .stack-dot {
+/* Stack Shape Indicator (Orthogonal Context Color & Skill Level Shape) */
+#about-grid .stack-shape {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Colori / Context */
+#about-grid [data-context="work"] .stack-shape,
+#about-grid .stack-shape--work {
+  background-color: #ff334b;
+  filter: drop-shadow(0 0 4px rgba(255, 51, 75, 0.8));
+}
+
+#about-grid [data-context="learned"] .stack-shape,
+#about-grid .stack-shape--learned {
+  background-color: #38bdf8;
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.8));
+}
+
+/* Forme / Level */
+#about-grid [data-level="advanced"] .stack-shape,
+#about-grid .stack-shape--star {
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+#about-grid [data-level="intermediate"] .stack-shape,
+#about-grid .stack-shape--diamond {
+  width: 8px;
+  height: 8px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+#about-grid [data-level="basic"] .stack-shape,
+#about-grid .stack-shape--dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
+}
+
+/* Legacy stack-dot compatibility */
+#about-grid .stack-dot {
   display: inline-block;
   flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  vertical-align: middle;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 #about-grid .stack-dot--worked {
+  width: 10px;
+  height: 10px;
   background-color: #ff334b;
-  box-shadow: 0 0 6px rgba(255, 51, 75, 0.7);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  filter: drop-shadow(0 0 4px rgba(255, 51, 75, 0.8));
 }
 
 #about-grid .stack-dot--learned {
-  background-color: #f59e0b;
-  box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.8));
 }
 
 #about-grid .stack-dot--used {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
   background-color: #38bdf8;
-  box-shadow: 0 0 6px rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
 }
 
-/* Stack Controls: Search Bar & Legend Toolbar */
+/* Stack Controls: Search Bar & Legend Toolbar on the Same Row */
 #about-grid .stack-controls {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
@@ -2269,8 +2319,9 @@ body.role-modal-open {
   position: relative;
   display: flex;
   align-items: center;
-  flex: 1 1 260px;
-  max-width: 380px;
+  flex: 0 1 240px;
+  min-width: 170px;
+  max-width: 280px;
 }
 
 #about-grid .stack-search__icon {
@@ -2282,13 +2333,13 @@ body.role-modal-open {
 
 #about-grid .stack-search__input {
   width: 100%;
-  padding: 0.55rem 2.2rem 0.55rem 2.3rem;
+  padding: 0.5rem 2.2rem 0.5rem 2.3rem;
   background: var(--about-bg);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 100px;
   color: var(--about-ink);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -2327,29 +2378,107 @@ body.role-modal-open {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Legend & Interactive Tooltips */
+/* Legend Toolbar: Two Sections on the Same Row as Search */
 #about-grid .stack-legend {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+#about-grid .stack-legend__section {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+#about-grid .stack-legend__title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--about-muted);
+  opacity: 0.8;
+}
+
+#about-grid .stack-legend__group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+#about-grid .stack-legend__divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 0.15rem;
+}
+
+#about-grid .stack-legend__badge {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+#about-grid .stack-legend__badge--work {
+  background-color: #ff334b;
+  box-shadow: 0 0 6px rgba(255, 51, 75, 0.8);
+}
+
+#about-grid .stack-legend__badge--learned {
+  background-color: #38bdf8;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
+}
+
+#about-grid .stack-legend__icon {
+  display: inline-block;
+  background-color: #ffffff;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+#about-grid .stack-legend__icon--star {
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+}
+
+#about-grid .stack-legend__icon--diamond {
+  width: 8px;
+  height: 8px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+}
+
+#about-grid .stack-legend__icon--dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
 }
 
 #about-grid .stack-legend__item {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.85rem;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
   border-radius: 100px;
   background: var(--about-bg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--about-ink);
   cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
+  white-space: nowrap;
 }
 
 #about-grid .stack-legend__item:hover,

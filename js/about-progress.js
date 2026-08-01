@@ -97,7 +97,8 @@
       }
     });
 
-    var activeStatusFilter = null;
+    var activeContextFilter = null;
+    var activeLevelFilter = null;
 
     var escapeHTML = function (str) {
       return str.replace(/[&<>"']/g, function (m) {
@@ -121,10 +122,10 @@
       var lowerQuery = query.toLowerCase();
 
       if (clearBtn) {
-        clearBtn.hidden = !query && !activeStatusFilter;
+        clearBtn.hidden = !query && !activeContextFilter && !activeLevelFilter;
       }
 
-      var isFiltering = query.length > 0 || activeStatusFilter !== null;
+      var isFiltering = query.length > 0 || activeContextFilter !== null || activeLevelFilter !== null;
 
       if (marqueeContainer) {
         if (isFiltering) {
@@ -145,13 +146,17 @@
         trackPills.forEach(function (pill) {
           var textSpan = pill.querySelector(".pill-text");
           var originalText = pill.dataset.originalText || (textSpan ? textSpan.textContent.trim() : "");
-          var status = pill.getAttribute("data-status");
+          var context = pill.getAttribute("data-context") || pill.getAttribute("data-status");
+          var level = pill.getAttribute("data-level");
 
           var matchesSearch = !lowerQuery || originalText.toLowerCase().indexOf(lowerQuery) !== -1;
-          var matchesStatus = !activeStatusFilter || status === activeStatusFilter;
+          var matchesContext = !activeContextFilter || context === activeContextFilter;
+          var matchesLevel = !activeLevelFilter || level === activeLevelFilter;
+
+          var matchesFilter = matchesSearch && matchesContext && matchesLevel;
 
           if (isFiltering) {
-            if (matchesSearch && matchesStatus && !seenInTrack[originalText]) {
+            if (matchesFilter && !seenInTrack[originalText]) {
               seenInTrack[originalText] = true;
               trackHasMatch = true;
               totalMatches++;
@@ -186,7 +191,10 @@
         if (isFiltering && totalMatches === 0) {
           noResultsEl.hidden = false;
           if (noResultsQueryEl) {
-            noResultsQueryEl.textContent = query || activeStatusFilter;
+            var activeFilters = [];
+            if (activeContextFilter) activeFilters.push(activeContextFilter);
+            if (activeLevelFilter) activeFilters.push(activeLevelFilter);
+            noResultsQueryEl.textContent = query || activeFilters.join(" + ");
           }
         } else {
           noResultsEl.hidden = true;
@@ -210,7 +218,8 @@
     if (clearBtn) {
       clearBtn.addEventListener("click", function () {
         if (searchInput) searchInput.value = "";
-        activeStatusFilter = null;
+        activeContextFilter = null;
+        activeLevelFilter = null;
         legendItems.forEach(function (item) { item.classList.remove("is-active"); });
         updateStackDisplay();
       });
@@ -218,15 +227,30 @@
 
     legendItems.forEach(function (item) {
       item.addEventListener("click", function () {
-        var status = item.getAttribute("data-legend-status");
-        if (activeStatusFilter === status) {
-          activeStatusFilter = null;
-          item.classList.remove("is-active");
+        var filterType = item.getAttribute("data-filter-type");
+        var filterValue = item.getAttribute("data-filter-value");
+
+        if (filterType === "context") {
+          activeContextFilter = activeContextFilter === filterValue ? null : filterValue;
+        } else if (filterType === "level") {
+          activeLevelFilter = activeLevelFilter === filterValue ? null : filterValue;
         } else {
-          activeStatusFilter = status;
-          legendItems.forEach(function (el) { el.classList.remove("is-active"); });
-          item.classList.add("is-active");
+          var legacyStatus = item.getAttribute("data-legend-status");
+          activeContextFilter = activeContextFilter === legacyStatus ? null : legacyStatus;
         }
+
+        legendItems.forEach(function (el) {
+          var t = el.getAttribute("data-filter-type");
+          var v = el.getAttribute("data-filter-value");
+          if (t === "context") {
+            if (v === activeContextFilter) el.classList.add("is-active");
+            else el.classList.remove("is-active");
+          } else if (t === "level") {
+            if (v === activeLevelFilter) el.classList.add("is-active");
+            else el.classList.remove("is-active");
+          }
+        });
+
         updateStackDisplay();
       });
     });
