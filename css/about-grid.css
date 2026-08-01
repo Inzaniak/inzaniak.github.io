@@ -2884,6 +2884,16 @@ body.role-modal-open {
   flex-wrap: wrap;
   align-items: center;
   gap: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  min-height: 44px;
+  background: var(--about-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+#about-grid .stack-legend:hover {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 #about-grid .stack-legend__section {
@@ -3303,11 +3313,39 @@ body.role-modal-open {
   }
 
   #about-grid .stack-search-wrap {
+    /* Column direction makes flex-basis vertical; reset so it sizes to content */
+    flex: 0 0 auto;
     max-width: 100%;
   }
 
+  /* One section per row, left-aligned; divider is meaningless when stacked */
   #about-grid .stack-legend {
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Title on its own line so the items get the full width below it */
+  #about-grid .stack-legend__section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  #about-grid .stack-legend__title {
+    margin-right: 0;
+  }
+
+  #about-grid .stack-legend__group {
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  #about-grid .stack-legend__divider {
+    display: none;
   }
 }
 
