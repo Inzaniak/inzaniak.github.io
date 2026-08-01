@@ -5,7 +5,7 @@ description: "Meet Umberto Grando: data professional, programmer, musician, game
 keywords: "inzaniak, Umberto Grando, data analyst, programming, ambient music, generative art"
 active: "about"
 extra_css: [/css/about-grid.css]
-extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/about-game.js, /js/about-crt.js]
+extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/about-game.js, /js/about-crt.js, /js/about-stack-charts.js]
 ---
 
 <nav class="page-outline" aria-label="About page progress">
@@ -288,6 +288,104 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 					<h2>Worked, Learned & Used</h2>
 				</header>
 
+				<!-- Stack Analytics Bento Grid -->
+				{% assign total_tools = site.data.stack | size %}
+				{% assign work_tools = site.data.stack | where: "context", "work" | size %}
+				{% assign personal_tools = site.data.stack | where: "context", "learned" | size %}
+				{% assign adv_tools = site.data.stack | where: "level", "advanced" | size %}
+				{% assign inter_tools = site.data.stack | where: "level", "intermediate" | size %}
+				{% assign basic_tools = site.data.stack | where: "level", "basic" | size %}
+
+				{% assign work_pct = work_tools | times: 100.0 | divided_by: total_tools | round: 1 %}
+				{% assign personal_pct = personal_tools | times: 100.0 | divided_by: total_tools | round: 1 %}
+				{% assign adv_pct = adv_tools | times: 100.0 | divided_by: total_tools | round: 1 %}
+				{% assign inter_pct = inter_tools | times: 100.0 | divided_by: total_tools | round: 1 %}
+				{% assign basic_pct = basic_tools | times: 100.0 | divided_by: total_tools | round: 1 %}
+
+				<div class="stack-bento-grid" role="region" aria-label="Technology Stack Analytics">
+					<!-- Card 1: Total Capacity -->
+					<div class="stack-bento-col-4">
+						<div class="stack-kpi-card">
+							<div class="stack-kpi-card__accent-bar stack-kpi-card__accent-bar--crimson"></div>
+							<span class="stack-kpi-card__label">Ecosystem Capacity <i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
+							<div class="stack-kpi-card__val" data-target-number="{{ total_tools }}">0</div>
+							<div class="stack-kpi-card__sub">100% Active Tech Tools</div>
+							<p class="stack-kpi-card__desc">Comprehensive stack spanning AI agents, cloud infrastructure, BI, scripting, sound synthesis, and creative tools.</p>
+						</div>
+					</div>
+
+					<!-- Card 2: Pie Chart for Context Ratio -->
+					<div class="stack-bento-col-4">
+						<div class="stack-kpi-card">
+							<div class="stack-kpi-card__accent-bar stack-kpi-card__accent-bar--crimson"></div>
+							<span class="stack-kpi-card__label">Context Ratio (Work vs Personal) <i class="fa-solid fa-chart-pie" aria-hidden="true"></i></span>
+							
+							<div class="stack-pie-container">
+								<!-- Solid SVG Pie Chart -->
+								<svg viewBox="0 0 100 100" class="stack-pie-svg" aria-hidden="true">
+									<!-- Work slice: 50.8% -->
+									<path d="M 50 50 L 50 5 A 45 45 0 1 1 47.69 94.94 Z" fill="#ff334b"></path>
+									<!-- Personal slice: 49.2% -->
+									<path d="M 50 50 L 47.69 94.94 A 45 45 0 0 1 50 5 Z" fill="#3b82f6"></path>
+									<!-- Center dot -->
+									<circle cx="50" cy="50" r="3" fill="#1a1a1e"></circle>
+								</svg>
+
+								<div class="stack-pie-legend">
+									<div>
+										<div class="stack-pie-legend__item">
+											<span class="stack-pie-legend__dot stack-pie-legend__dot--work"></span>
+											Work Stack
+										</div>
+										<div class="stack-pie-legend__sub">{{ work_tools }} Tools ({{ work_pct }}%)</div>
+									</div>
+									<div>
+										<div class="stack-pie-legend__item">
+											<span class="stack-pie-legend__dot stack-pie-legend__dot--personal"></span>
+											Personal R&D
+										</div>
+										<div class="stack-pie-legend__sub">{{ personal_tools }} Tools ({{ personal_pct }}%)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 3: Bar Chart for Mastery Pyramid -->
+					<div class="stack-bento-col-4">
+						<div class="stack-kpi-card">
+							<div class="stack-kpi-card__accent-bar stack-kpi-card__accent-bar--crimson"></div>
+							<span class="stack-kpi-card__label">Mastery Pyramid Bar Chart <i class="fa-solid fa-chart-bar" aria-hidden="true"></i></span>
+							
+							<div class="stack-bar-pyramid">
+								<div>
+									<div class="stack-bar-pyramid__row">
+										<span>★ Mastered</span>
+										<strong style="color: #ff334b;">{{ adv_tools }} ({{ adv_pct }}%)</strong>
+									</div>
+									<div class="stack-bar-track"><div class="stack-bar-fill stack-bar-fill--crimson" data-target-width="{{ adv_pct }}%"></div></div>
+								</div>
+
+								<div>
+									<div class="stack-bar-pyramid__row">
+										<span>◆ Proficient</span>
+										<strong style="color: #ff334b;">{{ inter_tools }} ({{ inter_pct }}%)</strong>
+									</div>
+									<div class="stack-bar-track"><div class="stack-bar-fill stack-bar-fill--crimson" data-target-width="{{ inter_pct }}%"></div></div>
+								</div>
+
+								<div>
+									<div class="stack-bar-pyramid__row">
+										<span>● Basic</span>
+										<strong style="color: #ff334b;">{{ basic_tools }} ({{ basic_pct }}%)</strong>
+									</div>
+									<div class="stack-bar-track"><div class="stack-bar-fill stack-bar-fill--crimson" data-target-width="{{ basic_pct }}%"></div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="stack-controls">
 					<div class="stack-search-wrap">
 						<svg class="stack-search__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -424,7 +522,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO PLAY 🕹️</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Gaming</h3>
 							<p>Gaming has always been an important piece of my life and it is really exciting seeing it getting bigger every year. Lately you'll find me playing mainly on Steam, Xbox, and my Asus Rog.</p>
@@ -442,7 +540,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER TO RUN 💻</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Coding</h3>
 							<p>I write software mostly in Python, but I also use other languages. AI agents changed how I build software. My programming experience helps me guide the tools and verify the code.</p>
@@ -466,7 +564,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>HOVER FOR DAW 🎧</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Music</h3>
 							<p>I love listening to every music genre. From ambient to hip-hop, from psychedelic rock to dungeonsynth, I love to explore every music genre available. When I'm not listening to music (or playing) you'll find me producing on my eurorack.</p>
@@ -544,7 +642,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>CLUSTER TELEMETRY 📊</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Technology</h3>
 							<p>I'm always updated on the latest technological trend and hardware. I love experimenting with different technologies and when I can I prefer going open-source. I work on Windows, MacOS, and Linux.</p>
@@ -582,7 +680,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>DIFFUSION AI ✦</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Generative Art</h3>
 							<p>With the release of Stable Diffusion to the public I've started experimenting with generative art. As of now I've released 60+ custom models and hundreds of pictures.</p>
@@ -613,7 +711,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>BLOG FEED ✍️</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Blogging</h3>
 							<p>I enjoy documenting what I learn through articles and practical guides, sharing my experiments and making technical topics easier for others to explore.</p>
@@ -641,7 +739,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>DAILY RADAR ✦</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Generative AI</h3>
 							<p>I spend at least one hour every day studying the latest news, trends, and tools in the Generative AI space. I also like to experiment with SLM locally as soon as they release.</p>
@@ -677,7 +775,7 @@ extra_js: [/js/about-progress.js, /js/about-numbers.js, /js/about-roles.js, /js/
 						<div class="grid-card__content">
 							<div class="grid-card__header">
 								<span class="grid-card__icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>
-								<span class="grid-card__badge"><span class="badge-pulse"></span>MATCH CENTER 🏟️</span>
+								<span class="grid-card__corner-plus" aria-hidden="true">+</span>
 							</div>
 							<h3>Sports</h3>
 							<p>I always loved watching sports since I was just a kid. Football is my main passion, but in the last few years I've started watching American Football, and I am having a blast learning the complexity of that sport.</p>

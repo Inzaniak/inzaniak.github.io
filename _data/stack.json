@@ -364,5 +364,47 @@
     "context": "work",
     "level": "advanced",
     "details": "I use daily all the tools of the Microsoft 365 (ex Office) suite: Excel, Powerpoint, and Word."
+  },
+  {
+    "name": "Shortcuts",
+    "context": "learned",
+    "level": "advanced",
+    "details": "I love memorizing shortcuts to become more efficient at using tools and softwares."
+  },
+  {
+    "name": "Stream Analytics",
+    "context": "work",
+    "level": "intermediate",
+    "details": "Used to stream big data for IoT projects into multiple different storages."
+  },
+  {
+    "name": "Azure Storage Account",
+    "context": "work",
+    "level": "advanced",
+    "details": "Used in any mode possible: tables, blob, data lake, and so on to store different types of structured/unstructured data"
+  },
+  {
+    "name": "Obsidian",
+    "context": "learned",
+    "level": "advanced",
+    "details": "I've been using Obsidian since 2021 as my main note taking app for personal projects."
+  },
+  {
+    "name": "ShareX",
+    "context": "learned",
+    "level": "advanced",
+    "details": "My preferred tool to take screenshots, screen videos, and quickly edit images."
+  },
+  {
+    "name": "Ditto",
+    "context": "learned",
+    "level": "advanced",
+    "details": "The GOAT of the clipboard managers, making my life easier since 2021."
+  },
+  {
+    "name": "Microsoft Agent Framewor",
+    "context": "work",
+    "level": "intermediate",
+    "details": "My preferred agent framework. A mixture of Autogen and Semantic Framework combined."
   }
 ]
